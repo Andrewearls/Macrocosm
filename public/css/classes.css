@@ -1,0 +1,17 @@
+.navbar {
+	background-color: none;
+	color: gray;
+	border-bottom: 1px solid gray;
+}
+
+.navbar a, .navbar-brand {
+	color: gray;
+}
+
+.navbar:hover {
+	border-bottom: 1px solid lightgreen;
+}
+
+.navbar a:hover{
+	color: lightgreen;
+}
