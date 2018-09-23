@@ -9,6 +9,12 @@
         $database = substr($url["path"], 1);
         $connection = 'pgsql';
     } else {
+        $url = "";
+
+        $host = "";
+        $username = "";
+        $password = "";
+        $database = "";
         $connection = env('DB_CONNECTION', 'mysql');
     }
 
