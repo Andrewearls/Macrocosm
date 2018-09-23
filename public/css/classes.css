@@ -12,6 +12,60 @@
 	border-bottom: 1px solid lightgreen;
 }
 
-.navbar a:hover{
+.navbar a:hover {
 	color: lightgreen;
 }
+
+.card, .card-header {
+	background-color: transparent !important;
+	color: gray;
+	border: 1px solid lightgreen;
+}
+
+.card-header, .card-body label {
+	font-size: 15px;
+	font-weight: 600;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+}
+
+.card-header {
+	font-size: 20px;
+	color: lightgreen;
+}
+
+.card-body {
+	background-color: rgba(10,10,10,0.5);
+	border: 1px solid lightgreen;
+}
+
+.card input:focus, .card button:focus {
+	border: 1px solid gray;
+	outline: none;
+	box-shadow: none;
+}
+
+.card .btn-primary {
+	background-color: gray;
+	border-color: gray;
+	color: lightgreen;
+	font-weight: 600;
+}
+
+.card .btn-primary:hover {
+	background-color: lightgreen;
+	border-color: lightgreen;
+	color: gray;
+}
+
+.card a, .card .btn-link {
+	color: gray;
+	text-decoration: none;
+}
+
+.card a:hover, .card .btn-link:hover {
+	color: red;
+	text-decoration: none;
+}
+
+
