@@ -16,7 +16,7 @@
 
                     <div class="row no-gutters">
                         <div class="col-md-6 left">
-                            <a class="row">                       
+                            <a href="{{ route('shopping') }}" class="row">                       
                                 <div class="col-md-8">
                                     <div class="title">Shopping</div>
                                     <p>Shop the macrocosmic-store!</p>

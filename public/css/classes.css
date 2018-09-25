@@ -88,7 +88,7 @@ div.card-header {
 	text-decoration: none;
 }
 
-.dashboard .card-body{
+.dashboard .card-body, .shopping .card-body{
 	padding: 0px;
 }
 
@@ -140,14 +140,14 @@ div.card-header {
 	border-color: lightgreen;
 }
 
-.dashboard .title {
-	font-size: 30px;
-	font-weight: 600;
-	color: gray;
+.shopping .item-container {
+	align-content: center;
+	text-align: center;
+	padding: 1em;
+	border: 1px solid transparent;
 }
 
-.dashboard p {
-	margin: 0px;
+.shopping .item-container:hover, .shopping .item-container:hover * {
+	border-color: lightgreen;	
+	color: lightgreen;
 }
-
-

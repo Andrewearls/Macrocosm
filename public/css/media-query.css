@@ -9,6 +9,22 @@
 	.dashboard .left .title, .dashboard .left p{
 		text-align: left;
 	}
+	.dashboard .left a{
+		border-right: 0px;
+	}
+	.dashboard .right a{
+		border-left: 0px;
+	}
+	.dashboard .right a:first-child{
+		border-top: 1px solid transparent;
+	}
+	.dashboard .left a:last-child{
+		border-bottom: 1px solid transparent	;
+	}
+	.dashboard .left a:last-child:hover, .dashboard .right a:first-child:hover{
+		border-color: lightgreen;
+	}
+
 	.hidden-sm-down{
 		display: none;
 	}
