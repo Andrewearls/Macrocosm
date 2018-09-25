@@ -5,5 +5,11 @@
 	#welcome-font{
 		font-size: 50px;
 	}
+	.dashboard .left .title, .dashboard .left p{
+		text-align: left;
+	}
+	.hidden-sm-down{
+		display: none;
+	}
 
 }
