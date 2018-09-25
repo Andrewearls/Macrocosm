@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\inventory;
 
 class ShoppingController extends Controller
 {
@@ -23,8 +24,9 @@ class ShoppingController extends Controller
      */
     public function index()
     {
-        return view('shopping.index');
+    	$inventory = Inventory::all();
+        return view('shopping.index')->with(['inventory' =>$inventory]);
     }
 
-    
+
 }

@@ -15,12 +15,14 @@
                     @endif
 
                     <div class="row no-gutters">
+                        @foreach ($inventory as $item)
                             <a class="col-md-3 item-container">
-                                <img src="https://images.unsplash.com/photo-1533419784160-1f7f79022119?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3cc8690dc35ae8378b6ccc04c4d57fbf&auto=format&fit=crop&w=746&q=80" class="fas fa-shopping-bag fa-5x">
+                                <img src="{{ $item->image }}">
                                 <!-- <i class="fas fa-shopping-bag fa-5x"></i> -->
-                                <div class="title">This Item</div>
-                                <p>Short description</p>
+                                <div class="title">{{ $item->name }}</div>
+                                <p>{{ $item->short_description }}</p>
                             </a>
+                        @endforeach
                     </div>
                     
 
