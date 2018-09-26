@@ -24,9 +24,13 @@ class ShoppingController extends Controller
      */
     public function index()
     {
-    	$inventory = Inventory::all();
-        return view('shopping.index')->with(['inventory' =>$inventory]);
+        $currentPage = 2;
+        $count = Inventory::all()->count();
+    	$inventory = Inventory::skip(($page-1)*16)->take(16)->get();        
+        $pages = ceil( $inventory/16 );
+        return view('shopping.index')->with(['inventory' => array_slice($inventory->toArray(),1,16)]);
     }
 
 
 }
+

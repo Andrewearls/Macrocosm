@@ -83,7 +83,7 @@ div.card-header {
 	text-decoration: none;
 }
 
-.card a:hover, .card .btn-link:hover {
+.card .forgot-password:hover, .card .btn-link:hover {
 	color: red;
 	text-decoration: none;
 }

@@ -20,6 +20,10 @@ body {
 	color: gray;
 }
 
+a:hover{
+	color: lightgreen;
+}
+
 p {
 	margin: 0px;
 }
@@ -27,4 +31,18 @@ p {
 img {
 	width: 100%;
 	height: auto;
+}
+
+.card-footer{
+	text-align: center;
+	border-color: lightgreen;
+}
+
+.card-footer .page-numbers{
+	font-size: 32px;
+}
+
+.card-footer .page-numbers span{
+	font-weight: 600;
+	color: lightgreen;
 }
