@@ -151,3 +151,14 @@ div.card-header {
 	border-color: lightgreen;	
 	color: lightgreen;
 }
+
+.shopping .display-count {
+	text-align: right;
+	font-size: 14px;
+	color: gray;
+}
+
+.shopping .display-count span{
+	color: lightgreen;
+	font-weight: 400;
+}

@@ -5,7 +5,16 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Shopping</div>
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            Shopping
+                        </div>
+                        <div class="col-sm-6 display-count">
+                            <span>{{ (($page * 16) <= $count) ? $page * 16 : $count }}</span> of {{ $count }}
+                        </div>
+                    </div>
+                </div>
 
                 <div class="card-body container">
                     @if (session('status'))
@@ -20,8 +29,8 @@
                                 <img src="https://picsum.photos/200/200">
                                 <!-- <i class="fas fa-shopping-bag fa-5x"></i> -->
                                 <div class="title">
-                                    @if(strlen($item['name']) > 9)
-                                        {{ substr($item['name'], 0, 9) }}...
+                                    @if(strlen($item['name']) > 8)
+                                        {{ substr($item['name'], 0, 8) }}...
                                     @else
                                         {{ $item['name'] }}
                                     @endif
@@ -40,13 +49,19 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-sm-3">
-                                <a href=""><i class="fas fa-arrow-circle-left fa-3x"></i></a>
+                                <a {{ ($page-1 > 0) ? "href=".route('shopping', ['page' => $page-1]) : '' }}><i class="fas fa-arrow-circle-left fa-3x"></i></a>
                             </div>
                             <div class="col-sm-6 page-numbers">
-                                <span>1</span>23
+                                @if ($page-1 > 0)
+                                    <a href="{{ route('shopping', [$page-1]) }}">{{ $page-1 }}</a>
+                                @endif
+                                <span>{{ $page }}</span>
+                                @if ($page+1 <= $pages) 
+                                    <a href="{{ route('shopping', [$page+1]) }}">{{ $page+1 }}</a> 
+                                @endif
                             </div>
                             <div class="col-sm-3">
-                                <a href=""><i class="fas fa-arrow-circle-right fa-3x"></i></a>
+                                <a {{ ($page+1 <= $pages) ? "href=".route('shopping', ['page' => $page+1]) : '' }}><i class="fas fa-arrow-circle-right fa-3x"></i></a>
                             </div>
                         </div>
                     </div>

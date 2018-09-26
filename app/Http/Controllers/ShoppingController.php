@@ -22,13 +22,18 @@ class ShoppingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $currentPage = 2;
+    public function index($page = 1)
+    {        
         $count = Inventory::all()->count();
-    	$inventory = Inventory::skip(($page-1)*16)->take(16)->get();        
-        $pages = ceil( $inventory/16 );
-        return view('shopping.index')->with(['inventory' => array_slice($inventory->toArray(),1,16)]);
+        $pages = ceil( $count/16 );
+        if ($page < 1) {
+            return redirect()->route('shopping', ['page' => 1]);
+        } elseif ($page > $pages) {
+            return redirect()->route('shopping', ['page' => $pages]);
+        }
+    	$inventory = Inventory::skip(($page-1)*16)->take(16)->get()->toArray();        
+        
+        return view('shopping.index')->with(['inventory' => $inventory, 'pages' => $pages, 'page' => $page, 'count' => $count]);
     }
 
 

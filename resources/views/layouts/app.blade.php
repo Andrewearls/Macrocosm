@@ -24,7 +24,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md  ">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ Auth::user() ? route('home') : route('welcome')}}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
