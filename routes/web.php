@@ -18,4 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/shopping/{page}', 'ShoppingController@index')->name('shopping');
+
+//shopping items
+Route::get('/shopping/item/{id}', 'ShoppingController@inventoryDescription')->name('itemDescription');
+//shopping page navigation
+Route::get('/shopping/', 'ShoppingController@index');
+Route::get('/shopping/{page}', 'ShoppingController@index');
+Route::get('/shopping/page/{page}', 'ShoppingController@index')->name('shopping');

@@ -25,7 +25,7 @@
 
                     <div class="row no-gutters">
                         @foreach ($inventory as $item)
-                            <a class="col-md-3 item-container">
+                            <a href="{{ route('itemDescription', ['id' => $item['id']]) }}" class="col-md-3 item-container">
                                 <img src="https://picsum.photos/200/200">
                                 <!-- <i class="fas fa-shopping-bag fa-5x"></i> -->
                                 <div class="title">

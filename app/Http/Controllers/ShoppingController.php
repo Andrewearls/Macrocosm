@@ -36,6 +36,12 @@ class ShoppingController extends Controller
         return view('shopping.index')->with(['inventory' => $inventory, 'pages' => $pages, 'page' => $page, 'count' => $count]);
     }
 
+    public function inventoryDescription($id)
+    {
+        $item = Inventory::findOrFail($id);
+        return view('shopping.itemDescription')->with(['item' => $item]);
+    }
+
 
 }
 
