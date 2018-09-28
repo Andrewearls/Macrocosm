@@ -11,7 +11,7 @@
                             Shopping
                         </div>
                         <div class="col-sm-6 display-count">
-                            <span>{{ (($page * 16) <= $count) ? $page * 16 : $count }}</span> of {{ $count }}
+                            <span>{{ (($page * 12) <= $count) ? $page * 12 : $count }}</span> of {{ $count }}
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                     <div class="row no-gutters">
                         @foreach ($inventory as $item)
                             <a href="{{ route('itemDescription', ['id' => $item['id']]) }}" class="col-md-3 item-container">
-                                <img src="https://picsum.photos/200/200">
+                                <img src="{{ $item['image'] }}">
                                 <!-- <i class="fas fa-shopping-bag fa-5x"></i> -->
                                 <div class="title">
                                     @if(strlen($item['name']) > 8)

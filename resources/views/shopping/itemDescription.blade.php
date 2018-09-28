@@ -11,7 +11,7 @@
                             <div class="title"> {{ $item->name }} </div>
                         </div>
                         <div class="col-sm-6 price">
-                            $500
+                            ${{ $item->price }}
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
 
                     <div class="row no-gutters">
                         <div class="col-sm-4 image-container">
-                        	<img src="https://picsum.photos/300/300" class="fas fa-shopping-bag fa-5x">
+                        	<img src="{{ $item->image }}" class="fas fa-shopping-bag fa-5x">
                         </div>
                         <div class="col-sm-8 long-description">
                         	
@@ -40,11 +40,16 @@
                                      
 
                 </div>
-                <!-- <div class="card-footer">
-                    <div class="row">
+                <div class="card-footer">
+                    {{ Form::open(array('url' => route('addToCart'))) }}
+                    <div class="row justify-content-end no-gutters">
+                        
+                        <button class="col-sm-2 add-to-cart btn" type="submit" name="item" value="{{ $item->id }}">Add To Cart</button>
+                        
                         
                     </div>
-                </div> -->
+                    {{ Form::close() }}
+                </div>
             </div>
         </div>
     </div>

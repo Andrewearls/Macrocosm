@@ -14,10 +14,44 @@ body {
     overflow: auto;
 }
 
-.title {
+.btn {
+	background-color: rgba(10,10,10,.6);
+	color: lightgreen;
+	border: 2px solid lightgreen;
+	font-weight: 600;
+	letter-spacing: 1px;
+	outline: none;
+}
+
+.btn:focus {
+	border: 2px solid lightgreen !important;
+	color: lightgreen;
+	outline: none;
+	box-shadow: none;
+}
+.btn:active {
+	border-color: gray !important;
+	color: gray;
+	outline: none;
+}
+
+.error {
+	font-size: 24px;
+	color: red;
+	font-weight: 500;
+}
+
+.title-gray, .title-lightgreen, .title {
 	font-size: 30px;
 	font-weight: 600;
+}
+
+.title-gray {	
 	color: gray;
+}
+
+.title-lightgreen {
+	color: lightgreen;
 }
 
 a:hover{
@@ -36,6 +70,7 @@ img {
 .card-footer{
 	text-align: center;
 	border-color: lightgreen;
+	border: 1px solid lightgreen;
 }
 
 .card-footer .page-numbers{

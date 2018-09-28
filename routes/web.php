@@ -21,6 +21,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //shopping items
 Route::get('/shopping/item/{id}', 'ShoppingController@inventoryDescription')->name('itemDescription');
+//shopping add to cart
+Route::post('shopping/add-to-cart', 'ShoppingController@addToCart')->name('addToCart');
+Route::post('shopping/remove-from-cart', 'ShoppingController@removeFromCart')->name('removeFromCart');
+Route::post('shopping/checkout', 'ShoppingController@checkout')->name('checkout');
+Route::get('shopping/cart', 'ShoppingController@cart')->name('cart');
+Route::get('shopping/checkout', 'ShoppingController@checkout')->name('checkout');
 //shopping page navigation
 Route::get('/shopping/', 'ShoppingController@index');
 Route::get('/shopping/{page}', 'ShoppingController@index');

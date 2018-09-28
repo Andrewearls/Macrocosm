@@ -7,7 +7,8 @@ $factory->define(App\Inventory::class, function (Faker $faker) {
         'name' => $faker->word,
         'description' => $faker->paragraph,
         'short_description' => $faker->sentence,
-        'image' => $faker->image,
-        'owner_id' => 1,
+        'image' => "https://picsum.photos/200/200",
+        'owner_id' => rand(1,10),
+        'price' => rand(0,1000),
     ];
 });

@@ -214,3 +214,74 @@ div.card-header {
 .item .long-description p {
 	padding: 1em;
 }
+
+.cart .description {
+	padding-left: 1em;
+	height: 100%;
+}
+
+.cart .description:hover {
+	color: lightgreen;
+}
+
+.cart .amount input {
+	width: 100%;
+	text-align: center;
+	background-color: transparent;
+	border: 2px solid gray;
+	color: lightgray;
+	border-radius: 3px;
+	margin-bottom: 1em;
+}
+
+.cart .amount input:hover, .cart .amount input:active, .cart .amount input:focus {
+	border-color: lightgreen;
+}
+
+.cart .amount .btn {
+	width: 50%;
+	color: gray;
+	border-color: gray;
+}
+
+.cart .amount .btn:active {
+	border-color: lightgreen !important;
+	color: lightgreen;
+}
+
+.cart .amount .btn {
+	border-color: gray !important;
+}
+
+.cart .amount .minus:active {
+	border-color: red !important;
+	color: red;
+}
+
+.cart .price {
+	text-align: center;
+	font-size: 24px;
+	font-weight: 600;
+	color: lightgreen;
+}
+
+.cart .card-body .row {
+	margin-top: 1em;
+}
+
+.cart .card-footer .price, .cart .card-footer .total {
+	font-size: 24px;
+	color: lightgreen;
+	font-weight: 600;
+	text-align: right;
+	padding-right: 1em;
+	letter-spacing: 2px;
+}
+
+.cart .card-footer .btn {
+	border-color: gray;
+}
+
+.cart .card-footer .btn:hover {
+	border-color: lightgreen;
+}

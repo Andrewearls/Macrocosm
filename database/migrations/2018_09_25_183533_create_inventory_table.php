@@ -20,6 +20,7 @@ class CreateInventoryTable extends Migration
             $table->string('short_description')->nullable();
             $table->text('description')->nullable();
             $table->longText('image')->nullable();
+            $table->integer('price')->default(1);
             $table->integer('owner_id');
         });
     }
