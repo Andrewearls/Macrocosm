@@ -46,14 +46,19 @@ class ShoppingController extends Controller
     {
 
         $cart = [];
-        $sessionCart = $request->session()->get('cart');
-        $i =0;
-        while ($i < count($sessionCart)) {
-            $cart[] = Inventory::findOrFail($sessionCart[$i]);
-            $i++;
+        $cartTotal = 0;
+        $sessionCart = $request->session()->get('cart.item');
+
+        //below null $sessionCart is typecast to array
+        foreach ((array) $sessionCart as $item => $amount) { 
+
+            $retrieved = Inventory::findOrFail($item);
+            $retrieved->amount = $amount;
+            $cart[] = $retrieved;
+            $cartTotal = $cartTotal + ($retrieved->price * $amount);
         }
         // dd(empty($cart));
-        return view('shopping.cart')->with(['cart' => $cart]);
+        return view('shopping.cart')->with(['cart' => $cart, 'total' => $cartTotal]);
     }
 
     public function addToCart(Request $request)
@@ -70,12 +75,12 @@ class ShoppingController extends Controller
             session([$item => $itemAmount]);
         } else {
             // dd($request->item);
-            session([$item => '1']);
+            session([$item => 1]);
             // dd($request->session()->get('cart'));
 
         }       
         
-        dd($request->session()->get('cart'));
+        // dd($request->session()->get('cart'));
         return redirect()->back();
     }
 

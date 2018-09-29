@@ -60,22 +60,8 @@ div.card-header {
 }
 
 .card input:focus, .card button:focus {
-	border: 1px solid gray;
 	outline: none;
 	box-shadow: none;
-}
-
-.card .btn-primary {
-	background-color: gray;
-	border-color: gray;
-	color: lightgreen;
-	font-weight: 600;
-}
-
-.card .btn-primary:hover {
-	background-color: lightgreen;
-	border-color: lightgreen;
-	color: gray;
 }
 
 .card a, .card .btn-link {

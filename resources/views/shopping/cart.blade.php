@@ -33,7 +33,7 @@
                                     {{ session('status') }}
                                 </div>
                             @endif
-                        
+                            
                             @foreach($cart as $item)
                             <div class="row no-gutters justify-content-center align-items-center">
                                 <div class="col-sm-2 image-container">
@@ -46,10 +46,10 @@
                                     
                                 </a>
                                 <div class="col-sm-2 amount">
-                                    <input type="text" name="amount" value="1">
+                                    <input type="text" name="amount" value="{{ $item->amount }}" autocomplete="off">
                                     <button href="{{ route('removeFromCart', ['id' => $item->id ]) }}" class="btn minus">-1</button><button href="{{ route('addToCart', ['id' => $item->id ]) }}" class="btn">+1</button>
                                 </div>
-                                <div class="col-sm-2 price">${{ $item->price }}</div>
+                                <div class="col-sm-2 price">${{ $item->price * $item->amount }}</div>
                             </div>
                             @endforeach 
                         
@@ -59,7 +59,7 @@
                         {{ Form::open(array('url' => route('checkout'))) }}
                         <div class="row justify-content-end no-gutters">
                             <div class="col-sm-8 title total">Total:</div>
-                            <div class="col-sm-2 title price">$1000</div>
+                            <div class="col-sm-2 title price">${{ $total }}</div>
                             <button class="col-sm-2 add-to-cart btn" type="submit">Checkout</button>
                             
                             

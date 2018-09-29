@@ -23,17 +23,42 @@ body {
 	outline: none;
 }
 
-.btn:focus {
-	border: 2px solid lightgreen !important;
-	color: lightgreen;
+.btn:focus, .btn:active {
 	outline: none;
 	box-shadow: none;
 }
-.btn:active {
-	border-color: gray !important;
-	color: gray;
-	outline: none;
+
+.btn-gray {
+	background-color: gray;
+	border-color: gray;
 }
+
+.btn-gray:hover {
+	background-color: lightgreen;
+	border-color: lightgreen;
+	color: gray;
+}
+
+.btn-gray:active {
+	background-color: gray;
+	border-color: lightgreen;
+	color: lightgreen;
+}
+
+/*.btn:focus, .btn-primary:focus, button:focus, button.btn:focus {
+	border: 2px solid lightgreen;
+	color: lightgreen;
+	outline: none;
+	box-shadow: none;
+	background-color: red;
+}
+.btn:active, .btn-primary:active, button:active, button.btn:active {
+	border: 2px solid gray !important;
+	color: lightgreen !important;
+	outline: none !important;
+	box-shadow: none !important;
+	background-color: gray !important;
+}*/
 
 .error {
 	font-size: 24px;
@@ -80,4 +105,19 @@ img {
 .card-footer .page-numbers span{
 	font-weight: 600;
 	color: lightgreen;
+}
+
+.red-link {
+	border: 0px solid transparent;
+	color: gray;
+	background-color: transparent;
+}
+
+.red-link:hover{
+	color: red;
+}
+
+.red-link:focus, .red-link:active {
+	border: 0px;
+	color: gray;
 }
