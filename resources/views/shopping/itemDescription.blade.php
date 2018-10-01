@@ -41,17 +41,32 @@
 
                 </div>
                 <div class="card-footer">
-                    {{ Form::open(array('url' => route('addToCart'))) }}
+                    <!-- {{ Form::open(array('url' => route('addToCart'))) }} -->
                     <div class="row justify-content-end no-gutters">
                         
-                        <button class="col-sm-2 add-to-cart btn" type="submit" name="item" value="{{ $item->id }}">Add To Cart</button>
+                        <button class="col-sm-2 add-to-cart btn" name="item" value="{{ $item->id }}">Add To Cart</button>
                         
                         
                     </div>
-                    {{ Form::close() }}
+                    <!-- {{ Form::close() }} -->
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@endsection
+
+@section('pagespecificscripts')
+    <script src="{{ asset('js/ajax/modifyCart.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".add-to-cart").click(function(){
+                var route = "{{ route('addToCart') }}";
+                var id = $(this).val();
+                modifyCart(route, id);
+            });
+        });
+    </script>
 @endsection

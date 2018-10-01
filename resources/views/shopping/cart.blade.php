@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 @else 
-                    {{ Form::open(['route' => 'checkout'])}}
+                    <!-- {{ Form::open(['route' => 'checkout'])}} -->
                         <div class="card-body container">
                             @if (session('status'))
                                 <div class="alert alert-success" role="alert">
@@ -47,20 +47,20 @@
                                 </a>
                                 <div class="col-sm-2 amount">
                                     <input type="text" name="amount" value="{{ $item->amount }}" autocomplete="off">
-                                    <button href="{{ route('removeFromCart', ['id' => $item->id ]) }}" class="btn minus">-1</button><button href="{{ route('addToCart', ['id' => $item->id ]) }}" class="btn">+1</button>
+                                    <button href="{{ route('removeFromCart', ['id' => $item->id ]) }}" class="btn minus remove-from-cart" value="{{ $item->id }}">-1</button><button href="{{ route('addToCart', ['id' => $item->id ]) }}" class="btn add-to-cart" value="{{ $item->id }}">+1</button>
                                 </div>
                                 <div class="col-sm-2 price">${{ $item->price * $item->amount }}</div>
                             </div>
                             @endforeach 
                         
                         </div>
-                    {{ Form::close() }}
+                    <!-- {{ Form::close() }} -->
                     <div class="card-footer">
                         {{ Form::open(array('url' => route('checkout'))) }}
                         <div class="row justify-content-end no-gutters">
                             <div class="col-sm-8 title total">Total:</div>
                             <div class="col-sm-2 title price">${{ $total }}</div>
-                            <button class="col-sm-2 add-to-cart btn" type="submit">Checkout</button>
+                            <button class="col-sm-2 btn" type="submit">Checkout</button>
                             
                             
                         </div>
@@ -72,4 +72,28 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('pagespecificscripts')
+    <script src="{{ asset('js/ajax/modifyCart.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".add-to-cart").click(function(){
+                var amount = $(this).parent().children('input');
+                var route = "{{ route('addToCart') }}";
+                var id = $(this).val();
+                modifyCart(route,id);
+                amount.val(parseInt(amount.val())+1);
+            });
+            $(".remove-from-cart").click(function(){
+                var amount = $(this).parent().children('input');
+                var route = "{{ route('removeFromCart') }}";
+                var id = $(this).val();
+                modifyCart(route,id);
+                amount.val(parseInt(amount.val())-1);
+            });
+        });
+        
+    </script>
+    
 @endsection

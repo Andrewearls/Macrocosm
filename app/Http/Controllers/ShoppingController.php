@@ -63,6 +63,7 @@ class ShoppingController extends Controller
 
     public function addToCart(Request $request)
     {
+        // return $request->id;
         // $request->session()->pull('cart');
         // return redirect()->back();
 
@@ -78,16 +79,33 @@ class ShoppingController extends Controller
             session([$item => 1]);
             // dd($request->session()->get('cart'));
 
-        }       
+        }     
+
+  
         
         // dd($request->session()->get('cart'));
-        return redirect()->back();
+        return $request->session()->all();
     }
 
     public function removeFromCart(Request $request)
     {
-        $request->session()->pull($request->item);
-        return redirect()->back();
+        $item = 'cart.item.'.$request->item;
+        // dd($request->session()->get($item));
+        if ($request->session()->has($item)) {
+            $itemAmount = $request->session()->get($item);
+            // dd($itemAmount);
+            $itemAmount--;
+            if ($itemAmount <= 0) {
+                $request->session()->forget($item);
+            }else{
+                session([$item => $itemAmount]);
+            }            
+        }    
+
+        // dd($request->session()->get('cart'));
+        return $request->session()->all();
+        // $request->session()->pull($request->item);
+        // return redirect()->back();
     }
 
     public function checkout(Request $request)
