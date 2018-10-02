@@ -16,6 +16,15 @@
 	color: lightgreen;
 }
 
+.navbar .added {
+	font-size: 24px;
+	color: lightgreen;
+	font-weight: 500;
+	padding-right: 1em;
+	line-height: 38px;
+	visibility: hidden;
+}
+
 span.navbar-toggler-icon {
 	height: auto;
 	color: gray;
@@ -283,4 +292,9 @@ div.card-header {
 
 .cart .card-footer .btn:hover {
 	border-color: lightgreen;
+}
+
+.comming-soon, .comming-soon *, .comming-soon:hover, .comming-soon *:hover, .comming-soon:active, .comming-soon *:active, .comming-soon:focus, .comming-soon *:focus {
+	color: orange !important;
+	border-color: orange !important;
 }

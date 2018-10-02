@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    <div class="row no-gutters">
+                    <div class="row no-gutters comming-soon">
                         <div class="col-md-6 left">
                             <a href="{{ route('shopping', ['page' => 1]) }}" class="row">                       
                                 <div class="col-md-8">
