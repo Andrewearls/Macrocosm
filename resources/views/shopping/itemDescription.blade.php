@@ -42,8 +42,8 @@
                 </div>
                 <div class="card-footer">
                     <!-- {{ Form::open(array('url' => route('addToCart'))) }} -->
-                    <div class="row justify-content-end no-gutters">
-                        
+                    <div class="row justify-content-between no-gutters">
+                        <a href="{{ url()->previous() }}" class="col-sm-3 add-to-cart btn">Back To Shopping</a>
                         <button class="col-sm-2 add-to-cart btn" name="item" value="{{ $item->id }}">Add To Cart</button>
                         
                         
@@ -63,9 +63,12 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $(".add-to-cart").click(function(){
+                console.log('here');
                 var route = "{{ route('addToCart') }}";
                 var id = $(this).val();
+
                 modifyCart(route, id);
+
             });
         });
     </script>

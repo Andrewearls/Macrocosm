@@ -201,6 +201,19 @@ div.card-header {
 	padding: 1em;
 }
 
+.item .card-footer a {
+	border-color: gray;
+}
+
+.item .card-footer a:hover {
+	border-color: lightgreen;
+}
+
+.item .card-footer a:active, .item .card-footer button:active {
+	color: gray;
+	border-color: gray;
+}
+
 .cart .description {
 	padding-left: 1em;
 	height: 100%;

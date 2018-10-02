@@ -49,7 +49,7 @@
                                     <input type="text" name="amount" value="{{ $item->amount }}" autocomplete="off">
                                     <button href="{{ route('removeFromCart', ['id' => $item->id ]) }}" class="btn minus remove-from-cart" value="{{ $item->id }}">-1</button><button href="{{ route('addToCart', ['id' => $item->id ]) }}" class="btn add-to-cart" value="{{ $item->id }}">+1</button>
                                 </div>
-                                <div class="col-sm-2 price">${{ $item->price * $item->amount }}</div>
+                                <div class="col-sm-2 price">$<span>{{ $item->price * $item->amount }}</span></div>
                             </div>
                             @endforeach 
                         
@@ -57,9 +57,9 @@
                     <!-- {{ Form::close() }} -->
                     <div class="card-footer">
                         {{ Form::open(array('url' => route('checkout'))) }}
-                        <div class="row justify-content-end no-gutters">
+                        <div id="total" class="row justify-content-end no-gutters">
                             <div class="col-sm-8 title total">Total:</div>
-                            <div class="col-sm-2 title price">${{ $total }}</div>
+                            <div class="col-sm-2 title price">$<span>{{ $total }}</span></div>
                             <button class="col-sm-2 btn" type="submit">Checkout</button>
                             
                             
@@ -79,18 +79,42 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $(".add-to-cart").click(function(){
-                var amount = $(this).parent().children('input');
+                var amountObject = $(this).parent().children('input');
+                var amount = parseInt(amountObject.val());
                 var route = "{{ route('addToCart') }}";
                 var id = $(this).val();
+                var priceObject = $(this).parent().parent().children('.price').children('span');
+                var price = parseInt(priceObject.text())/amount;
+                var totalObject = $('#total').children('.price').children('span');
+                var total = parseInt(totalObject.text());
+
                 modifyCart(route,id);
-                amount.val(parseInt(amount.val())+1);
+                totalObject.text(total+price);
+                priceObject.text(price*(amount+1));
+                amountObject.val(amount+1);
+                // console.log(totalObject);
+
+                
             });
             $(".remove-from-cart").click(function(){
-                var amount = $(this).parent().children('input');
+                var amountObject = $(this).parent().children('input');
+                var amount = parseInt(amountObject.val());
                 var route = "{{ route('removeFromCart') }}";
                 var id = $(this).val();
+                var priceObject = $(this).parent().parent().children('.price').children('span');
+                var price = parseInt(priceObject.text())/amount;
+                var totalObject = $('#total').children('.price').children('span');
+                var total = parseInt(totalObject.text());
+
                 modifyCart(route,id);
-                amount.val(parseInt(amount.val())-1);
+                if (amount <= 1) {
+                    location.reload();
+                    $(this).closest('.row').hide();
+                }else{                    
+                    priceObject.text(price*(amount-1));
+                    amountObject.val(amount-1);
+                }
+                totalObject.text(total-price);
             });
         });
         
