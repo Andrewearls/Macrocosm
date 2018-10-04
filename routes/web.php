@@ -31,3 +31,7 @@ Route::get('shopping/checkout', 'ShoppingController@checkout')->name('checkout')
 Route::get('/shopping/', 'ShoppingController@index');
 Route::get('/shopping/{page}', 'ShoppingController@index');
 Route::get('/shopping/page/{page}', 'ShoppingController@index')->name('shopping');
+
+
+//training 
+Route::get('/training/', 'TrainingController@index')->name('training');

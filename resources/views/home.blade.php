@@ -36,7 +36,7 @@
                             </a>
                         </div>
                         <div class="col-md-6 right">
-                            <a class="row">   
+                            <a href="{{ route('training') }}" class="row">   
                                 <div class="col-md-4 hidden-sm-down">
                                     <i class="fas fa-bullseye fa-5x"></i>
                                 </div>                   
