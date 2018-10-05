@@ -1,5 +1,6 @@
 html {
 	min-height: 100vh;
+	max-height: 100vh;
 	background-color: black;
 }
 
@@ -11,7 +12,8 @@ body {
     background-size: 100% 100%;
     width: 100%;
     min-height: 100vh;
-    overflow: auto;
+    max-height: 100vh;
+    overflow: hidden;
 }
 
 .btn {
@@ -92,14 +94,31 @@ img {
 	height: auto;
 }
 
-.card-footer{
+.card-body {
+	position:relative;
+	max-height: 55vh;
+	overflow: scroll;
+	overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+.card-header {
+	
+}
+
+.card-footer {
 	text-align: center;
 	border-color: lightgreen;
 	border: 1px solid lightgreen;
+	line-height: 24px;
+	background-color: rgba(100,100,100,0.3);
 }
 
-.card-footer .page-numbers{
-	font-size: 32px;
+.card-footer .page-numbers {
+	font-size: 24px;
 }
 
 .card-footer .page-numbers span{

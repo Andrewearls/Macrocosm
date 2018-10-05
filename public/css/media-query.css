@@ -6,22 +6,22 @@
 	#welcome-font{
 		font-size: 50px;
 	}
-	.dashboard .left .title, .dashboard .left p{
+	#dashboard .left .title, #dashboard .left p{
 		text-align: left;
 	}
-	.dashboard .left a{
+	#dashboard .left a{
 		border-right: 0px;
 	}
-	.dashboard .right a{
+	#dashboard .right a{
 		border-left: 0px;
 	}
-	.dashboard .right a:first-child{
+	#dashboard .right a:first-child{
 		border-top: 1px solid transparent;
 	}
-	.dashboard .left a:last-child{
+	#dashboard .left a:last-child{
 		border-bottom: 1px solid transparent	;
 	}
-	.dashboard .left a:last-child:hover, .dashboard .right a:first-child:hover{
+	#dashboard .left a:last-child:hover, #dashboard .right a:first-child:hover{
 		border-color: lightgreen;
 	}
 
