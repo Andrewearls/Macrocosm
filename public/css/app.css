@@ -1,8 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @import "bootstrap.css";
+@import "defaults.css";
 @import "classes.css";
 @import "ids.css";
-@import "defaults.css";
+
 @import "media-query.css";
 
 

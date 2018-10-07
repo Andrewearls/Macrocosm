@@ -7,7 +7,7 @@
 @section('cardheader')
     <div class="row">
         <div class="col-sm-6">
-            <div class="title"> {{ $item->name }} </div>
+            <div> {{ $item->name }} </div>
         </div>
         <div class="col-sm-6 price">
             ${{ $item->price }}
@@ -33,7 +33,7 @@
 @section('cardfooter')
     <!-- {{ Form::open(array('url' => route('addToCart'))) }} -->
     <div class="row justify-content-between no-gutters">
-        <a href="{{ url()->previous() }}" class="col-sm-3 add-to-cart btn">Back To Shopping</a>
+        <a href="{{ url()->previous() }}" class="col-sm-3 btn">Back To Shopping</a>
         <button class="col-sm-2 add-to-cart btn" name="item" value="{{ $item->id }}">Add To Cart</button>      
     </div>
     <!-- {{ Form::close() }} -->
@@ -45,12 +45,19 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $(".add-to-cart").click(function(){
-                console.log('here');
+
                 var route = "{{ route('addToCart') }}";
                 var id = $(this).val();
 
                 modifyCart(route, id);
 
+                $('.added').show('slow', function(){
+                    $('.fa-shopping-bag').css('color', 'lightgreen');
+                });
+                $('.added').fadeOut('slow', function(){
+                    $('.fa-shopping-bag').css('color', '');
+                });
+                               
             });
         });
     </script>

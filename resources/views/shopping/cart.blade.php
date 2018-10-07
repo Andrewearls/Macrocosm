@@ -7,7 +7,7 @@
 @section('cardheader')
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="title"> Cart </div>
+                            <div> Cart </div>
                         </div>
                     </div>
 @endsection
@@ -33,6 +33,7 @@
             <button href="{{ route('removeFromCart', ['id' => $item->id ]) }}" class="btn minus remove-from-cart" value="{{ $item->id }}">-1</button><button href="{{ route('addToCart', ['id' => $item->id ]) }}" class="btn add-to-cart" value="{{ $item->id }}">+1</button>
         </div>
         <div class="col-sm-2 price">$<span>{{ $item->price * $item->amount }}</span></div>
+        <div class="col-sm-2 remove-all"><button class="far fa-times-circle fa-3x btn red-button"></button></div>
     </div>
     @endforeach     
  
@@ -79,7 +80,7 @@
                 var id = $(this).val();
                 var priceObject = $(this).parent().parent().children('.price').children('span');
                 var price = parseInt(priceObject.text())/amount;
-                var totalObject = $('#total').children('.price').children('span');
+                var totalObject = $('#total').find('.price').children('span');
                 var total = parseInt(totalObject.text());
 
                 modifyCart(route,id);
@@ -93,12 +94,15 @@
             $(".remove-from-cart").click(function(){
                 var amountObject = $(this).parent().children('input');
                 var amount = parseInt(amountObject.val());
+                console.log(amount);
                 var route = "{{ route('removeFromCart') }}";
                 var id = $(this).val();
                 var priceObject = $(this).parent().parent().children('.price').children('span');
                 var price = parseInt(priceObject.text())/amount;
-                var totalObject = $('#total').children('.price').children('span');
+                console.log(price);
+                var totalObject = $('#total').find('.price').children('span');
                 var total = parseInt(totalObject.text());
+                console.log(total);
 
                 modifyCart(route,id);
                 if (amount <= 1) {

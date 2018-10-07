@@ -6,6 +6,6 @@ function modifyCart(route, id){
       item: id
     },
     function(data,status){
-        console.log(data);
+    	// console.log(data);
     });
 };

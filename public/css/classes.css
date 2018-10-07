@@ -1,7 +1,12 @@
+a:hover {
+	color: lightgreen;
+}
+
 .hidden {
 	display: none;
 	visibility: hidden;
 }
+
 .navbar {
 	background-color: none;
 	color: gray;
@@ -26,7 +31,20 @@
 	font-weight: 500;
 	padding-right: 1em;
 	line-height: 38px;
-	visibility: hidden;
+	/*opacity: 0;*/
+	/*animation-name: fade;*/
+	animation-duration: 2s;
+	display: none;
+}
+.red-button {
+	background-color: transparent;
+	color: gray;
+	border: 0px;
+	font-size: 32px;
+}
+
+.red-button:hover {
+	color: red;
 }
 
 span.navbar-toggler-icon {
@@ -85,6 +103,10 @@ div.card-header {
 .card .forgot-password:hover, .card .btn-link:hover {
 	color: red;
 	text-decoration: none;
+}
+
+.card-footer a:hover{
+	color: lightgreen;
 }
 
 #dashboard .card-body, .shopping .card-body{

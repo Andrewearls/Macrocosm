@@ -84,7 +84,7 @@ class ShoppingController extends Controller
   
         
         // dd($request->session()->get('cart'));
-        return $request->session()->all();
+        return 'sucess';
     }
 
     public function removeFromCart(Request $request)
@@ -103,7 +103,7 @@ class ShoppingController extends Controller
         }    
 
         // dd($request->session()->get('cart'));
-        return $request->session()->all();
+        return 'sucess';
         // $request->session()->pull($request->item);
         // return redirect()->back();
     }
