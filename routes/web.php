@@ -24,6 +24,7 @@ Route::get('/shopping/item/{id}', 'ShoppingController@inventoryDescription')->na
 //shopping add to cart
 Route::post('shopping/add-to-cart', 'ShoppingController@addToCart')->name('addToCart');
 Route::post('shopping/remove-from-cart', 'ShoppingController@removeFromCart')->name('removeFromCart');
+Route::post('shopping/remove-all', 'ShoppingController@removeAll')->name('removeAll');
 Route::post('shopping/checkout', 'ShoppingController@checkout')->name('checkout');
 Route::get('/shopping/cart', 'ShoppingController@cart')->name('cart');
 Route::get('shopping/checkout', 'ShoppingController@checkout')->name('checkout');

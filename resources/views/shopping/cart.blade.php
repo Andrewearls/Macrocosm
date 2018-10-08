@@ -5,11 +5,11 @@
 @endsection
 
 @section('cardheader')
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div> Cart </div>
-                        </div>
-                    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div> Cart </div>
+        </div>
+    </div>
 @endsection
 
 @section('cardbody') 
@@ -18,23 +18,23 @@
         <div class="col-sm-12 error">There are no items in your cart.</div>
     </div> 
     @foreach((array) $cart as $item)
-    <div class="row no-gutters justify-content-center align-items-center cart-not-empty">
-        <div class="col-sm-2 image-container">
-            <img src="{{ $item->image }}" class="fas fa-shopping-bag fa-5x">
+        <div class="row no-gutters justify-content-center align-items-center cart-not-empty">
+            <div class="col-sm-2 image-container">
+                <img src="{{ $item->image }}" class="fas fa-shopping-bag fa-5x">
+            </div>
+            <a href="{{ route('itemDescription', ['id' => $item->id])}}" class="col-sm-4 description">
+                
+                <div class="title">{{ $item->name }}</div>
+                <p>{{ $item->short_description }}</p>
+                
+            </a>
+            <div class="col-sm-2 amount">
+                <input type="text" name="amount" value="{{ $item->amount }}" autocomplete="off" readonly>
+                <button href="{{ route('removeFromCart', ['id' => $item->id ]) }}" class="btn minus remove-from-cart" value="{{ $item->id }}">-1</button><button href="{{ route('addToCart', ['id' => $item->id ]) }}" class="btn add-to-cart" value="{{ $item->id }}">+1</button>
+            </div>
+            <div class="col-sm-2 price">$<span>{{ $item->price * $item->amount }}</span></div>
+            <div class="col-sm-2 remove-all"><button class="far fa-times-circle fa-3x btn red-button" value="{{ $item->id }}"></button></div>
         </div>
-        <a href="{{ route('itemDescription', ['id' => $item->id])}}" class="col-sm-4 description">
-            
-            <div class="title">{{ $item->name }}</div>
-            <p>{{ $item->short_description }}</p>
-            
-        </a>
-        <div class="col-sm-2 amount">
-            <input type="text" name="amount" value="{{ $item->amount }}" autocomplete="off">
-            <button href="{{ route('removeFromCart', ['id' => $item->id ]) }}" class="btn minus remove-from-cart" value="{{ $item->id }}">-1</button><button href="{{ route('addToCart', ['id' => $item->id ]) }}" class="btn add-to-cart" value="{{ $item->id }}">+1</button>
-        </div>
-        <div class="col-sm-2 price">$<span>{{ $item->price * $item->amount }}</span></div>
-        <div class="col-sm-2 remove-all"><button class="far fa-times-circle fa-3x btn red-button"></button></div>
-    </div>
     @endforeach     
  
 @endsection
@@ -66,13 +66,32 @@
     <script src="{{ asset('js/ajax/modifyCart.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+            var totalObject = $('#total').find('.price').children('span');
+            var total = parseInt(totalObject.text());
             function checkCart() {
                 if ($(".cart-not-empty").length <= 1) {
                     $(".cart-not-empty").hide();
                     $(".cart-empty").removeClass('hidden');
                 }
             }
+            function itemCollection(thisObject){
+                var item ={
+                    "amountObject" : $(thisObject).find('.amount').children('input'),
+                    "amount" : parseInt($(thisObject).children('input').val()),
+                    "id" : $(thisObject).find('.remove-all').children('button').val(),
+                    "priceObject" : $(thisObject).find('.price').children('span'),
+                    "price" : parseInt($(thisObject).find('.price').children('span').text())/parseInt($(thisObject).find('input').val()),                    
+                };
+                return item;
+            }
             checkCart();
+            $(".remove-all").click(function(){
+                $(this).parent().hide();
+                var item = itemCollection($(this).parent());
+                var route = "{{ route('removeAll') }}";
+                console.log(item["id"]);
+                item["amountObject"].val(0);
+            });
             $(".add-to-cart").click(function(){
                 var amountObject = $(this).parent().children('input');
                 var amount = parseInt(amountObject.val());
@@ -87,9 +106,7 @@
                 totalObject.text(total+price);
                 priceObject.text(price*(amount+1));
                 amountObject.val(amount+1);
-                // console.log(totalObject);
-
-                
+                // console.log(totalObject);                
             });
             $(".remove-from-cart").click(function(){
                 var amountObject = $(this).parent().children('input');
