@@ -140,3 +140,15 @@ img {
 	border: 0px;
 	color: gray;
 }
+
+.item-container {
+	align-content: center;
+	text-align: center;
+	padding: 1em;
+	border: 1px solid transparent;
+}
+
+.item-container:hover, .item-container:hover * {
+	border-color: lightgreen;	
+	color: lightgreen;
+}

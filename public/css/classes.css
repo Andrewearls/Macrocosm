@@ -162,15 +162,11 @@ div.card-header {
 }
 
 #shopping .item-container {
-	align-content: center;
-	text-align: center;
-	padding: 1em;
-	border: 1px solid transparent;
+	
 }
 
 #shopping .item-container:hover, #shopping .item-container:hover * {
-	border-color: lightgreen;	
-	color: lightgreen;
+	
 }
 
 #shopping .display-count {
@@ -184,7 +180,7 @@ div.card-header {
 	font-weight: 400;
 }
 
-#item .card-body {
+#item .card-body, #class .card-body {
 	text-align: center;
 	padding: 0px;
 }
@@ -202,12 +198,12 @@ div.card-header {
 	text-align: right;
 }
 
-#item .image-container {
+#item .image-container, #class .image-container {
 	border-right: 1px solid lightgreen;
 	padding: 1em;
 }
 
-#item .long-description {
+#item .long-description, #class .long-description {
 	
 	/*margin: 1em;*/
 	/*margin-top: 0px;*/
@@ -222,7 +218,7 @@ div.card-header {
 	/*border-top: 0px;*/
 }
 
-#item .long-description .title {
+#item .long-description .title{
 	font-weight: 500;
 	color: black;
 	letter-spacing: 2px;
@@ -232,19 +228,19 @@ div.card-header {
 	border-bottom: 1px solid lightgreen;
 }
 
-#item .long-description p {
+#item .long-description p, #class .long-description p {
 	padding: 1em;
 }
 
-#item .card-footer a {
+#item .card-footer a, #class .card-footer a{
 	border-color: gray;
 }
 
-#item .card-footer a:hover {
+#item .card-footer a:hover, #class .card-footer a:hover {
 	border-color: lightgreen;
 }
 
-#item .card-footer a:active, #item .card-footer button:active {
+#item .card-footer a:active, #item .card-footer button:active, #class .card-footer a:active, #class .card-footer button:active {
 	color: gray;
 	border-color: gray;
 }
