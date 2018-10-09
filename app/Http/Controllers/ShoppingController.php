@@ -114,6 +114,19 @@ class ShoppingController extends Controller
         return redirect()->back();
     }
 
+    public function clearItem(Request $request)
+    {
+        $item = 'cart.item.'.$request->item;
+        // dd($request->session()->get($item));
+        if ($request->session()->has($item)) {
+            $itemAmount = $request->session()->forget($item);
+        } 
+        
+        return 'sucess';
+
+        
+    }
+
 
 }
 

@@ -66,71 +66,74 @@
     <script src="{{ asset('js/ajax/modifyCart.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            var totalObject = $('#total').find('.price').children('span');
-            var total = parseInt(totalObject.text());
+
             function checkCart() {
+                console.log('checking cart');
+                console.log($(".cart-not-empty").length);
                 if ($(".cart-not-empty").length <= 1) {
                     $(".cart-not-empty").hide();
+                    
                     $(".cart-empty").removeClass('hidden');
                 }
             }
             function itemCollection(thisObject){
                 var item ={
                     "amountObject" : $(thisObject).find('.amount').children('input'),
-                    "amount" : parseInt($(thisObject).children('input').val()),
+                    "amount" : parseInt($(thisObject).find('input').val()),
                     "id" : $(thisObject).find('.remove-all').children('button').val(),
                     "priceObject" : $(thisObject).find('.price').children('span'),
                     "price" : parseInt($(thisObject).find('.price').children('span').text())/parseInt($(thisObject).find('input').val()),                    
                 };
                 return item;
             }
+            function updateTotal(price) {
+                var totalObject = $('#total').find('.price').children('span');
+                var total = parseInt(totalObject.text());
+                totalObject.text(total+price);
+            }
+            function updatePrice(item, amount) {
+                item["priceObject"].text(item["price"]*(amount));
+                item["amountObject"].val(amount);
+            }
             checkCart();
             $(".remove-all").click(function(){
-                $(this).parent().hide();
-                var item = itemCollection($(this).parent());
-                var route = "{{ route('removeAll') }}";
-                console.log(item["id"]);
-                item["amountObject"].val(0);
+                if (confirm("Are you sure you want to remove this item?")) {
+                    $(this).closest(".row").remove();
+
+                    var item = itemCollection($(this).closest('.row'));
+                    var route = "{{ route('clearItem') }}";
+
+                    modifyCart(route, item["id"]);
+                    updateTotal(-item["amount"]*item["price"]);
+                    checkCart();
+                }
+
             });
             $(".add-to-cart").click(function(){
-                var amountObject = $(this).parent().children('input');
-                var amount = parseInt(amountObject.val());
-                var route = "{{ route('addToCart') }}";
-                var id = $(this).val();
-                var priceObject = $(this).parent().parent().children('.price').children('span');
-                var price = parseInt(priceObject.text())/amount;
-                var totalObject = $('#total').find('.price').children('span');
-                var total = parseInt(totalObject.text());
+                
+                var route = "{{ route('addToCart') }}"; 
+                var item = itemCollection($(this).closest('.row'));
 
-                modifyCart(route,id);
-                totalObject.text(total+price);
-                priceObject.text(price*(amount+1));
-                amountObject.val(amount+1);
-                // console.log(totalObject);                
+                modifyCart(route,item["id"]);
+                updateTotal(item["price"]);
+                updatePrice(item, item["amount"]+1);
+                              
             });
             $(".remove-from-cart").click(function(){
-                var amountObject = $(this).parent().children('input');
-                var amount = parseInt(amountObject.val());
-                console.log(amount);
+                
                 var route = "{{ route('removeFromCart') }}";
-                var id = $(this).val();
-                var priceObject = $(this).parent().parent().children('.price').children('span');
-                var price = parseInt(priceObject.text())/amount;
-                console.log(price);
-                var totalObject = $('#total').find('.price').children('span');
-                var total = parseInt(totalObject.text());
-                console.log(total);
+                var item = itemCollection($(this).closest('.row'));
 
-                modifyCart(route,id);
-                if (amount <= 1) {
-                    location.reload();
+                if (item["amount"] <= 1) {
                     $(this).closest('.row').remove();
                 }else{                    
-                    priceObject.text(price*(amount-1));
-                    amountObject.val(amount-1);
+                    updatePrice(item, item["amount"]-1);                    
                 }
-                totalObject.text(total-price);
-                checkCart;
+
+                modifyCart(route,item["id"]);
+                updateTotal(-item["price"]);                
+                checkCart();
+
             });
         });
         
