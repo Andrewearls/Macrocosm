@@ -6,3 +6,13 @@
 	text-transform: uppercase;
 }
 
+#cms input, #cms select, #cms option, #cms textarea {
+	background-color: transparent;
+	color: lightgreen;
+	border: 2px solid gray;
+	border-radius: 3px;
+}
+
+#cms input:hover,#cms input:focus, #cms select:hover, #cms select:focus, #cms option:hover, #cms option:focus, #cms textarea:hover, #cms textarea:focus {
+	border-color: lightgreen;
+}

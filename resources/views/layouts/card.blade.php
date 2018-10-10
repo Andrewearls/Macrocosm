@@ -2,6 +2,7 @@
 
 @section('content')
 <div @yield('id')>
+    @yield('beforeCard', '')
     <div class="card">
         <div class="card-header">            
             @yield('cardheader')              
@@ -21,6 +22,7 @@
             @yield('cardfooter')            
         </div>
     </div>
+    @yield('afterCard','')
 </div>
 @endsection
 

@@ -37,3 +37,6 @@ Route::get('/shopping/page/{page}', 'ShoppingController@index')->name('shopping'
 //training 
 Route::get('/training/', 'TrainingController@index')->name('training');
 Route::get('/training/class/{id}', 'TrainingController@classDescription')->name('classDescription');
+
+//cms
+Route::get('/cms', 'DeveloperController@index')->name('cms');
