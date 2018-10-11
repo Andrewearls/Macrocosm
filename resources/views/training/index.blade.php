@@ -1,6 +1,6 @@
 @extends('layouts.card')
 
-@section('id')
+@section('layoutid')
     id="training"
 @endsection
 

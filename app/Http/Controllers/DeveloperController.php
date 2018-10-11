@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CMS;
 
 class DeveloperController extends Controller
 {
@@ -24,5 +24,26 @@ class DeveloperController extends Controller
     public function index()
     {
         return view('developer.cms');
+    }
+
+    public function formSubmit(CMS $request)
+    {
+    	$validated = $request->validated();
+
+    	switch ($validated["type"]) {
+    		case 'item':
+    			return redirect()->route('createItem');
+    			break;
+    		
+    		case 'class':
+    			return redirect()->route('createClass');
+    			break;
+
+    		default:
+    			return back();
+    			break;
+    	}
+
+    	return route('404');
     }
 }

@@ -1,6 +1,6 @@
-@extends('layouts.card')
+@extends('layouts.cards.description')
 
-@section('id')
+@section('pagespecificid')
     id="item"
 @endsection
 
@@ -13,30 +13,14 @@
             ${{ $item->price }}
         </div>
     </div>
-@endsection
-
-@section('cardbody')
-    <div class="row no-gutters">
-        <div class="col-sm-4 image-container">
-        	<img src="{{ $item->image }}" class="fas fa-shopping-bag fa-5x">
-        </div>
-        <div class="col-sm-8 long-description">
-        	
-        	<!-- <div class="title">Description:</div> -->
-        	<p>{{ $item->description }}</p>
-            
-        	<!-- <p>{{ $item->short_description }}</p> -->
-        </div>
-    </div>
 @endsection 
 
 @section('cardfooter')
-    <!-- {{ Form::open(array('url' => route('addToCart'))) }} -->
     <div class="row justify-content-between no-gutters">
         <a href="{{ url()->previous() }}" class="col-sm-3 btn">Back To Shopping</a>
+        <a href="{{ route('editShoppingItem', ['id' => $item->id]) }}" class="col-sm-3 btn">edit</a>
         <button class="col-sm-2 add-to-cart btn" name="item" value="{{ $item->id }}">Add To Cart</button>      
     </div>
-    <!-- {{ Form::close() }} -->
 @endsection
 
 @section('pagespecificscripts')

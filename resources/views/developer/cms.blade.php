@@ -1,35 +1,36 @@
-@extends('layouts.card')
+@extends('layouts.cards.description')
 
-@section('id')
+@section('pagespecificid')
     id="cms"
 @endsection
 
 @section('beforeCard')
-    {{ Form::open(['route' => 'cms'])  }}
+    {{ Form::open(['route' => 'cmsNew'])  }}
 @endsection
 
 @section('cardheader')
-    <div class="row">
+    <div class="row no-gutters justify-content-between">
         <div class="col-sm-6">
             {{ Form::label('cms:') }}
             {{ Form::text('name', 'name') }}
         </div>
-        <div class="col-sm-6">
+        <div class="">
             {{ Form::select('type', ['item' => 'Item', 'class' => 'Class']) }}
         </div>
     </div>
 @endsection
 
 @section('cardbody')
-    <div class="row no-gutters">
+    <div class="row no-gutters align-items-center">
         <div class="col-sm-4 image-container">
         	<img src="" class="fas fa-shopping-bag fa-5x">
-            {{ Form::file('image') }}
+            {{ Form::file('image', ['onchange' => 'readURL(this)']) }}
         </div>
         <div class="col-sm-8 long-description">
-        	{{ Form::label('description:') }}
-        	{{ Form::textArea('description') }}
-            
+            <p>
+            	{{ Form::label('description:') }}
+            	{{ Form::textArea('description') }}
+            </p>
         </div>
     </div>
 @endsection 
@@ -50,6 +51,18 @@
 @section('pagespecificscripts')
 
     <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
+                reader.onload = function (e) {
+                    $('.image-container').children('img')
+                        .attr('src', e.target.result)
+                        .css('border', '2px solid lightblue');
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
     </script>
 @endsection

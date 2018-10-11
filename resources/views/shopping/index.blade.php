@@ -1,6 +1,6 @@
 @extends('layouts.card')
 
-@section('id')
+@section('layoutid')
     id="shopping"
 @endsection
 
@@ -16,7 +16,7 @@
 @endsection   
 
 @section('cardbody')  
-    <div class="row no-gutters">
+    <div class="row">
         @foreach ($inventory as $item)
             <a href="{{ route('itemDescription', ['id' => $item['id']]) }}" class="col-md-3 item-container">
                 <img src="{{ $item['image'] }}">

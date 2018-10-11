@@ -38,5 +38,9 @@ Route::get('/shopping/page/{page}', 'ShoppingController@index')->name('shopping'
 Route::get('/training/', 'TrainingController@index')->name('training');
 Route::get('/training/class/{id}', 'TrainingController@classDescription')->name('classDescription');
 
-//cms
+//CMS
 Route::get('/cms', 'DeveloperController@index')->name('cms');
+Route::post('/cms/new', 'DeveloperController@formSubmit')->name('cmsNew');
+Route::post('/cms/update/{id}')->name('cmsUpdate');
+Route::get('/cms/edit/shopping/item/{id}', 'ShoppingController@editItem')->name('editShoppingItem');
+Route::get('/cms/edit/class/item/{id}', 'TrainingController@editItem')->name('editClassItem');

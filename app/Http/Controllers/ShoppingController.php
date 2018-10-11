@@ -123,8 +123,23 @@ class ShoppingController extends Controller
         } 
         
         return 'sucess';
-
         
+    }
+
+    public function editItem($id)
+    {
+        $item = Inventory::findOrFail($id);
+        return view('developer.cms')->with(['item' => $item]);
+    }
+
+    public function updateItem(Request $request)
+    {
+        return "here";
+    }
+
+    public function deleteItem($id)
+    {
+        return route()->back();
     }
 
 

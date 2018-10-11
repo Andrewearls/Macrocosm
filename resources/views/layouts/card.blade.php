@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div @yield('id')>
+<div @yield('layoutid')>
     @yield('beforeCard', '')
-    <div class="card">
+    <div class="card" @yield('pagespecificid', '')>
         <div class="card-header">            
             @yield('cardheader')              
         </div>
