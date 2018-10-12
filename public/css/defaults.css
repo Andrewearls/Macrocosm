@@ -54,6 +54,7 @@ a:hover {
 		color: gray;
 		border: 0px;
 		font-size: 32px;
+		line-height: 1;
 	}
 
 	.red-button:hover {

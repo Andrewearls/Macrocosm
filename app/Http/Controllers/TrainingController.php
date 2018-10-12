@@ -36,7 +36,8 @@ class TrainingController extends Controller
     public function editItem($id)
     {
         $item = Classes::findOrFail($id);
-        return view('developer.cms')->with(['item' => $item]);
+        $deleteRoute = route('deleteClassItem', ['id' => $item->id]);
+        return view('developer.cms')->with(['item' => $item, 'deleteRoute' => $deleteRoute]);
     }
 
     public function updateItem(Request $request)
@@ -46,6 +47,6 @@ class TrainingController extends Controller
 
     public function deleteItem($id)
     {
-        return route()->back();
+        return "deleted";
     }
 }

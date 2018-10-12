@@ -129,7 +129,8 @@ class ShoppingController extends Controller
     public function editItem($id)
     {
         $item = Inventory::findOrFail($id);
-        return view('developer.cms')->with(['item' => $item]);
+        $deleteRoute = route('deleteShoppingItem', ['id' => $item->id]);
+        return view('developer.cms')->with(['item' => $item, 'deleteRoute' => $deleteRoute]);
     }
 
     public function updateItem(Request $request)
@@ -139,7 +140,7 @@ class ShoppingController extends Controller
 
     public function deleteItem($id)
     {
-        return route()->back();
+        return "deleted";
     }
 
 

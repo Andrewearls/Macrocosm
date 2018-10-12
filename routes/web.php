@@ -43,4 +43,8 @@ Route::get('/cms', 'DeveloperController@index')->name('cms');
 Route::post('/cms/new', 'DeveloperController@formSubmit')->name('cmsNew');
 Route::post('/cms/update/{id}')->name('cmsUpdate');
 Route::get('/cms/edit/shopping/item/{id}', 'ShoppingController@editItem')->name('editShoppingItem');
+Route::post('/cms/edit/shopping/item/{id}', 'ShoppingController@updateItem');
+Route::get('/cms/delete/shopping/item/{id}', 'ShoppingController@deleteItem')->name('deleteShoppingItem');
 Route::get('/cms/edit/class/item/{id}', 'TrainingController@editItem')->name('editClassItem');
+Route::post('/cms/edit/class/item/{id}', 'TrainingController@updateItem');
+Route::get('/cms/delete/class/item/{id}', 'TrainingController@deleteItem')->name('deleteClassItem');

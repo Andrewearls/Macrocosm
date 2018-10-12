@@ -5,7 +5,7 @@
 @endsection
 
 @section('beforeCard')
-    {{ Form::open(['route' => 'cmsNew'])  }}
+    {{ Form::open(['url' => route(Route::currentRouteName(), ['id' => $item->id]) ]) }}
 @endsection
 
 @section('cardheader')
@@ -14,9 +14,10 @@
             {{ Form::label('cms:') }}
             {{ Form::text('name', 'name') }}
         </div>
-        <div class="">
-            {{ Form::select('type', ['item' => 'Item', 'class' => 'Class']) }}
-        </div>
+        @if (Route::current() != route('cmsNew'))
+            <div class="col-sm-2 remove-all"><a href="{{ $deleteRoute }}"><div class="far fa-times-circle fa-3x btn red-button"></div></a></div>
+        @endif
+        
     </div>
 @endsection
 
