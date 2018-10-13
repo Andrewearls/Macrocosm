@@ -15,15 +15,15 @@
             {{ Form::text('name', (isset($item->name)) ? $item->name : 'name') }}
         </div>
         
-        @if(isset($item->price))
-            <div class="col-sm-4">
-                {{ Form::label('$') }}
-                {{ Form::text('price', $item->price) }}                
-            </div>
-        @endif
-        @if (isset($deleteRoute))
-            <div class="col-sm-1 remove-all"><a href="{{ $deleteRoute }}"><div class="far fa-times-circle fa-3x btn red-button"></div></a></div>
-        @endif
+        
+        <div class="col-sm-4">
+            {{ Form::label('$') }}
+            {{ Form::text('price', (isset($item->price)) ? $item->price : 1) }}                
+        </div>
+        
+        
+        <div class="col-sm-1 remove-all"><a href="{{ (isset($item->id)) ? route('deleteShoppingItem', ['id' => $item-id]) : route('shopping', ['page' => 1]) }}"><div class="far fa-times-circle fa-3x btn red-button"></div></a></div>
+        
         
     </div>
 @endsection

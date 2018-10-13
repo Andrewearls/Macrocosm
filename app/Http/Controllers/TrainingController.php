@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\TrainingClassesValidator;
 use App\Classes;
 
 class TrainingController extends Controller
@@ -33,6 +34,21 @@ class TrainingController extends Controller
         return view('training.classDescription')->with(['item' => $class])        ;
     }
 
+    public function newItem()
+    {
+        $item = new Classes;
+        return view('developer.classescms')->with(['item' => $item]);
+    }
+
+    public function createItem(TrainingClassesValidator $request)
+    {
+        $validated = $request->validated();
+        $user = Auth::user();
+        $item = $user->classes()->create($validated);
+
+        return redirect()->route('classDescription', ['id' => $item->id]);
+    }
+
     public function editItem($id)
     {
         $item = Classes::findOrFail($id);
@@ -40,13 +56,20 @@ class TrainingController extends Controller
         return view('developer.cms')->with(['item' => $item, 'deleteRoute' => $deleteRoute]);
     }
 
-    public function updateItem(Request $request)
+    public function updateItem(TrainingClassesValidator $request)
     {
-        return "here";
+        $validated = $request->validated();
+        $item = Classes::findOrFail($request->id);
+        $item->name = $validated['name'];
+        $item->description = $validated['description'];
+        $item->save();
+        return redirect()->route('classDescription', ['id' => $item->id]);
     }
 
     public function deleteItem($id)
     {
-        return "deleted";
+        $item = Classes::findOrFail($id);
+        $item->delete();
+        return redirect()->route('training');
     }
 }

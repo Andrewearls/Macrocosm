@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\ShoppingItemValidator;
 use App\inventory;
 
 class ShoppingController extends Controller
@@ -126,6 +128,23 @@ class ShoppingController extends Controller
         
     }
 
+    public function newItem()
+    {
+        $item = new Inventory;
+        // $item->price = 1;
+        // return Route::currentRouteName();
+        return view('developer.shoppingcms')->with(['item' => $item]);
+    }
+
+    public function createItem(ShoppingItemValidator $request)      
+    {
+        $user = Auth::user();
+        $validated = $request->validated();
+        $item = $user->inventory()->create($validated);
+        
+        return redirect()->route('itemDescription', ['id' => $item->id]);
+    }
+
     public function editItem($id)
     {
         $item = Inventory::findOrFail($id);
@@ -133,14 +152,22 @@ class ShoppingController extends Controller
         return view('developer.cms')->with(['item' => $item, 'deleteRoute' => $deleteRoute]);
     }
 
-    public function updateItem(Request $request)
+    public function updateItem(ShoppingItemValidator $request)
     {
-        return "here";
+        $validated = $request->validated();
+        $item = Inventory::findOrFail($request->id);
+        $item->name = $validated['name'];
+        $item->price = $validated['price'];
+        $item->description = $validated['description'];
+        $item->save();
+        return redirect()->route('itemDescription', ['id' => $item->id]);
     }
 
     public function deleteItem($id)
     {
-        return "deleted";
+        $item = Inventory::findOrFail($id);
+        $item->delete();
+        return redirect()->route('shopping', ['page' => 1]);
     }
 
 

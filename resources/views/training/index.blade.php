@@ -6,8 +6,11 @@
 
 @section('cardheader')
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-5">
             Training
+        </div>
+        <div class="col-sm-2">
+            <a class="btn" href="{{ route('newClassItem') }}">New Shopping Item</a>
         </div>
     </div>
 @endsection

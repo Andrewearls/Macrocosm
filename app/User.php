@@ -33,6 +33,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Inventory', 'owner_id');
     }
 
+    public function classes()
+    {
+        return $this->hasMany('App\Classes', 'owner_id');
+    }
+
     public function position()
     {
         return $this->belongsTo('App\Positions');

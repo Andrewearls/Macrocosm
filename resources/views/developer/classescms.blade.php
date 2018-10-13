@@ -13,17 +13,10 @@
         <div class="col-sm-6">
             {{ Form::label('cms:') }}
             {{ Form::text('name', (isset($item->name)) ? $item->name : 'name') }}
-        </div>
+        </div>        
         
-        @if(isset($item->price))
-            <div class="col-sm-4">
-                {{ Form::label('$') }}
-                {{ Form::text('price', $item->price) }}                
-            </div>
-        @endif
-        @if (isset($deleteRoute))
-            <div class="col-sm-1 remove-all"><a href="{{ $deleteRoute }}"><div class="far fa-times-circle fa-3x btn red-button"></div></a></div>
-        @endif
+        <div class="col-sm-1 remove-all"><a href="{{ (isset($item->id)) ? route('deleteClassItem', ['id' => $item-id]) : route('training') }}"><div class="far fa-times-circle fa-3x btn red-button"></div></a></div>
+        
         
     </div>
 @endsection
@@ -31,13 +24,13 @@
 @section('cardbody')
     <div class="row no-gutters align-items-center">
         <div class="col-sm-4 image-container">
-        	<img src='{{ (isset($item->image)) ? $item->image : "" }}' class="fas fa-shopping-bag fa-5x">
+            <img src='{{ (isset($item->image)) ? $item->image : "" }}' class="fas fa-shopping-bag fa-5x">
             {{ Form::file('image', ['onchange' => 'readURL(this)']) }}
         </div>
         <div class="col-sm-8 long-description">
             <p>
-            	{{ Form::label('description:') }}
-            	{{ Form::textArea('description', (isset($item->description)) ? $item->description : '') }}
+                {{ Form::label('description:') }}
+                {{ Form::textArea('description', (isset($item->description)) ? $item->description : '') }}
             </p>
         </div>
     </div>

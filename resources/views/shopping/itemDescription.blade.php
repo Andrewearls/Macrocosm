@@ -17,7 +17,7 @@
 
 @section('cardfooter')
     <div class="row justify-content-between no-gutters">
-        <a href="{{ url()->previous() }}" class="col-sm-3 btn">Back To Shopping</a>
+        <a href="{{ route('shopping', ['page' => 1]) }}" class="col-sm-3 btn">Back To Shopping</a>
         <a href="{{ route('editShoppingItem', ['id' => $item->id]) }}" class="col-sm-3 btn">edit</a>
         <button class="col-sm-2 add-to-cart btn" name="item" value="{{ $item->id }}">Add To Cart</button>      
     </div>
