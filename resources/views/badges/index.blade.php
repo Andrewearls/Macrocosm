@@ -1,37 +1,37 @@
 @extends('layouts.card')
 
 @section('layoutid')
-    id="training"
+    id="badges"
 @endsection
 
 @section('cardheader')
     <div class="row justify-content-between">
         <div class="col-sm-5">
-            Training
+            Badges
         </div>
         <div class="col-sm-3">
-            <a class="btn" href="{{ route('newClassItem') }}">New Training Class</a>
+            <a class="btn" href="{{ route('newBadge') }}">New Badge</a>
         </div>
     </div>
 @endsection
       
 @section('cardbody')        
     <div class="row no-gutters">
-        @foreach((array) $classes as $class)
-            <a href="{{ route('classDescription', ['id' => $class['id']]) }}" class="col-sm-3 item-container">
+        @foreach((array) $badges as $badge)
+            <a href="{{ route('badgeDescription', ['id' => $badge['id']]) }}" class="col-sm-3 item-container">
                 <div class="title">
-                    @if(strlen($class['name']) > 8)
-                        {{ substr($class['name'], 0, 8) }}...
+                    @if(strlen($badge['name']) > 8)
+                        {{ substr($badge['name'], 0, 8) }}...
                     @else
-                        {{ $class['name'] }}
+                        {{ $badge['name'] }}
                     @endif
                 </div>
-                <i class="fas fa-flag-checkered fa-3x"></i>
+                <i class="fas fa-shield-alt fa-4x"></i>
                 <p>
-                    @if(strlen($class['short_description']) > 15)
-                        {{ substr($class['short_description'], 0, 15) }}...
+                    @if(strlen($badge['description']) > 15)
+                        {{ substr($badge['description'], 0, 15) }}...
                     @else
-                        {{ $class['short_description'] }}
+                        {{ $badge['description'] }}
                     @endif
                 </p>
             </a>

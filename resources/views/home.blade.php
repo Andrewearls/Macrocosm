@@ -20,7 +20,7 @@
                     <i class="fas fa-shopping-bag fa-5x"></i>
                 </div>                       
             </a>
-            <a class="row">                       
+            <a href="{{ route('badges') }}" class="row">                       
                 <div class="col-md-8">
                     <div class="title">Badges</div>
                     <p>View your recent achievements!</p>

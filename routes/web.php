@@ -38,19 +38,34 @@ Route::get('/shopping/page/{page}', 'ShoppingController@index')->name('shopping'
 Route::get('/training/', 'TrainingController@index')->name('training');
 Route::get('/training/class/{id}', 'TrainingController@classDescription')->name('classDescription');
 
+//Badges
+Route::get('/badges/', 'BadgesController@index')->name('badges');
+Route::get('/badges/badge/{id}', 'BadgesController@badgeDescription')->name('badgeDescription');
+
 //CMS
-Route::get('/cms', 'DeveloperController@index')->name('cms');
-Route::post('/cms/new', 'DeveloperController@formSubmit')->name('cmsNew');
-Route::post('/cms/update/{id}')->name('cmsUpdate');
+Route::middleware(['position:developer'])->group(function() {
+	Route::get('/cms', 'DeveloperController@index')->name('cms');
+	Route::post('/cms/new', 'DeveloperController@formSubmit')->name('cmsNew');
+	Route::post('/cms/update/{id}')->name('cmsUpdate');
 
-Route::get('/cms/new/shopping/item', 'ShoppingController@newItem')->name('newShoppingItem');
-Route::post('/cms/new/shopping/item', 'ShoppingController@createItem');
-Route::get('/cms/edit/shopping/item/{id}', 'ShoppingController@editItem')->name('editShoppingItem');
-Route::post('/cms/edit/shopping/item/{id}', 'ShoppingController@updateItem');
-Route::get('/cms/delete/shopping/item/{id}', 'ShoppingController@deleteItem')->name('deleteShoppingItem');
+	//Shopping CMS
+	Route::get('/cms/new/shopping/item', 'ShoppingController@newItem')->name('newShoppingItem');
+	Route::post('/cms/new/shopping/item', 'ShoppingController@createItem');
+	Route::get('/cms/edit/shopping/item/{id}', 'ShoppingController@editItem')->name('editShoppingItem');
+	Route::post('/cms/edit/shopping/item/{id}', 'ShoppingController@updateItem');
+	Route::get('/cms/delete/shopping/item/{id}', 'ShoppingController@deleteItem')->name('deleteShoppingItem');
 
-Route::get('/cms/new/class/item', 'TrainingController@newItem')->name('newClassItem');
-Route::post('/cms/new/class/item', 'TrainingController@createItem');
-Route::get('/cms/edit/class/item/{id}', 'TrainingController@editItem')->name('editClassItem');
-Route::post('/cms/edit/class/item/{id}', 'TrainingController@updateItem');
-Route::get('/cms/delete/class/item/{id}', 'TrainingController@deleteItem')->name('deleteClassItem');
+	//Training CMS
+	Route::get('/cms/new/class/item', 'TrainingController@newItem')->name('newClassItem');
+	Route::post('/cms/new/class/item', 'TrainingController@createItem');
+	Route::get('/cms/edit/class/item/{id}', 'TrainingController@editItem')->name('editClassItem');
+	Route::post('/cms/edit/class/item/{id}', 'TrainingController@updateItem');
+	Route::get('/cms/delete/class/item/{id}', 'TrainingController@deleteItem')->name('deleteClassItem');
+
+	//Badges CMS
+	route::get('/cms/new/badge', 'BadgesController@newBadge')->name('newBadge');
+	route::get('/cms/edit/badge/{id}', 'BadgesController@editBadge')->name('editBadge');
+
+	Route::get('/cms/delete/badge/{id}', 'BadgesController@deleteBadge')->name('deleteBadge');
+
+});

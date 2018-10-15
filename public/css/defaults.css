@@ -109,8 +109,14 @@ img {
     background: transparent; /* make scrollbar transparent */
 }
 
-.card-header {
-	
+.card-header a.btn{
+	color: gray;
+	border-color: gray;
+}
+
+.card-header a.btn:hover{
+	color: lightgreen;
+	border-color: lightgreen;
 }
 
 .card-footer {

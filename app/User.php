@@ -42,4 +42,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Positions');
     }
+
+    public function badges()
+    {
+        return $this->hasMany('App\Badges', 'owner_id');
+    }
 }

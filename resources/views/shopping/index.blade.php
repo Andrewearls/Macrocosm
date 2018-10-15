@@ -9,10 +9,10 @@
         <div class="col-sm-5">
             Shopping
         </div>
-        <div class="col-sm-2">
+        <div class="col-sm-3">
             <a class="btn" href="{{ route('newShoppingItem') }}">New Shopping Item</a>
         </div>
-        <div class="col-sm-5 display-count">
+        <div class="col-sm-4 display-count">
             <span>{{ (($page * 12) <= $count) ? $page * 12 : $count }}</span> of {{ $count }}
         </div>
     </div>

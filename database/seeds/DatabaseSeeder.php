@@ -12,9 +12,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            PositionsTableSeeder::class,
         	UsersTableSeeder::class,
         	InvintoryTableSeeder::class,
             ClassesTableSeeder::class,
+            BadgesTableSeeder::class,
         ]);
     }
 }
