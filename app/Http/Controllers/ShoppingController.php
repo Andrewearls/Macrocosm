@@ -33,15 +33,15 @@ class ShoppingController extends Controller
         } elseif ($page > $pages) {
             return redirect()->route('shopping', ['page' => $pages]);
         }
-    	$inventory = Inventory::skip(($page-1)*12)->take(12)->get()->toArray();        
+    	$results = Inventory::skip(($page-1)*12)->take(12)->get()->toArray();        
         
-        return view('shopping.index')->with(['inventory' => $inventory, 'pages' => $pages, 'page' => $page, 'count' => $count]);
+        return view('shopping.index')->with(['results' => $results, 'pages' => $pages, 'page' => $page, 'count' => $count]);
     }
 
     public function inventoryDescription($id)
     {
-        $item = Inventory::findOrFail($id);
-        return view('shopping.itemDescription')->with(['item' => $item]);
+        $result = Inventory::findOrFail($id);
+        return view('shopping.itemDescription')->with(['result' => $result]);
     }
 
     public function cart(Request $request)
@@ -130,43 +130,43 @@ class ShoppingController extends Controller
 
     public function newItem()
     {
-        $item = new Inventory;
+        $result = new Inventory;
         // $item->price = 1;
         // return Route::currentRouteName();
-        return view('developer.shoppingcms')->with(['item' => $item]);
+        return view('developer.shoppingcms')->with(['result' => $result]);
     }
 
     public function createItem(ShoppingItemValidator $request)      
     {
         $user = Auth::user();
         $validated = $request->validated();
-        $item = $user->inventory()->create($validated);
+        $result = $user->inventory()->create($validated);
         
-        return redirect()->route('itemDescription', ['id' => $item->id]);
+        return redirect()->route('itemDescription', ['id' => $result->id]);
     }
 
     public function editItem($id)
     {
-        $item = Inventory::findOrFail($id);
-        $deleteRoute = route('deleteShoppingItem', ['id' => $item->id]);
-        return view('developer.cms')->with(['item' => $item, 'deleteRoute' => $deleteRoute]);
+        $result = Inventory::findOrFail($id);
+        $deleteRoute = route('deleteShoppingItem', ['id' => $result->id]);
+        return view('developer.cms')->with(['result' => $result, 'deleteRoute' => $deleteRoute]);
     }
 
     public function updateItem(ShoppingItemValidator $request)
     {
         $validated = $request->validated();
-        $item = Inventory::findOrFail($request->id);
-        $item->name = $validated['name'];
-        $item->price = $validated['price'];
-        $item->description = $validated['description'];
-        $item->save();
-        return redirect()->route('itemDescription', ['id' => $item->id]);
+        $result = Inventory::findOrFail($request->id);
+        $result->name = $validated['name'];
+        $result->price = $validated['price'];
+        $result->description = $validated['description'];
+        $result->save();
+        return redirect()->route('itemDescription', ['id' => $result->id]);
     }
 
     public function deleteItem($id)
     {
-        $item = Inventory::findOrFail($id);
-        $item->delete();
+        $result = Inventory::findOrFail($id);
+        $result->delete();
         return redirect()->route('shopping', ['page' => 1]);
     }
 

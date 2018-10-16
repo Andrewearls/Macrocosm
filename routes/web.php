@@ -40,7 +40,12 @@ Route::get('/training/class/{id}', 'TrainingController@classDescription')->name(
 
 //Badges
 Route::get('/badges/', 'BadgesController@index')->name('badges');
-Route::get('/badges/badge/{id}', 'BadgesController@badgeDescription')->name('badgeDescription');
+Route::get('/badge/{id}', 'BadgesController@badgeDescription')->name('badgeDescription');
+
+//Expeditions
+Route::get('/expeditions/', 'ExpeditionsController@index')->name('expeditions');
+Route::get('/expedition/{id}', 'ExpeditionsController@expeditionDescription')->name('expeditionDescription');
+
 
 //CMS
 Route::middleware(['position:developer'])->group(function() {
@@ -63,9 +68,17 @@ Route::middleware(['position:developer'])->group(function() {
 	Route::get('/cms/delete/class/item/{id}', 'TrainingController@deleteItem')->name('deleteClassItem');
 
 	//Badges CMS
-	route::get('/cms/new/badge', 'BadgesController@newBadge')->name('newBadge');
-	route::get('/cms/edit/badge/{id}', 'BadgesController@editBadge')->name('editBadge');
-
+	Route::get('/cms/new/badge', 'BadgesController@newBadge')->name('newBadge');
+	Route::post('/cms/new/badge', 'BadgesController@createBadge');
+	Route::get('/cms/edit/badge/{id}', 'BadgesController@editBadge')->name('editBadge');
+	Route::post('/cms/edit/badge/{id}', 'BadgesController@updateBadge');
 	Route::get('/cms/delete/badge/{id}', 'BadgesController@deleteBadge')->name('deleteBadge');
+
+	//Expeditions CMS
+	Route::get('/cms/new/expedition', 'ExpeditionsController@newExpedition')->name('newExpedition');
+	Route::post('/cms/new/expedition', 'ExpeditionsController@createExpedition');
+	Route::get('/cms/edit/expedition/{id}', 'ExpeditionsController@editExpedition')->name('editExpedition');
+	Route::post('/cms/edit/expedition/{id}', 'ExpeditionsController@updateExpedition');
+	Route::get('/cms/delete/expedition/{id}', 'ExpeditionsController@deleteExpedition')->name('deleteExpedition');
 
 });

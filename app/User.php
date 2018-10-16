@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Badges', 'owner_id');
     }
+
+    public function expeditions()
+    {
+        return $this->hasMany('App\Expeditions', 'owner_id');
+    }
 }

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         	InvintoryTableSeeder::class,
             ClassesTableSeeder::class,
             BadgesTableSeeder::class,
+            ExpeditionsTableSeeder::class,
         ]);
     }
 }

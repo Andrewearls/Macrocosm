@@ -1,16 +1,16 @@
 @extends('layouts.card')
 
 @section('layoutid')
-    id="training"
+    id="Expeditions"
 @endsection
 
 @section('cardheader')
     <div class="row justify-content-between">
         <div class="col-sm-5">
-            Training
+            Expedition
         </div>
         <div class="col-sm-3">
-            <a class="btn" href="{{ route('newClassItem') }}">New Training Class</a>
+            <a class="btn" href="{{ route('newExpedition') }}">New Expedition</a>
         </div>
     </div>
 @endsection
@@ -18,7 +18,7 @@
 @section('cardbody')        
     <div class="row no-gutters">
         @foreach((array) $results as $result)
-            <a href="{{ route('classDescription', ['id' => $result['id']]) }}" class="col-sm-3 item-container">
+            <a href="{{ route('expeditionDescription', ['id' => $result['id']]) }}" class="col-sm-3 item-container">
                 <div class="title">
                     @if(strlen($result['name']) > 8)
                         {{ substr($result['name'], 0, 8) }}...
@@ -26,12 +26,12 @@
                         {{ $result['name'] }}
                     @endif
                 </div>
-                <i class="fas fa-flag-checkered fa-3x"></i>
+                <i class="fas fa-shield-alt fa-4x"></i>
                 <p>
-                    @if(strlen($result['short_description']) > 15)
-                        {{ substr($result['short_description'], 0, 15) }}...
+                    @if(strlen($result['description']) > 15)
+                        {{ substr($result['description'], 0, 15) }}...
                     @else
-                        {{ $result['short_description'] }}
+                        {{ $result['description'] }}
                     @endif
                 </p>
             </a>

@@ -20,23 +20,23 @@
 
 @section('cardbody')  
     <div class="row">
-        @foreach ($inventory as $item)
-            <a href="{{ route('itemDescription', ['id' => $item['id']]) }}" class="col-md-3 item-container">
-                <img src="{{ $item['image'] }}">
+        @foreach ($results as $result)
+            <a href="{{ route('itemDescription', ['id' => $result['id']]) }}" class="col-md-3 item-container">
+                <img src="{{ $result['image'] }}">
                 <!-- <i class="fas fa-shopping-bag fa-5x"></i> -->
                 <div class="title">
-                    @if(strlen($item['name']) > 8)
-                        {{ substr($item['name'], 0, 8) }}...
+                    @if(strlen($result['name']) > 8)
+                        {{ substr($result['name'], 0, 8) }}...
                     @else
-                        {{ $item['name'] }}
+                        {{ $result['name'] }}
                     @endif
                 </div>
                         
                 <p>                                    
-                    @if(strlen($item['short_description']) > 15)
-                        {{ substr($item['short_description'], 0, 15) }}...
+                    @if(strlen($result['short_description']) > 15)
+                        {{ substr($result['short_description'], 0, 15) }}...
                     @else
-                        {{ $item['short_description'] }}
+                        {{ $result['short_description'] }}
                     @endif
                 </p>
             </a>

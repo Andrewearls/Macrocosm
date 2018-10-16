@@ -1,16 +1,16 @@
 @extends('layouts.cards.description')
 
 @section('pagespecificid')
-    id="item"
+    id="result"
 @endsection
 
 @section('cardheader')
     <div class="row">
         <div class="col-sm-6">
-            <div> {{ $item->name }} </div>
+            <div> {{ $result->name }} </div>
         </div>
         <div class="col-sm-6 price">
-            ${{ $item->price }}
+            ${{ $result->price }}
         </div>
     </div>
 @endsection 
@@ -18,8 +18,8 @@
 @section('cardfooter')
     <div class="row justify-content-between no-gutters">
         <a href="{{ route('shopping', ['page' => 1]) }}" class="col-sm-3 btn">Back To Shopping</a>
-        <a href="{{ route('editShoppingItem', ['id' => $item->id]) }}" class="col-sm-3 btn">edit</a>
-        <button class="col-sm-2 add-to-cart btn" name="item" value="{{ $item->id }}">Add To Cart</button>      
+        <a href="{{ route('editShoppingItem', ['id' => $result->id]) }}" class="col-sm-3 btn">edit</a>
+        <button class="col-sm-2 add-to-cart btn" name="item" value="{{ $result->id }}">Add To Cart</button>      
     </div>
 @endsection
 

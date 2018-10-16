@@ -40,7 +40,7 @@
                     <p>Hone your Explorer skills!</p>
                 </div>   
             </a>
-            <a class="row">   
+            <a href="{{ route('expeditions') }}" class="row">   
                 <div class="col-md-4 hidden-sm-down">
                     <i class="fas fa-flag fa-5x"></i>
                 </div>                   

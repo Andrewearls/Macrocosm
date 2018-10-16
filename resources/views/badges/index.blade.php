@@ -1,7 +1,7 @@
 @extends('layouts.card')
 
 @section('layoutid')
-    id="badges"
+    id="results"
 @endsection
 
 @section('cardheader')
@@ -17,21 +17,21 @@
       
 @section('cardbody')        
     <div class="row no-gutters">
-        @foreach((array) $badges as $badge)
-            <a href="{{ route('badgeDescription', ['id' => $badge['id']]) }}" class="col-sm-3 item-container">
+        @foreach((array) $results as $result)
+            <a href="{{ route('badgeDescription', ['id' => $result['id']]) }}" class="col-sm-3 item-container">
                 <div class="title">
-                    @if(strlen($badge['name']) > 8)
-                        {{ substr($badge['name'], 0, 8) }}...
+                    @if(strlen($result['name']) > 8)
+                        {{ substr($result['name'], 0, 8) }}...
                     @else
-                        {{ $badge['name'] }}
+                        {{ $result['name'] }}
                     @endif
                 </div>
                 <i class="fas fa-shield-alt fa-4x"></i>
                 <p>
-                    @if(strlen($badge['description']) > 15)
-                        {{ substr($badge['description'], 0, 15) }}...
+                    @if(strlen($result['description']) > 15)
+                        {{ substr($result['description'], 0, 15) }}...
                     @else
-                        {{ $badge['description'] }}
+                        {{ $result['description'] }}
                     @endif
                 </p>
             </a>

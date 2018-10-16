@@ -24,52 +24,52 @@ class TrainingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $classes = Classes::all()->toArray();
-    	return view('training.index')->with(['classes' => $classes]);
+        $results = Classes::all()->toArray();
+    	return view('training.index')->with(['results' => $results]);
     }
 
     public function classDescription($id)
     {
-        $class = Classes::findOrFail($id);
-        return view('training.classDescription')->with(['item' => $class])        ;
+        $result = Classes::findOrFail($id);
+        return view('training.classDescription')->with(['result' => $result])        ;
     }
 
     public function newItem()
     {
-        $item = new Classes;
-        return view('developer.classescms')->with(['item' => $item]);
+        $result = new Classes;
+        return view('developer.classescms')->with(['result' => $result]);
     }
 
     public function createItem(TrainingClassesValidator $request)
     {
         $validated = $request->validated();
         $user = Auth::user();
-        $item = $user->classes()->create($validated);
+        $result = $user->classes()->create($validated);
 
-        return redirect()->route('classDescription', ['id' => $item->id]);
+        return redirect()->route('classDescription', ['id' => $result->id]);
     }
 
     public function editItem($id)
     {
-        $item = Classes::findOrFail($id);
-        $deleteRoute = route('deleteClassItem', ['id' => $item->id]);
-        return view('developer.cms')->with(['item' => $item, 'deleteRoute' => $deleteRoute]);
+        $result = Classes::findOrFail($id);
+        $deleteRoute = route('deleteClassItem', ['id' => $result->id]);
+        return view('developer.cms')->with(['result' => $result, 'deleteRoute' => $deleteRoute]);
     }
 
     public function updateItem(TrainingClassesValidator $request)
     {
         $validated = $request->validated();
-        $item = Classes::findOrFail($request->id);
-        $item->name = $validated['name'];
-        $item->description = $validated['description'];
-        $item->save();
-        return redirect()->route('classDescription', ['id' => $item->id]);
+        $result = Classes::findOrFail($request->id);
+        $result->name = $validated['name'];
+        $result->description = $validated['description'];
+        $result->save();
+        return redirect()->route('classDescription', ['id' => $result->id]);
     }
 
     public function deleteItem($id)
     {
-        $item = Classes::findOrFail($id);
-        $item->delete();
+        $result = Classes::findOrFail($id);
+        $result->delete();
         return redirect()->route('training');
     }
 }

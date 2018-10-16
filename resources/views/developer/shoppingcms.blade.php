@@ -5,39 +5,39 @@
 @endsection
 
 @section('beforeCard')
-    {{ Form::open(['url' => route(Route::currentRouteName(), (isset($item->id)) ? ['id' => $item->id] : "") ]) }}
+    {{ Form::open(['url' => route(Route::currentRouteName(), (isset($result->id)) ? ['id' => $result->id] : "") ]) }}
 @endsection
 
 @section('cardheader')
     <div class="row no-gutters justify-content-between">
         <div class="col-sm-6">
             {{ Form::label('cms:') }}
-            {{ Form::text('name', (isset($item->name)) ? $item->name : 'name') }}
+            {{ Form::text('name', (isset($result->name)) ? $result->name : 'name') }}
         </div>
         
         
         <div class="col-sm-4">
             {{ Form::label('$') }}
-            {{ Form::text('price', (isset($item->price)) ? $item->price : 1) }}                
+            {{ Form::text('price', (isset($result->price)) ? $result->price : 1) }}                
         </div>
         
         
-        <div class="col-sm-1 remove-all"><a href="{{ (isset($item->id)) ? route('deleteShoppingItem', ['id' => $item-id]) : route('shopping', ['page' => 1]) }}"><div class="far fa-times-circle fa-3x btn red-button"></div></a></div>
+        <div class="col-sm-1 remove-all"><a href="{{ (isset($result->id)) ? route('deleteShoppingItem', ['id' => $result-id]) : route('shopping', ['page' => 1]) }}"><div class="far fa-times-circle fa-3x btn red-button"></div></a></div>
         
         
     </div>
 @endsection
 
 @section('cardbody')
-    <div class="row no-gutters align-items-center">
+    <div class="row no-gutters align-results-center">
         <div class="col-sm-4 image-container">
-        	<img src='{{ (isset($item->image)) ? $item->image : "" }}' class="fas fa-shopping-bag fa-5x">
+        	<img src='{{ (isset($result->image)) ? $result->image : "" }}' class="fas fa-shopping-bag fa-5x">
             {{ Form::file('image', ['onchange' => 'readURL(this)']) }}
         </div>
         <div class="col-sm-8 long-description">
             <p>
             	{{ Form::label('description:') }}
-            	{{ Form::textArea('description', (isset($item->description)) ? $item->description : '') }}
+            	{{ Form::textArea('description', (isset($result->description)) ? $result->description : '') }}
             </p>
         </div>
     </div>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\BadgesValidator;
 use App\Badges;
 
@@ -25,52 +25,52 @@ class BadgesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $badges = Badges::all()->toArray();
-    	return view('badges.index')->with(['badges' => $badges]);
+        $results = Badges::all()->toArray();
+    	return view('badges.index')->with(['results' => $results]);
     }
 
     public function badgeDescription($id)
     {
-        $badge = Badges::findOrFail($id);
-        return view('badges.badgeDescription')->with(['item' => $badge]);
+        $result = Badges::findOrFail($id);
+        return view('badges.badgeDescription')->with(['result' => $result]);
     }
 
     public function newBadge()
     {
-        $item = new Badges;
-        return view('developer.badgescms')->with(['item' => $item]);
+        $result = new Badges;
+        return view('developer.cms')->with(['result' => $result]);
     }
 
     public function createBadge(BadgesValidator $request)
     {
         $validated = $request->validated();
         $user = Auth::user();
-        $item = $user->badges()->create($validated);
+        $result = $user->badges()->create($validated);
 
-        return redirect()->route('badgeDescription', ['id' => $item->id]);
+        return redirect()->route('badgeDescription', ['id' => $result->id]);
     }
 
     public function editBadge($id)
     {
-        $item = Badges::findOrFail($id);
-        $deleteRoute = route('deleteBadge', ['id' => $item->id]);
-        return view('developer.cms')->with(['item' => $item, 'deleteRoute' => $deleteRoute]);
+        $result = Badges::findOrFail($id);
+        $deleteRoute = route('deleteBadge', ['id' => $result->id]);
+        return view('developer.cms')->with(['result' => $result, 'deleteRoute' => $deleteRoute]);
     }
 
-    public function updateBadge(BadgeValidator $request)
+    public function updateBadge(BadgesValidator $request)
     {
         $validated = $request->validated();
-        $item = BAdges::findOrFail($request->id);
-        $item->name = $validated['name'];
-        $item->description = $validated['description'];
-        $item->save();
-        return redirect()->route('BadgeDescription', ['id' => $item->id]);
+        $result = BAdges::findOrFail($request->id);
+        $result->name = $validated['name'];
+        $result->description = $validated['description'];
+        $result->save();
+        return redirect()->route('badgeDescription', ['id' => $result->id]);
     }
 
     public function deleteBadge($id)
     {
-        $item = Badges::findOrFail($id);
-        $item->delete();
-        return redirect()->route('Badges');
+        $result = Badges::findOrFail($id);
+        $result->delete();
+        return redirect()->route('badges');
     }
 }
