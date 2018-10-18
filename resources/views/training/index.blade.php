@@ -9,9 +9,12 @@
         <div class="col-sm-5">
             Training
         </div>
-        <div class="col-sm-3">
-            <a class="btn" href="{{ route('newClassItem') }}">New Training Class</a>
-        </div>
+
+        @if(Auth::user()->position->name == 'developer')
+            <div class="col-sm-3">
+                <a class="btn" href="{{ route('newClassItem') }}">New Training Class</a>
+            </div>
+        @endif
     </div>
 @endsection
       

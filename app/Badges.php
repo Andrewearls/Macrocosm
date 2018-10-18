@@ -27,5 +27,11 @@ class Badges extends Model
 
     public function owner()
     {
-    	return $this->belongsTo('App\User', 'owner_id');
-    }}
+    	return $this->belongsToMany('App\User', 'badges_user', 'badge_id', 'user_id')->withTimestamps();
+    }
+
+    public function requirements()
+    {
+        return $this->belongsToMany('App\Requirement', 'badge_requirement', 'badge_id', 'requirement_id')->withTimestamps();
+    }
+}

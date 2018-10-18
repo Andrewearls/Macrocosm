@@ -29,4 +29,14 @@ class Classes extends Model
     {
     	return $this->belongsTo('App\User', 'owner_id');
     }
+
+    public function require()
+    {
+        return $this->morphMany('App\Requirement', 'required');
+    }
+
+    public function requirements()
+    {
+        return $this->belongsToMany('App\Requirement', 'class_requirement', 'class_id', 'requirement_id')->withTimestamps();
+    }
 }

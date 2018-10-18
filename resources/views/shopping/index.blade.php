@@ -9,9 +9,13 @@
         <div class="col-sm-5">
             Shopping
         </div>
+    
         <div class="col-sm-3">
-            <a class="btn" href="{{ route('newShoppingItem') }}">New Shopping Item</a>
+            @if(Auth::user()->position->name == 'developer')
+                <a class="btn" href="{{ route('newShoppingItem') }}">New Shopping Item</a>
+            @endif
         </div>
+        
         <div class="col-sm-4 display-count">
             <span>{{ (($page * 12) <= $count) ? $page * 12 : $count }}</span> of {{ $count }}
         </div>

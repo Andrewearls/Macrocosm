@@ -24,13 +24,15 @@ class BadgesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
+    public function index()
+    {
         $results = Badges::all()->toArray();
     	return view('badges.index')->with(['results' => $results]);
     }
 
     public function badgeDescription($id)
     {
+        // $user = Auth::user();
         $result = Badges::findOrFail($id);
         return view('badges.badgeDescription')->with(['result' => $result]);
     }
@@ -60,7 +62,7 @@ class BadgesController extends Controller
     public function updateBadge(BadgesValidator $request)
     {
         $validated = $request->validated();
-        $result = BAdges::findOrFail($request->id);
+        $result = Badges::findOrFail($request->id);
         $result->name = $validated['name'];
         $result->description = $validated['description'];
         $result->save();
@@ -72,5 +74,15 @@ class BadgesController extends Controller
         $result = Badges::findOrFail($id);
         $result->delete();
         return redirect()->route('badges');
+    }
+
+    public function test()
+    {
+        $user = Auth::user();
+        // Assign badge to user
+        // $user->badges()->create($badge->toArray());
+
+
+        return $user->badges;
     }
 }

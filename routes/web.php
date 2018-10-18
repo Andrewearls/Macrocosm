@@ -41,6 +41,7 @@ Route::get('/training/class/{id}', 'TrainingController@classDescription')->name(
 //Badges
 Route::get('/badges/', 'BadgesController@index')->name('badges');
 Route::get('/badge/{id}', 'BadgesController@badgeDescription')->name('badgeDescription');
+Route::get('/badges/test', 'BadgesController@test')->name('badgesTest');
 
 //Expeditions
 Route::get('/expeditions/', 'ExpeditionsController@index')->name('expeditions');

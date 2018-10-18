@@ -45,7 +45,7 @@ class User extends Authenticatable
 
     public function badges()
     {
-        return $this->hasMany('App\Badges', 'owner_id');
+        return $this->belongsToMany('App\Badges', 'badges_user', 'user_id', 'badge_id')->withTimestamps();
     }
 
     public function expeditions()
