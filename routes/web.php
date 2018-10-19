@@ -11,6 +11,9 @@
 |
 */
 
+//Requirements
+Route::get('/requirements/', 'RequirementController@test');
+
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -46,6 +49,8 @@ Route::get('/badges/test', 'BadgesController@test')->name('badgesTest');
 //Expeditions
 Route::get('/expeditions/', 'ExpeditionsController@index')->name('expeditions');
 Route::get('/expedition/{id}', 'ExpeditionsController@expeditionDescription')->name('expeditionDescription');
+
+
 
 
 //CMS

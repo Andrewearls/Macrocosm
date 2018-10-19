@@ -16,10 +16,10 @@ class CreateRequirementTable extends Migration
         Schema::create('requirement', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-            $table->string('name', 100);
+            $table->string('name', 100)->unique();
             $table->text('description');
-            $table->integer('required_id');
-            $table->string('required_type');
+            $table->integer('specific_id');
+            $table->string('specific_type');
         });
     }
 

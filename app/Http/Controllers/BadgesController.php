@@ -47,9 +47,13 @@ class BadgesController extends Controller
     {
         $validated = $request->validated();
         $user = Auth::user();
-        $result = $user->badges()->create($validated);
+        $badge = $user->badge()->create($validated);
+        $badge->requirement()->firstOrCreate([
+            'name' => $badge->name.' Badge',
+            'description' => 'Default description',
+        ]);
 
-        return redirect()->route('badgeDescription', ['id' => $result->id]);
+        return redirect()->route('badgeDescription', ['id' => $badge->id]);
     }
 
     public function editBadge($id)
@@ -81,6 +85,7 @@ class BadgesController extends Controller
         $user = Auth::user();
         // Assign badge to user
         // $user->badges()->create($badge->toArray());
+        
 
 
         return $user->badges;

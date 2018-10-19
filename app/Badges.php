@@ -30,8 +30,13 @@ class Badges extends Model
     	return $this->belongsToMany('App\User', 'badges_user', 'badge_id', 'user_id')->withTimestamps();
     }
 
-    public function requirements()
+    public function requirement()
     {
-        return $this->belongsToMany('App\Requirement', 'badge_requirement', 'badge_id', 'requirement_id')->withTimestamps();
+        return $this->morphMany('App\Requirement', 'specific');
     }
+
+    // public function require()
+    // {
+    //     return $this->belongsToMany('App\Requirement', 'badge_requirement', 'badge_id', 'requirement_id')->withTimestamps();
+    // }
 }

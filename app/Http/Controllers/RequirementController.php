@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Requirement;
+use App\Badges;
 use App\Http\Requests\RequirementValidator;
 
-class RequrimentController extends Controller
+class RequirementController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -73,5 +74,25 @@ class RequrimentController extends Controller
         $result = Requirement::findOrFail($id);
         $result->delete();
         return redirect()->route('home');
+    }
+
+    public function test()
+    {
+        // $requirement = new Requirement;
+        // $badge = Badges::find(1);
+        // $badge->requirement()->firstOrCreate([
+        //     'name' => $badge->name.' '.$badge->type(),
+        //     'description' => 'Default description',
+        // ]);
+        // $requirement->name = 'named3';
+        // $requirement->description = 'a description';
+        // $requirement->specific()->create($badge->toArray());
+        // $badge->requirement()->delete();
+        // $requirement->specific()->create($badge->toArray());
+
+        // $badge->requirement()->save($requirement);
+        // dd(Requirement::all());
+
+        return Requirement::all();
     }
 }

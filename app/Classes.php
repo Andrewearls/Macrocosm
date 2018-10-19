@@ -30,12 +30,12 @@ class Classes extends Model
     	return $this->belongsTo('App\User', 'owner_id');
     }
 
-    public function require()
+    public function requirement()
     {
-        return $this->morphMany('App\Requirement', 'required');
+        return $this->morphMany('App\Requirement', 'requirement');
     }
 
-    public function requirements()
+    public function require()
     {
         return $this->belongsToMany('App\Requirement', 'class_requirement', 'class_id', 'requirement_id')->withTimestamps();
     }
