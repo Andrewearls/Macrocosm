@@ -30,50 +30,25 @@ class RequirementController extends Controller
     	return $results;
     }
 
-    // public function badgeDescription($id)
-    // {
-    //     // $user = Auth::user();
-    //     $result = Badges::findOrFail($id);
-    //     return view('badges.badgeDescription')->with(['result' => $result]);
-    // }
-
-    public function newRequirement()
+    public function listRequirements($id)
     {
-        $result = new Requirement;
-        return view('developer.cms')->with(['result' => $result]);
+        $badge = Requirement::where('specific_id', $id)
+                            ->where('specific_type', 'App\Badges')
+                            ->first()->specific;
+        // dd($badge);
+        $notActive = Requirement::all()->toArray();
+        $active = $badge->requirements;
+        return view('requirements.index')->with(['notActive' => $notActive, 'active' => $active->toArray(), 'badge' => $badge]);
     }
 
-    public function createRequirement(RequirementValidator $request)
+    public function activateRequirement(Request $request)
     {
-        $validated = $request->validated();
-        // $user = Auth::user();
-        $result = Requirement::create($validated);
-
-        return $result;
-    }
-
-    public function editRequirement($id)
-    {
-        $result = Requirement::findOrFail($id);
-        $deleteRoute = route('deleteRequirement', ['id' => $result->id]);
-        return view('developer.cms')->with(['result' => $result, 'deleteRoute' => $deleteRoute]);
-    }
-
-    public function updateRequirement(RequirementValidator $request)
-    {
-        $validated = $request->validated();
-        $result = Requirement::findOrFail($request->id);
-        $result->name = $validated['name'];
-        $result->description = $validated['description'];
-        $result->save();
-        return redirect()->route('badgeDescription', ['id' => $result->id]);
-    }
-
-    public function deleteRequirement($id)
-    {
-        $result = Requirement::findOrFail($id);
-        $result->delete();
-        return redirect()->route('home');
+        $requirement = Requirement::where('name', $request->requirement)->first();
+        $badge = Requirement::where('specific_id', $request->badge)
+                            ->where('specific_type', 'App\Badges')
+                            ->first()->specific;
+        // $badge->requirements()->create($requirement);
+        return $badge;
     }
 
     public function test()
@@ -93,6 +68,13 @@ class RequirementController extends Controller
         // $badge->requirement()->save($requirement);
         // dd(Requirement::all());
 
-        return Requirement::all();
+        // return Requirement::all();
+
+        $requirement = Requirement::where('name', 'name Class')->first();
+        $badge = Requirement::where('specific_id', 7)
+                            ->where('specific_type', 'App\Badges')
+                            ->first()->specific;
+        // $requirement->badges()->attach($badge->id);
+        return $requirement->badges;
     }
 }

@@ -11,8 +11,7 @@
 |
 */
 
-//Requirements
-Route::get('/requirements/', 'RequirementController@test');
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -50,7 +49,10 @@ Route::get('/badges/test', 'BadgesController@test')->name('badgesTest');
 Route::get('/expeditions/', 'ExpeditionsController@index')->name('expeditions');
 Route::get('/expedition/{id}', 'ExpeditionsController@expeditionDescription')->name('expeditionDescription');
 
-
+//Requirements
+Route::get('/requirements/test', 'RequirementController@test');
+Route::get('/requirements/{id}', 'RequirementController@listRequirements')->name('listRequirements');
+Route::post('/requirements/activate', 'RequirementController@activateRequirement')->name('activateRequirement');
 
 
 //CMS

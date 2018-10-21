@@ -29,4 +29,9 @@ class Positions extends Model
     {
     	return $this->hasMany('App\User', 'position_id');
     }
+
+    public function requirement()
+    {
+        return $this->morphOne('App\Requirement', 'specific');
+    }
 }

@@ -270,3 +270,33 @@
 	#cart #total {
 		line-height: 38px;
 	}
+
+/*Requirements*/
+	#requirements .card-body {
+		padding: 0px;
+	}
+
+	#requirements .btn {
+		color: gray;
+		border-color: gray;
+	}
+
+	#requirements .card-body .btn {
+		margin-top: -1px;
+		line-height: .2;
+	}
+
+	#requirements .btn:hover {
+		color: lightgreen;
+		border-color: lightgreen;
+	}
+
+	#requirements .results-container .row {
+		border-bottom: 1px solid gray;
+		padding: 2px;
+		padding-left: 1em;
+	}
+
+	#requirements .right {
+		border-left: 1px solid lightgreen;
+	}

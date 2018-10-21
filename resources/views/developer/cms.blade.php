@@ -45,7 +45,12 @@
 
 @section('cardfooter')
     <div class="row justify-content-between no-gutters">
-        <div></div>
+        <div class="col-sm-1">
+            <a class="btn" href="{{ url()->previous() }}">Back</a>
+        </div>
+        <div>
+            <a class="btn" href="{{ route('listRequirements', ['id' => $result->id]) }}">Add Requirements</a>
+        </div>
         <div>
             {{ Form::submit('Submit') }}
         </div>

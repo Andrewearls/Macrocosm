@@ -30,10 +30,10 @@ class Requirement extends Model
         return $this->morphTo();
     }
 
-    // public function badges()
-    // {
-    // 	return $this->belongsToMany('App\Badges', 'badge_requirement', 'requirement_id', 'badge_id')->withTimestamps();
-    // }
+    public function badges()
+    {
+    	return $this->belongsToMany('App\Badges', 'badge_requirement', 'requirement_id', 'badge_id')->withTimestamps();
+    }
 
     // public function classes()
     // {

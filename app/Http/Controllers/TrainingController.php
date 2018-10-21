@@ -44,9 +44,14 @@ class TrainingController extends Controller
     {
         $validated = $request->validated();
         $user = Auth::user();
-        $result = $user->classes()->create($validated);
+        $class = $user->classes()->create($validated);
+        $class->requirement()->create(
+            [
+                'name' => $class->name.' Class',
+                'description' => 'Default description',
+            ]);
 
-        return redirect()->route('classDescription', ['id' => $result->id]);
+        return redirect()->route('classDescription', ['id' => $class->id]);
     }
 
     public function editItem($id)
@@ -59,17 +64,25 @@ class TrainingController extends Controller
     public function updateItem(TrainingClassesValidator $request)
     {
         $validated = $request->validated();
-        $result = Classes::findOrFail($request->id);
-        $result->name = $validated['name'];
-        $result->description = $validated['description'];
-        $result->save();
-        return redirect()->route('classDescription', ['id' => $result->id]);
+        $class = Classes::findOrFail($request->id);
+        $class->name = $validated['name'];
+        $class->description = $validated['description'];
+        $class->save();
+        $class->requirement()->update(
+            [
+                'name' => $class->name.' Class',
+                'description' => 'Default description',
+            ]);
+
+
+        return redirect()->route('classDescription', ['id' => $class->id]);
     }
 
     public function deleteItem($id)
     {
-        $result = Classes::findOrFail($id);
-        $result->delete();
+        $class = Classes::findOrFail($id);
+        $class->requirement()->delete();
+        $class->delete();
         return redirect()->route('training');
     }
 }

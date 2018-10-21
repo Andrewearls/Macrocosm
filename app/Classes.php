@@ -32,11 +32,11 @@ class Classes extends Model
 
     public function requirement()
     {
-        return $this->morphMany('App\Requirement', 'requirement');
+        return $this->morphOne('App\Requirement', 'specific');
     }
 
-    public function require()
-    {
-        return $this->belongsToMany('App\Requirement', 'class_requirement', 'class_id', 'requirement_id')->withTimestamps();
-    }
+    // public function require()
+    // {
+    //     return $this->belongsToMany('App\Requirement', 'class_requirement', 'class_id', 'requirement_id')->withTimestamps();
+    // }
 }

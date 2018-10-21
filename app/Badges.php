@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Badges extends Model
 {
-	protected $table = "badges";
+    use Notifiable;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -32,11 +34,11 @@ class Badges extends Model
 
     public function requirement()
     {
-        return $this->morphMany('App\Requirement', 'specific');
+        return $this->morphOne('App\Requirement', 'specific');
     }
 
-    // public function require()
-    // {
-    //     return $this->belongsToMany('App\Requirement', 'badge_requirement', 'badge_id', 'requirement_id')->withTimestamps();
-    // }
+    public function requirements()
+    {
+        return $this->belongsToMany('App\Requirement', 'badge_requirement', 'badge_id', 'requirement_id')->withTimestamps();
+    }
 }

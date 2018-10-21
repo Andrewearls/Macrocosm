@@ -48,10 +48,12 @@ class BadgesController extends Controller
         $validated = $request->validated();
         $user = Auth::user();
         $badge = $user->badge()->create($validated);
-        $badge->requirement()->firstOrCreate([
-            'name' => $badge->name.' Badge',
-            'description' => 'Default description',
-        ]);
+        $badge->requirement()->create(
+            [
+                'name' => $badge->name.' Badge',
+                'description' => 'Default description',
+            ]);
+        
 
         return redirect()->route('badgeDescription', ['id' => $badge->id]);
     }
@@ -66,17 +68,25 @@ class BadgesController extends Controller
     public function updateBadge(BadgesValidator $request)
     {
         $validated = $request->validated();
-        $result = Badges::findOrFail($request->id);
-        $result->name = $validated['name'];
-        $result->description = $validated['description'];
-        $result->save();
-        return redirect()->route('badgeDescription', ['id' => $result->id]);
+        $badge = Badges::findOrFail($request->id);
+        // dd($result->requirement->id);
+        $badge->name = $validated['name'];
+        $badge->description = $validated['description'];
+        
+        $badge->save();
+        $badge->requirement()->update(
+            [
+                'name' => $badge->name.' Badge',
+                'description' => 'Default description',
+            ]);
+        return redirect()->route('badgeDescription', ['id' => $badge->id]);
     }
 
     public function deleteBadge($id)
     {
-        $result = Badges::findOrFail($id);
-        $result->delete();
+        $badge = Badges::findOrFail($id);
+        $badge->requirement->delete();
+        $badge->delete();
         return redirect()->route('badges');
     }
 
