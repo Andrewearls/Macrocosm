@@ -25,6 +25,11 @@ class Classes extends Model
         
     ];
 
+    public function type()
+    {
+        return get_class($this);
+    }
+
     public function owner()
     {
     	return $this->belongsTo('App\User', 'owner_id');
@@ -35,8 +40,8 @@ class Classes extends Model
         return $this->morphOne('App\Requirement', 'specific');
     }
 
-    // public function require()
-    // {
-    //     return $this->belongsToMany('App\Requirement', 'class_requirement', 'class_id', 'requirement_id')->withTimestamps();
-    // }
+    public function requirements()
+    {
+        return $this->belongsToMany('App\Requirement', 'class_requirement', 'class_id', 'requirement_id')->withTimestamps();
+    }
 }

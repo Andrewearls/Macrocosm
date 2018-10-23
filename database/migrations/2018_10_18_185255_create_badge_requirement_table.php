@@ -14,8 +14,9 @@ class CreateBadgeRequirementTable extends Migration
     public function up()
     {
         Schema::create('badge_requirement', function (Blueprint $table) {
-            $table->increments('id');
+            // $table->increments('id');
             $table->timestamps();
+            $table->primary(['badge_id', 'requirement_id']);
             $table->integer('badge_id');
             $table->integer('requirement_id');
         });

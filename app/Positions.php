@@ -25,6 +25,11 @@ class Positions extends Model
         
     ];
 
+    public function type()
+    {
+        return get_class($this);
+    }
+
     public function users()
     {
     	return $this->hasMany('App\User', 'position_id');

@@ -284,6 +284,7 @@
 	#requirements .card-body .btn {
 		margin-top: -1px;
 		line-height: .2;
+		width: 100%;
 	}
 
 	#requirements .btn:hover {
@@ -295,8 +296,17 @@
 		border-bottom: 1px solid gray;
 		padding: 2px;
 		padding-left: 1em;
+		padding-right: 1em;
 	}
 
-	#requirements .right {
+	#requirements .not-active {
 		border-left: 1px solid lightgreen;
+	}
+
+	#requirements .activate-requirement:before {
+		content: "Add";
+	}
+
+	#requirements .deactivate-requirement:before {
+		content: "Remove";
 	}

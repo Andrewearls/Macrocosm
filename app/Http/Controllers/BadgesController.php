@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use App\Http\Requests\BadgesValidator;
 use App\Badges;
+use App\Requirement;
 
 
 class BadgesController extends Controller
@@ -16,7 +18,8 @@ class BadgesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // parent::__construct();
+        // $this->middleware('auth');
     }
 
     /**
@@ -62,7 +65,7 @@ class BadgesController extends Controller
     {
         $result = Badges::findOrFail($id);
         $deleteRoute = route('deleteBadge', ['id' => $result->id]);
-        return view('developer.cms')->with(['result' => $result, 'deleteRoute' => $deleteRoute]);
+        return view('developer.editBadge')->with(['result' => $result, 'deleteRoute' => $deleteRoute]);
     }
 
     public function updateBadge(BadgesValidator $request)
@@ -85,9 +88,26 @@ class BadgesController extends Controller
     public function deleteBadge($id)
     {
         $badge = Badges::findOrFail($id);
+        $badge->requirements()->delete();
         $badge->requirement->delete();
         $badge->delete();
         return redirect()->route('badges');
+    }
+
+    public function editBadgeRequirements($id)
+    {
+        $badge = Badges::findOrFail($id);
+        $active = $badge->requirements;
+        $notActive = Requirement::notActive($active);
+        return view('requirements.index')->with(['notActive' => $notActive->toArray(), 'active' => $active->toArray(), 'result' => $badge]);
+    }
+
+    public function updateBadgeRequirements(Request $request, $id)
+    {
+        $badge = Badges::findOrFail($id);
+        $badge->requirements()->detach();
+        $badge->requirements()->attach($request->ids);
+        return redirect()->route('badgeDescription', ['id' => $badge->id]);
     }
 
     public function test()

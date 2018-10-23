@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use App\Http\Requests\TrainingClassesValidator;
 use App\Classes;
+use App\Requirement;
+
 
 class TrainingController extends Controller
 {
@@ -15,7 +18,7 @@ class TrainingController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -58,7 +61,7 @@ class TrainingController extends Controller
     {
         $result = Classes::findOrFail($id);
         $deleteRoute = route('deleteClassItem', ['id' => $result->id]);
-        return view('developer.cms')->with(['result' => $result, 'deleteRoute' => $deleteRoute]);
+        return view('developer.editClass')->with(['result' => $result, 'deleteRoute' => $deleteRoute]);
     }
 
     public function updateItem(TrainingClassesValidator $request)
@@ -84,5 +87,21 @@ class TrainingController extends Controller
         $class->requirement()->delete();
         $class->delete();
         return redirect()->route('training');
+    }
+
+    public function editClassRequirements($id)
+    {
+        $class = Classes::findOrFail($id);
+        $active = $class->requirements;
+        $notActive = Requirement::notActive($active);
+        return view('requirements.index')->with(['notActive' => $notActive->toArray(), 'active' => $active->toArray(), 'result' => $class]);  
+    }
+
+    public function updateClassRequirements(Request $request, $id)
+    {
+        $class = Classes::findOrFail($id);
+        $class->requirements()->detach();
+        $class->requirements()->attach($request->ids);
+        return redirect()->route('classDescription', ['id' => $class->id]);
     }
 }

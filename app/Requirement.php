@@ -25,6 +25,19 @@ class Requirement extends Model
         
     ];
 
+    public static function notActive ($collection)
+    {
+        return Requirement::all()->whereNotIn(
+            'id',
+            $collection->map(
+                function ($item){
+                    return $item->id;
+                }
+            )
+        );
+
+    }
+
     public function specific()
     {
         return $this->morphTo();
@@ -35,8 +48,8 @@ class Requirement extends Model
     	return $this->belongsToMany('App\Badges', 'badge_requirement', 'requirement_id', 'badge_id')->withTimestamps();
     }
 
-    // public function classes()
-    // {
-    // 	return $this->belongsToMany('App\Classes', 'class_requirement', 'requirement_id', 'class_id')->withTimestamps();
-    // }
+    public function classes()
+    {
+    	return $this->belongsToMany('App\Classes', 'class_requirement', 'requirement_id', 'class_id')->withTimestamps();
+    }
 }

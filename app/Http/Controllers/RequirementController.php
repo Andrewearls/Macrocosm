@@ -16,7 +16,7 @@ class RequirementController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -33,12 +33,27 @@ class RequirementController extends Controller
     public function listRequirements($id)
     {
         $badge = Requirement::where('specific_id', $id)
-                            ->where('specific_type', 'App\Badges')
+                            ->where('specific_type', 'Badge')
                             ->first()->specific;
-        // dd($badge);
-        $notActive = Requirement::all()->toArray();
+
         $active = $badge->requirements;
-        return view('requirements.index')->with(['notActive' => $notActive, 'active' => $active->toArray(), 'badge' => $badge]);
+        $notActive = Requirement::all()->whereNotIn('id', $active->map(function ($item)
+            {
+                return $item->id;
+            }));
+
+        // dd($notActive);
+
+        // foreach ($active as $badge) {
+        //     foreach ($notActive as $item) {
+        //         if ($badge->id === $item->id) {
+        //             dd('true');
+        //         }
+        //         dd($item);
+        //     }
+        // }
+
+        return view('requirements.index')->with(['notActive' => $notActive->toArray(), 'active' => $active->toArray(), 'badge' => $badge]);
     }
 
     public function activateRequirement(Request $request)
@@ -47,8 +62,16 @@ class RequirementController extends Controller
         $badge = Requirement::where('specific_id', $request->badge)
                             ->where('specific_type', 'App\Badges')
                             ->first()->specific;
-        // $badge->requirements()->create($requirement);
-        return $badge;
+        $requirement->badges()->attach($badge);
+        return 'success';
+    }
+
+    public function deactivateRequirement(Request $request)
+    {
+        $requirement = Requirement::where('name', $request->requirement)->first();
+        $badge = $requirement->badges()->find($request->badge);
+        $requirement->badges()->detach($badge);
+        return 'success';
     }
 
     public function test()
@@ -68,13 +91,15 @@ class RequirementController extends Controller
         // $badge->requirement()->save($requirement);
         // dd(Requirement::all());
 
-        // return Requirement::all();
+        return Requirement::all();
 
-        $requirement = Requirement::where('name', 'name Class')->first();
-        $badge = Requirement::where('specific_id', 7)
-                            ->where('specific_type', 'App\Badges')
-                            ->first()->specific;
-        // $requirement->badges()->attach($badge->id);
-        return $requirement->badges;
+        // $requirement = Requirement::where('name', 'test Badge')->first();
+        // $badge = Requirement::where('specific_id', 7)
+        //                     ->where('specific_type', 'App\Badges')
+        //                     ->first()->specific;
+        // // $requirement->badges()->attach($badge);
+        // $requirement->badges()->find(7)->detach();
+        // return $requirement->badges;
+        // return $requirement->badges()->find(['specific_id' => 7]);
     }
 }

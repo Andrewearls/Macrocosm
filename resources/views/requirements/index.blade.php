@@ -14,32 +14,36 @@
       
 @section('cardbody')        
     <div class="row no-gutters results-container">
-        <div class="col-sm-6 left">
-            @foreach((array) $active as $item)
-                <div class="row no-gutters">
-                    <div class="col-sm-4">
-                        <a href="">{{ $item['name'] }}</a>
+        <div class="col-sm-6 active">
+            {{ Form::open(['id' => 'requirement-form']) }}
+                @foreach((array) $active as $item)
+                    <div class="row no-gutters">
+                        <input type="hidden" name="ids[]" value="{{ $item['id'] }}">
+                        <div class="col-sm-4">
+                            <a class="name" href="">{{ $item['name'] }}</a>
+                        </div>
+                        <div class="col-sm-5">
+                            {{ $item['description'] }}
+                        </div>
+                        <div class="col-sm-3">
+                            <a class="btn deactivate-requirement"></a>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        {{ $item['description'] }}
-                    </div>
-                    <div class="col-sm-2">
-                        <a class="btn" href="">Remove</a>
-                    </div>
-                </div>
-            @endforeach
+                @endforeach
+            {{ Form::close() }}
         </div>
-        <div class="col-sm-6 right">
+        <div class="col-sm-6 not-active">
             @foreach((array) $notActive as $item)
                 <div class="row no-gutters">
+                    <input type="hidden" name="ids[]" value="{{ $item['id'] }}">
                     <div class="col-sm-4">
                         <a class="name" href="">{{ $item['name'] }}</a>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-5">
                         {{ $item['description'] }}
                     </div>
-                    <div class="col-sm-2">
-                        <a class="btn activate-requirement">Add</a>
+                    <div class="col-sm-3">
+                        <a class="btn activate-requirement"></a>
                     </div>
                 </div>
             @endforeach
@@ -50,7 +54,7 @@
 @section('cardfooter')
     <div class="row justify-content-between no-gutters">
         <div></div>
-        <div><a class="btn" href="">Submit</a></div>
+        <div><input type="Submit" form="requirement-form" class="btn" ></input></div>
     </div>
 @endsection
 
@@ -58,22 +62,40 @@
     <script type="text/javascript">
         
         $(document).ready(function(){
-            var id = "{{ $badge->id }}";
+            var id = "{{ $result->id }}";
+            var type = "{{ $result->type() }}";
 
-            $(".activate-requirement").click(function(){
+            $(document).on('click', ".activate-requirement", function(){
 
                 var name = $(this).closest('.row').find('.name').text();
                 var route = "{{ route('activateRequirement') }}";
 
                 postToRequirements(route, name);
+
+                var clone = $(this).closest('.row').clone()
+                clone.find('.activate-requirement').toggleClass('activate-requirement deactivate-requirement');
+                // clone.addClass('');
+                $(".active").find('#requirement-form').append(clone);
+
                 $(this).closest('.row').hide();
+            });
+
+            $(document).on('click', ".deactivate-requirement", function(){
+
+                var name = $(this).closest('.row').find('.name').text();
+                var route = "{{ route('deactivateRequirement') }}";
+
+                postToRequirements(route, name);
+                $(".not-active").append($(this).closest('.row'));
+                $(this).toggleClass('deactivate-requirement activate-requirement');
+                // $(this).closest('.row').hide();
             });
 
             function postToRequirements(route, name) {
                 $.post(  route,
                 {
                   '_token': $('meta[name=csrf-token]').attr('content'),
-                  badge: id,
+                  result: id,
                   requirement: name
                 },
                 function(data,status){
