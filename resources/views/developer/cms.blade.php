@@ -10,7 +10,7 @@
 
 @section('cardheader')
     <div class="row no-gutters justify-content-between">
-        <div class="col-sm-6">
+        <div class="col-sm-6 title">
             {{ Form::label('cms:') }}
             {{ Form::text('name', (isset($result->name)) ? $result->name : 'name') }}
         </div>

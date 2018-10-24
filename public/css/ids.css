@@ -272,41 +272,45 @@
 	}
 
 /*Requirements*/
-	#requirements .card-body {
+	#activationForm .card-body {
 		padding: 0px;
 	}
 
-	#requirements .btn {
+	#activationForm .btn {
 		color: gray;
 		border-color: gray;
 	}
 
-	#requirements .card-body .btn {
+	#activationForm .card-body .btn {
 		margin-top: -1px;
 		line-height: .2;
 		width: 100%;
 	}
 
-	#requirements .btn:hover {
+	#activationForm .btn:hover {
 		color: lightgreen;
 		border-color: lightgreen;
 	}
 
-	#requirements .results-container .row {
+	#activationForm .results-container .row {
 		border-bottom: 1px solid gray;
 		padding: 2px;
 		padding-left: 1em;
 		padding-right: 1em;
 	}
 
-	#requirements .not-active {
+	#activationForm .not-active {
 		border-left: 1px solid lightgreen;
 	}
 
-	#requirements .activate-requirement:before {
+	#activationForm .activate:before {
 		content: "Add";
 	}
 
-	#requirements .deactivate-requirement:before {
+	#activationForm .deactivate:before {
 		content: "Remove";
 	}
+
+/*Positions*/
+
+	

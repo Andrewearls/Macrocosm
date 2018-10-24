@@ -37,10 +37,7 @@ class RequirementController extends Controller
                             ->first()->specific;
 
         $active = $badge->requirements;
-        $notActive = Requirement::all()->whereNotIn('id', $active->map(function ($item)
-            {
-                return $item->id;
-            }));
+        $notActive = Requirement::notActive($active);
 
         // dd($notActive);
 
@@ -56,23 +53,23 @@ class RequirementController extends Controller
         return view('requirements.index')->with(['notActive' => $notActive->toArray(), 'active' => $active->toArray(), 'badge' => $badge]);
     }
 
-    public function activateRequirement(Request $request)
-    {
-        $requirement = Requirement::where('name', $request->requirement)->first();
-        $badge = Requirement::where('specific_id', $request->badge)
-                            ->where('specific_type', 'App\Badges')
-                            ->first()->specific;
-        $requirement->badges()->attach($badge);
-        return 'success';
-    }
+    // public function activateRequirement(Request $request)
+    // {
+    //     $requirement = Requirement::where('name', $request->requirement)->first();
+    //     $badge = Requirement::where('specific_id', $request->badge)
+    //                         ->where('specific_type', 'App\Badges')
+    //                         ->first()->specific;
+    //     $requirement->badges()->attach($badge);
+    //     return 'success';
+    // }
 
-    public function deactivateRequirement(Request $request)
-    {
-        $requirement = Requirement::where('name', $request->requirement)->first();
-        $badge = $requirement->badges()->find($request->badge);
-        $requirement->badges()->detach($badge);
-        return 'success';
-    }
+    // public function deactivateRequirement(Request $request)
+    // {
+    //     $requirement = Requirement::where('name', $request->requirement)->first();
+    //     $badge = $requirement->badges()->find($request->badge);
+    //     $requirement->badges()->detach($badge);
+    //     return 'success';
+    // }
 
     public function test()
     {

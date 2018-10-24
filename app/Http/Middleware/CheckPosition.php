@@ -18,10 +18,11 @@ class CheckPosition
     public function handle($request, Closure $next, $requiredPosition)
     {
         $user = Auth::user();
+        $result = Positions::where('name', '=', $requiredPosition)->first();           
         
-        if (Positions::where('name', '=', $requiredPosition)->exists()) {            
-            if ($user->position->name != $requiredPosition) {
-                return redirect()->back();
+        if (!is_null($result)) {
+            if (!$user->positions->contains('id', $result->id)) {
+                return 'here'; //redirect()->route('home');
             }
         }
         

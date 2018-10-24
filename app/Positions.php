@@ -32,7 +32,7 @@ class Positions extends Model
 
     public function users()
     {
-    	return $this->hasMany('App\User', 'position_id');
+    	return $this->belongsToMany('App\User', 'user_position', 'position_id', 'user_id');
     }
 
     public function requirement()

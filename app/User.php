@@ -28,6 +28,19 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public static function notAssigned ($collection)
+    {
+        return User::all()->whereNotIn(
+            'id',
+            $collection->map(
+                function ($item){
+                    return $item->id;
+                }
+            )
+        );
+
+    }
+
     public function inventory()
     {
         return $this->hasMany('App\Inventory', 'owner_id');
@@ -38,9 +51,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Classes', 'owner_id');
     }
 
-    public function position()
+    public function positions()
     {
-        return $this->belongsTo('App\Positions');
+        return $this->belongsToMany('App\Positions', 'user_position', 'user_id', 'position_id');
     }
 
     public function badge()

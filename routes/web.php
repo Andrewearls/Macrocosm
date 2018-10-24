@@ -97,5 +97,14 @@ Route::middleware('auth')->group(function() {
 		Route::post('/cms/edit/expedition/{id}', 'ExpeditionsController@updateExpedition');
 		Route::get('/cms/delete/expedition/{id}', 'ExpeditionsController@deleteExpedition')->name('deleteExpedition');
 
+		//Positions CMS
+		Route::get('/positions', 'PositionsController@listPositions')->name('positions');
+		Route::get('/new/position', 'PositionsController@newPosition')->name('newPosition');
+		Route::post('/new/position', 'PositionsController@createPosition');
+		Route::get('/assign/position/{id}', 'PositionsController@assignPosition')->name('assignPosition');
+		Route::post('/assign/position/{id}', 'PositionsController@submitAssignments');
+		Route::get('/edit/position/{id}', 'PositionsController@editPosition')->name('editPosition');
+		Route::get('/delete/position/{id}', 'PositionsController@deletePosition')->name('deletePosition');
+
 	});
 });
