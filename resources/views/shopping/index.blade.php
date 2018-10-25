@@ -11,7 +11,7 @@
         </div>
     
         <div class="col-sm-3">
-            @if(Auth::user()->position->name == 'developer')
+            @if(Auth::user()->positions->contains('name', 'developer'))
                 <a class="btn" href="{{ route('newShoppingItem') }}">New Shopping Item</a>
             @endif
         </div>

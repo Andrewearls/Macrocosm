@@ -22,6 +22,7 @@ Auth::routes();
 //Authenticated Users Only
 Route::middleware('auth')->group(function() {
 
+	// Route::get('/', 'HomeController@index')->name('welcome');
 	Route::get('/home', 'HomeController@index')->name('home');
 
 	//shopping items
@@ -104,7 +105,9 @@ Route::middleware('auth')->group(function() {
 		Route::get('/assign/position/{id}', 'PositionsController@assignPosition')->name('assignPosition');
 		Route::post('/assign/position/{id}', 'PositionsController@submitAssignments');
 		Route::get('/edit/position/{id}', 'PositionsController@editPosition')->name('editPosition');
+		Route::post('/edit/position/{id}', 'PositionsController@updatePosition');
 		Route::get('/delete/position/{id}', 'PositionsController@deletePosition')->name('deletePosition');
+		Route::get('/my/positions', 'PositionsController@myPositions');
 
 	});
 });

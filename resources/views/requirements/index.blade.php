@@ -26,7 +26,7 @@
                             {{ $item['description'] }}
                         </div>
                         <div class="col-sm-3">
-                            <a class="btn deactivate-requirement"></a>
+                            <a class="btn deactivate"></a>
                         </div>
                     </div>
                 @endforeach
@@ -43,7 +43,7 @@
                         {{ $item['description'] }}
                     </div>
                     <div class="col-sm-3">
-                        <a class="btn activate-requirement"></a>
+                        <a class="btn activate"></a>
                     </div>
                 </div>
             @endforeach
@@ -65,7 +65,7 @@
             var id = "{{ $result->id }}";
             var type = "{{ $result->type() }}";
 
-            $(document).on('click', ".activate-requirement", function(){
+            $(document).on('click', ".activate", function(){
 
                 var name = $(this).closest('.row').find('.name').text();
                 var route = "{{ route('activateRequirement') }}";
@@ -73,21 +73,21 @@
                 postToRequirements(route, name);
 
                 var clone = $(this).closest('.row').clone()
-                clone.find('.activate-requirement').toggleClass('activate-requirement deactivate-requirement');
+                clone.find('.activate-requirement').toggleClass('activate deactivate');
                 // clone.addClass('');
                 $(".active").find('#requirement-form').append(clone);
 
                 $(this).closest('.row').hide();
             });
 
-            $(document).on('click', ".deactivate-requirement", function(){
+            $(document).on('click', ".deactivate", function(){
 
                 var name = $(this).closest('.row').find('.name').text();
                 var route = "{{ route('deactivateRequirement') }}";
 
                 postToRequirements(route, name);
                 $(".not-active").append($(this).closest('.row'));
-                $(this).toggleClass('deactivate-requirement activate-requirement');
+                $(this).toggleClass('deactivate activate');
                 // $(this).closest('.row').hide();
             });
 

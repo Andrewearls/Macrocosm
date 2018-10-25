@@ -21,8 +21,8 @@ class CheckPosition
         $result = Positions::where('name', '=', $requiredPosition)->first();           
         
         if (!is_null($result)) {
-            if (!$user->positions->contains('id', $result->id)) {
-                return 'here'; //redirect()->route('home');
+            if (!$user->positions->contains('id', $result->id) && $result->users()->count() > 0) {
+                return redirect()->route('home');
             }
         }
         

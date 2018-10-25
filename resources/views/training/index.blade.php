@@ -10,7 +10,7 @@
             Training
         </div>
 
-        @if(Auth::user()->position->name == 'developer')
+        @if(Auth::user()->positions->contains('name', 'developer'))
             <div class="col-sm-3">
                 <a class="btn" href="{{ route('newClassItem') }}">New Training Class</a>
             </div>

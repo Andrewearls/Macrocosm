@@ -30,7 +30,7 @@ class ShoppingController extends Controller
         $pages = ceil( $count/12 );
         if ($page < 1) {
             return redirect()->route('shopping', ['page' => 1]);
-        } elseif ($page > $pages) {
+        } elseif ($page > $pages && $pages > 0) {
             return redirect()->route('shopping', ['page' => $pages]);
         }
     	$results = Inventory::skip(($page-1)*12)->take(12)->get()->toArray();        

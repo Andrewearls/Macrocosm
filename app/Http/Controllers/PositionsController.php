@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\PositionsValidator;
 use App\Positions;
@@ -43,6 +44,44 @@ class PositionsController extends Controller
     {
     	$validated = $request->validated();
     	$position = Positions::create($validated);
+    	$position->requirement()->create(
+            [
+                'name' => $position->name.' Position',
+                'description' => 'Default description',
+            ]);
     	return redirect()->route('positions');
+    }
+
+    public function editPosition($id)
+    {
+    	$position = Positions::findOrFail($id);
+
+    	return view('positions.cms', ['result' => $position]);
+    }
+
+    public function updatePosition(PositionsValidator $request, $id)
+    {
+    	$validated = $request->validated();
+    	$position = Positions::findOrFail($id);
+    	$position->name = $validated['name'];
+    	$position->save();
+
+    	return redirect()->route('positions');
+    }
+
+    public function deletePosition($id)	
+    {
+    	$position = Positions::findOrFail($id);
+    	// $position->requirements()->delete();
+        $position->requirement->delete();
+        $position->delete();
+
+        return redirect()->route('positions');
+    }
+
+    public function myPositions()
+    {
+    	return Auth::user()->positions;
+
     }
 }
