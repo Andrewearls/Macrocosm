@@ -9,7 +9,7 @@
         <div class="col-sm-5">
             Badges
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <a class="btn" href="{{ route('newBadge') }}">New Badge</a>
         </div>
     </div>

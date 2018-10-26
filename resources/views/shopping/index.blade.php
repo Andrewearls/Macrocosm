@@ -6,17 +6,17 @@
 
 @section('cardheader')
     <div class="row">
-        <div class="col-sm-5">
+        <div class="col-sm-3">
             Shopping
         </div>
     
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             @if(Auth::user()->positions->contains('name', 'developer'))
-                <a class="btn" href="{{ route('newShoppingItem') }}">New Shopping Item</a>
+                <a class="btn" href="{{ route('newShoppingItem') }}">New Item</a>
             @endif
         </div>
         
-        <div class="col-sm-4 display-count">
+        <div class="col-sm-7 display-count">
             <span>{{ (($page * 12) <= $count) ? $page * 12 : $count }}</span> of {{ $count }}
         </div>
     </div>
