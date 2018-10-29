@@ -28,19 +28,20 @@ class TrainingController extends Controller
      */
     public function index(){
         $results = Classes::all()->toArray();
-    	return view('training.index')->with(['results' => $results]);
+        $descriptionRoute = 'classDescription';
+    	return view('indexes.courses')->with(['results' => $results, 'routeName' => $descriptionRoute]);
     }
 
     public function classDescription($id)
     {
         $result = Classes::findOrFail($id);
-        return view('training.classDescription')->with(['result' => $result])        ;
+        return view('descriptions.course')->with(['result' => $result])        ;
     }
 
     public function newItem()
     {
         $result = new Classes;
-        return view('developer.classescms')->with(['result' => $result]);
+        return view('developer.class')->with(['result' => $result]);
     }
 
     public function createItem(TrainingClassesValidator $request)

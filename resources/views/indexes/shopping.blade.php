@@ -1,6 +1,6 @@
-@extends('layouts.card')
+@extends('layouts.cards.index')
 
-@section('layoutid')
+@section('pagespecificid')
     id="shopping"
 @endsection
 
@@ -11,9 +11,7 @@
         </div>
     
         <div class="col-sm-2">
-            @if(Auth::user()->positions->contains('name', 'developer'))
-                <a class="btn" href="{{ route('newShoppingItem') }}">New Item</a>
-            @endif
+            <a class="btn" href="{{ route('newShoppingItem') }}">New Item</a>
         </div>
         
         <div class="col-sm-7 display-count">
@@ -21,32 +19,6 @@
         </div>
     </div>
 @endsection   
-
-@section('cardbody')  
-    <div class="row">
-        @foreach ($results as $result)
-            <a href="{{ route('itemDescription', ['id' => $result['id']]) }}" class="col-md-3 item-container">
-                <img src="{{ $result['image'] }}">
-                <!-- <i class="fas fa-shopping-bag fa-5x"></i> -->
-                <div class="title">
-                    @if(strlen($result['name']) > 8)
-                        {{ substr($result['name'], 0, 8) }}...
-                    @else
-                        {{ $result['name'] }}
-                    @endif
-                </div>
-                        
-                <p>                                    
-                    @if(strlen($result['short_description']) > 15)
-                        {{ substr($result['short_description'], 0, 15) }}...
-                    @else
-                        {{ $result['short_description'] }}
-                    @endif
-                </p>
-            </a>
-        @endforeach
-    </div>
-@endsection
 
 @section('cardfooter')    
     <div class="row">

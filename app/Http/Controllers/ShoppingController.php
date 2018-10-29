@@ -33,15 +33,17 @@ class ShoppingController extends Controller
         } elseif ($page > $pages && $pages > 0) {
             return redirect()->route('shopping', ['page' => $pages]);
         }
-    	$results = Inventory::skip(($page-1)*12)->take(12)->get()->toArray();        
+    	$results = Inventory::skip(($page-1)*12)->take(12)->get()->toArray();  
+
+        $descriptionRoute = 'itemDescription';      
         
-        return view('shopping.index')->with(['results' => $results, 'pages' => $pages, 'page' => $page, 'count' => $count]);
+        return view('indexes.shopping')->with(['results' => $results, 'pages' => $pages, 'page' => $page, 'count' => $count, 'routeName' => $descriptionRoute]);
     }
 
     public function inventoryDescription($id)
     {
         $result = Inventory::findOrFail($id);
-        return view('shopping.itemDescription')->with(['result' => $result]);
+        return view('descriptions.inventory')->with(['result' => $result]);
     }
 
     public function cart(Request $request)
@@ -60,7 +62,7 @@ class ShoppingController extends Controller
             $cartTotal = $cartTotal + ($retrieved->price * $amount);
         }
         // dd(empty($cart));
-        return view('shopping.cart')->with(['cart' => $cart, 'total' => $cartTotal]);
+        return view('indexes.cart')->with(['cart' => $cart, 'total' => $cartTotal]);
     }
 
     public function addToCart(Request $request)
@@ -133,8 +135,10 @@ class ShoppingController extends Controller
         $result = new Inventory;
         // $item->price = 1;
         // return Route::currentRouteName();
-        return view('developer.shoppingcms')->with(['result' => $result]);
+        return view('developer.shopping')->with(['result' => $result]);
     }
+
+    //the following two should return the same view
 
     public function createItem(ShoppingItemValidator $request)      
     {
@@ -149,7 +153,7 @@ class ShoppingController extends Controller
     {
         $result = Inventory::findOrFail($id);
         $deleteRoute = route('deleteShoppingItem', ['id' => $result->id]);
-        return view('developer.cms')->with(['result' => $result, 'deleteRoute' => $deleteRoute]);
+        return view('layouts.cards.developer')->with(['result' => $result, 'deleteRoute' => $deleteRoute]);
     }
 
     public function updateItem(ShoppingItemValidator $request)

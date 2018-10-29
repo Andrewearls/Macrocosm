@@ -13,7 +13,7 @@ class PositionsController extends Controller
     public function listPositions()
     {
     	$positions = Positions::all();
-    	return view('positions.index', ['results' => $positions]);
+    	return view('indexes.positions', ['results' => $positions]);
     }
 
     public function assignPosition($id)
@@ -22,7 +22,7 @@ class PositionsController extends Controller
     	$assigned = $position->users;
     	$notAssigned = User::notAssigned($assigned);
 
-    	return view('positions.assign', ['result' => $position, 'active' => $assigned->toArray(), 'notActive' => $notAssigned->toArray()]);
+    	return view('activations.positions', ['result' => $position, 'active' => $assigned->toArray(), 'notActive' => $notAssigned->toArray()]);
     }
 
     public function submitAssignments(Request $request, $id)
@@ -37,7 +37,7 @@ class PositionsController extends Controller
     public function newPosition()
     {
     	$position = new Positions;
-    	return view('positions.cms', ['result' => $position]);
+    	return view('developer.positioncms', ['result' => $position]);
     }
 
     public function createPosition(PositionsValidator $request)

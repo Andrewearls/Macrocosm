@@ -1,7 +1,7 @@
-@extends('layouts.cards.description')
+@extends('layouts.card')
 
-@section('pagespecificid')
-    id="cms"
+@section('layoutid')
+    id="description"
 @endsection
 
 @section('beforeCard')

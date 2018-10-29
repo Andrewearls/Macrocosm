@@ -1,13 +1,13 @@
 @extends('layouts.card')
 
 @section('layoutid')
-    id="activationForm"
+    id="activation"
 @endsection
 
 @section('cardheader')
     <div class="row justify-content-between">
         <div class="col-sm-5">
-            List of Requirements
+            List:
         </div>        
     </div>
 @endsection
@@ -15,16 +15,14 @@
 @section('cardbody')        
     <div class="row no-gutters results-container">
         <div class="col-sm-6 active">
-            {{ Form::open(['id' => 'requirement-form']) }}
+            {{ Form::open(['id' => 'activation-form']) }}
                 @foreach((array) $active as $item)
                     <div class="row no-gutters">
                         <input type="hidden" name="ids[]" value="{{ $item['id'] }}">
-                        <div class="col-sm-4">
+                        <div class="col-sm-9">
                             <a class="name" href="">{{ $item['name'] }}</a>
                         </div>
-                        <div class="col-sm-5">
-                            {{ $item['description'] }}
-                        </div>
+                        
                         <div class="col-sm-3">
                             <a class="btn deactivate"></a>
                         </div>
@@ -36,12 +34,10 @@
             @foreach((array) $notActive as $item)
                 <div class="row no-gutters">
                     <input type="hidden" name="ids[]" value="{{ $item['id'] }}">
-                    <div class="col-sm-4">
+                    <div class="col-sm-9">
                         <a class="name" href="">{{ $item['name'] }}</a>
                     </div>
-                    <div class="col-sm-5">
-                        {{ $item['description'] }}
-                    </div>
+                    
                     <div class="col-sm-3">
                         <a class="btn activate"></a>
                     </div>
@@ -54,7 +50,7 @@
 @section('cardfooter')
     <div class="row justify-content-between no-gutters">
         <div></div>
-        <div><input type="Submit" form="requirement-form" class="btn" ></input></div>
+        <div><input type="Submit" form="activation-form" class="btn" ></input></div>
     </div>
 @endsection
 
@@ -62,20 +58,14 @@
     <script type="text/javascript">
         
         $(document).ready(function(){
-            var id = "{{ $result->id }}";
-            var type = "{{ $result->type() }}";
 
             $(document).on('click', ".activate", function(){
 
                 var name = $(this).closest('.row').find('.name').text();
-                var route = "{{ route('activateRequirement') }}";
-
-                postToRequirements(route, name);
 
                 var clone = $(this).closest('.row').clone()
-                clone.find('.activate-requirement').toggleClass('activate deactivate');
-                // clone.addClass('');
-                $(".active").find('#requirement-form').append(clone);
+                clone.find('.activate').toggleClass('activate deactivate');
+                $(".active").find('#activation-form').append(clone);
 
                 $(this).closest('.row').hide();
             });
@@ -83,26 +73,11 @@
             $(document).on('click', ".deactivate", function(){
 
                 var name = $(this).closest('.row').find('.name').text();
-                var route = "{{ route('deactivateRequirement') }}";
 
-                postToRequirements(route, name);
                 $(".not-active").append($(this).closest('.row'));
                 $(this).toggleClass('deactivate activate');
-                // $(this).closest('.row').hide();
             });
 
-            function postToRequirements(route, name) {
-                $.post(  route,
-                {
-                  '_token': $('meta[name=csrf-token]').attr('content'),
-                  result: id,
-                  requirement: name
-                },
-                function(data,status){
-
-                    console.log(data);
-                });
-            }
         });
     </script>
 @endsection

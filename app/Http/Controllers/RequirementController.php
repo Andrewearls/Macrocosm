@@ -50,7 +50,7 @@ class RequirementController extends Controller
         //     }
         // }
 
-        return view('requirements.index')->with(['notActive' => $notActive->toArray(), 'active' => $active->toArray(), 'badge' => $badge]);
+        return view('activations.requirements')->with(['notActive' => $notActive->toArray(), 'active' => $active->toArray(), 'badge' => $badge]);
     }
 
     // public function activateRequirement(Request $request)

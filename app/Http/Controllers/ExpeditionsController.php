@@ -26,19 +26,20 @@ class ExpeditionsController extends Controller
     public function index()
     {
         $results = Expeditions::all()->toArray();
-    	return view('expeditions.index')->with(['results' => $results]);
+        $descriptionRoute = 'expeditionDescription';
+    	return view('indexes.expeditions')->with(['results' => $results, 'routeName' => $descriptionRoute]);
     }
 
     public function expeditionDescription($id)
     {
     	$result = Expeditions::findOrFail($id);
-    	return view('expeditions.expeditionDescription')->with(['result' => $result]);
+    	return view('descriptions.expedition')->with(['result' => $result]);
     }
 
     public function newExpedition()
     {
     	$result = new Expeditions;
-    	return view('developer.cms')->with(['result' => $result]);
+    	return view('layouts.cards.developer')->with(['result' => $result]);
     }
 
     public function createExpedition(ExpeditionValidator $request)
@@ -54,7 +55,7 @@ class ExpeditionsController extends Controller
     {
         $result = Expeditions::findOrFail($id);
         $deleteRoute = route('deleteExpedition', ['id' => $result->id]);
-        return view('developer.cms')->with(['result' => $result, 'deleteRoute' => $deleteRoute]);
+        return view('layouts.cards.developer')->with(['result' => $result, 'deleteRoute' => $deleteRoute]);
     }
 
     public function updateExpedition(ExpeditionValidator $request)

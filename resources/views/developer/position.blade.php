@@ -1,4 +1,4 @@
-@extends('developer.cms')
+@extends('layouts.cards.developer')
 
 @section('cardheader')
 	<div class="row no-gutters justify-content-between">

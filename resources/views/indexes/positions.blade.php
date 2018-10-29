@@ -1,6 +1,6 @@
 @extends('layouts.card')
 
-@section('layoutid')
+@section('pagespecificid')
 	id='positions'
 @endsection
 

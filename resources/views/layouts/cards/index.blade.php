@@ -1,16 +1,13 @@
 @extends('layouts.card')
 
 @section('layoutid')
-    id="results"
+    id="index"
 @endsection
 
 @section('cardheader')
     <div class="row justify-content-between">
         <div class="col-sm-5">
-            Badges
-        </div>
-        <div class="col-sm-2">
-            <a class="btn" href="{{ route('newBadge') }}">New Badge</a>
+            Index
         </div>
     </div>
 @endsection
@@ -18,7 +15,7 @@
 @section('cardbody')        
     <div class="row no-gutters">
         @foreach((array) $results as $result)
-            <a href="{{ route('badgeDescription', ['id' => $result['id']]) }}" class="col-sm-3 item-container">
+            <a href="{{ route( $routeName, ['id' => $result['id']]) }}" class="col-sm-3 item-container">
                 <div class="title">
                     @if(strlen($result['name']) > 8)
                         {{ substr($result['name'], 0, 8) }}...

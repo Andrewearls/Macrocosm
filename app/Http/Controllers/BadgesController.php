@@ -30,20 +30,21 @@ class BadgesController extends Controller
     public function index()
     {
         $results = Badges::all()->toArray();
-    	return view('badges.index')->with(['results' => $results]);
+        $descriptionRoute = 'badgeDescription';
+    	return view('indexes.badges')->with(['results' => $results, 'routeName' => $descriptionRoute]);
     }
 
     public function badgeDescription($id)
     {
         // $user = Auth::user();
         $result = Badges::findOrFail($id);
-        return view('badges.badgeDescription')->with(['result' => $result]);
+        return view('descriptions.badge')->with(['result' => $result]);
     }
 
     public function newBadge()
     {
         $result = new Badges;
-        return view('developer.cms')->with(['result' => $result]);
+        return view('layouts.cards.developer')->with(['result' => $result]);
     }
 
     public function createBadge(BadgesValidator $request)
@@ -65,7 +66,7 @@ class BadgesController extends Controller
     {
         $result = Badges::findOrFail($id);
         $deleteRoute = route('deleteBadge', ['id' => $result->id]);
-        return view('developer.editBadge')->with(['result' => $result, 'deleteRoute' => $deleteRoute]);
+        return view('developer.badge')->with(['result' => $result, 'deleteRoute' => $deleteRoute]);
     }
 
     public function updateBadge(BadgesValidator $request)
