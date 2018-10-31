@@ -5,8 +5,8 @@
 @endsection
 
 @section('cardheader')
-    <div class="row justify-content-between">
-        <div class="col-sm-5">
+    <div class="row justify-content-between no-gutters">
+        <div class="col-sm-5 title">
             Training
         </div>
 

@@ -5,8 +5,8 @@
 @endsection
 
 @section('cardheader')
-    <div class="row">
-        <div class="col-sm-3">
+    <div class="row justify-content-between no-gutters">
+        <div class="col-sm-7 title">
             Shopping
         </div>
     
@@ -14,14 +14,14 @@
             <a class="btn" href="{{ route('newShoppingItem') }}">New Item</a>
         </div>
         
-        <div class="col-sm-7 display-count">
+        <div class="col-sm-2 display-count">
             <span>{{ (($page * 12) <= $count) ? $page * 12 : $count }}</span> of {{ $count }}
         </div>
     </div>
 @endsection   
 
 @section('cardfooter')    
-    <div class="row">
+    <div class="row justify-content-between no-gutters">
         <div class="col-sm-3">
             <a {{ ($page-1 > 0) ? "href=".route('shopping', ['page' => $page-1]) : '' }}><i class="fas fa-arrow-circle-left fa-2x"></i></a>
         </div>

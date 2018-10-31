@@ -1,131 +1,22 @@
-/*Welcome*/
-	#welcome-font{
+#welcome {}
+
+	#welcome .title {
 		margin-top: 50px;
 		font-size: 100px;
+		font-weight: 100;
 		text-align: center;
 		color: lightgreen;
 		text-transform: uppercase;
 	}
 
-/*CMS*/
-	#cms input, #cms select, #cms option, #cms textarea {
-		background-color: transparent;
-		color: lightgreen;
-		border: 2px solid gray;
-		border-radius: 3px;
-	}
-
-	#cms .card-body textarea{
-		padding: .5em;
-		max-height: 40vh;
-		resize: none;
-	}
-
-	#cms input:hover,#cms input:focus, #cms select:hover, #cms select:focus, #cms option:hover, #cms option:focus, #cms textarea:hover, #cms textarea:focus {
-		border-color: lightgreen;
-	}
-
-	#cms .image-container{
-		padding-bottom: 0px;
-		border: 0px;
-	}
-
-	#cms .image-container img{
-		max-width: 60%;
-		border-radius: 100%;
-		/*padding: 1em;*/
-		/*border: 2px solid lightgreen;*/
-	}
-
-	#cms .image-container input{
-		
-		margin-top: 1em;
-		width: 100%;
-	}
-
-	#cms .long-description {
-		border-left: 1px solid lightgreen;
-	}
-
-	#cms .card-header input {
-		text-align: center;
-	}
-
-	#cms .card-footer {
-		font-size: 24px;
-	}
-
-	#cms .card-footer input{
-		border-color: lightgreen;
-	}
-
-	#cms .card-footer input:active {
-		color: gray;
-		border-color: gray;
-	}
-
-/*Shopping*/
-	#shopping .card-body .row {
-		margin-left: 0px;
-		margin-right: 0px;
-	}
-	#shopping .item-container {
-		
-	}
-
-	#shopping .item-container:hover, #shopping .item-container:hover * {
-		
-	}
-
-	#shopping .display-count {
-		text-align: right;
-		font-size: 14px;
-		color: gray;
-	}
-
-	#shopping .display-count span{
-		color: lightgreen;
-		font-weight: 400;
-	}
-
 /*Dashboard*/
-	#dashboard .card-body, .shopping .card-body{
-		padding: 0px;
-	}
 
-	#dashboard .row {
-		margin: 0px;
-	}
+#dashboard {}
 
-	#dashboard a{
-		width: 100%;
-		padding-top: 1em;
-		padding-bottom: 1em;
-		text-align: left;
+	#dashboard a {
+		padding: 1em;
 		border-top: 1px solid transparent;
 		border-bottom: 1px solid transparent;
-	}
-
-
-
-	#dashboard .left a:last-child, #dashboard .right a:last-child {
-		border-bottom: 0px;
-	}
-
-	#dashboard .left a:first-child, #dashboard .right a:first-child {
-		border-top: 0px;
-	}
-
-	#dashboard a:hover *{
-		color: lightgreen;
-	}
-
-	#dashboard .left .title, #dashboard .left p, #dashboard .right a {
-		text-align: right;
-	}
-
-	#dashboard .right .title, #dashboard .right p {
-		text-align: left;
 	}
 
 	#dashboard .left a {
@@ -136,181 +27,61 @@
 		border-left: 1px solid transparent;
 	}
 
-	#dashboard a:hover {
-		/*border-bottom: 1px solid lightgreen;*/
+	#dashboard a:hover{
 		border-color: lightgreen;
 	}
 
+	#dashboard .left a:last-child, #dashboard .right a:last-child {
+		border-bottom: 0px;
+	}
+
+	#dashboard .left a:first-child, #dashboard .right a:first-child {
+		border-top: 0px;
+	}
+
+	#dashboard .left .title, #dashboard .left p, #dashboard .right a {
+		text-align: right;
+	}
+
+	#dashboard .right .title, #dashboard .right p {
+		text-align: left;
+	}
+
+	#dashboard .icon {
+		text-align: center;
+	}
+
+/*Shopping*/
+#shopping {}
+	
+	#shopping .card-footer{
+		text-align: center;
+	}
+
 /*Description*/
+#description {}
+
 	#description .card-body {
 		text-align: center;
-		padding: 0px;
 	}
 
 	#description .image-container {
 		border-right: 1px solid lightgreen;
 		padding: 1em;
+		min-height: 55vh;
+		max-height: 55vh;
 	}
 
-	#description .long-description {
-		
+	#description .long-description {		
 		font-size: 20px;
 		font-weight: 500;
-		color: lightblue;
-		
+		color: lightblue;		
 		text-align: left;
 		background-color: rgba(10,10,10,.6);
+		min-height: 55vh;
+		max-height: 55vh;
 	}
 
-	#description .long-description p {
-		padding: 1em;
-	}
-
-	#description .card-footer a {
-		border-color: gray;
-	}
-
-	#description .card-footer a:hover{
-		border-color: lightgreen;
-	}
-
-	#description .card-footer a:active, #description .card-footer button:active {
-		color: gray;
-		border-color: gray;
-	}
-
-/*Item*/
-	
-
-	#item .title-container {
-		border-bottom: 1px solid lightgreen;
-	}
-
-	#item .title {
-		color: lightgreen;
-	}
-
-	#item .price {
-		margin: auto;
-		text-align: right;
-	}
-
-/*Cart*/
-	#cart .description {
-		padding-left: 1em;
-		height: 100%;
-	}
-
-	#cart .description:hover {
-		color: lightgreen;
-	}
-
-	#cart .amount input {
-		width: 100%;
-		text-align: center;
-		background-color: transparent;
-		border: 2px solid gray;
-		color: lightgray;
-		border-radius: 3px;
-		margin-bottom: 1em;
-	}
-
-	#cart .amount input:hover, #cart .amount input:active, #cart .amount input:focus {
-		border-color: lightgreen;
-	}
-
-	#cart .amount .btn {
-		width: 50%;
-		color: gray;
-		border-color: gray;
-	}
-
-	#cart .amount .btn:active {
-		border-color: lightgreen !important;
-		color: lightgreen;
-	}
-
-	#cart .amount .btn {
-		border-color: gray !important;
-	}
-
-	#cart .amount .minus:active {
-		border-color: red !important;
-		color: red;
-	}
-
-	#cart .price {
-		text-align: center;
-		font-size: 24px;
-		font-weight: 600;
-		color: lightgreen;
-	}
-
-	#cart .card-body .row {
-		margin-top: 1em;
-	}
-
-	#cart .card-footer .price, #cart .card-footer .total {
-		font-size: 24px;
-		color: lightgreen;
-		font-weight: 600;
-		text-align: right;
-		padding-right: 1em;
-		letter-spacing: 2px;
-	}
-
-	#cart .card-footer .btn {
-		border-color: gray;
-	}
-
-	#cart .card-footer .btn:hover {
-		border-color: lightgreen;
-	}
-
-	#cart #total {
-		line-height: 38px;
-	}
-
-/*Requirements*/
-	#activationForm .card-body {
-		padding: 0px;
-	}
-
-	#activationForm .btn {
-		color: gray;
-		border-color: gray;
-	}
-
-	#activationForm .card-body .btn {
-		margin-top: -1px;
-		line-height: .2;
-		width: 100%;
-	}
-
-	#activationForm .btn:hover {
-		color: lightgreen;
-		border-color: lightgreen;
-	}
-
-	#activationForm .results-container .row {
-		border-bottom: 1px solid gray;
-		padding: 2px;
-		padding-left: 1em;
-		padding-right: 1em;
-	}
-
-	#activationForm .not-active {
-		border-left: 1px solid lightgreen;
-	}
-
-	#activationForm .activate:before {
-		content: "Add";
-	}
-
-	#activationForm .deactivate:before {
-		content: "Remove";
-	}
-
-/*Positions*/
-
-	
+		#description .long-description p {
+			padding: 1em;
+		}

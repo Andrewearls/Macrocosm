@@ -5,16 +5,8 @@
 		border-bottom: 1px solid gray;
 	}
 
-	.navbar a, .navbar-brand {
-		color: gray;
-	}
-
 	.navbar:hover {
 		border-bottom: 1px solid lightgreen;
-	}
-
-	.navbar a:hover {
-		color: lightgreen;
 	}
 
 	.navbar .added {
@@ -23,35 +15,26 @@
 		font-weight: 500;
 		padding-right: 1em;
 		line-height: 38px;
-		/*opacity: 0;*/
-		/*animation-name: fade;*/
 		animation-duration: 2s;
 		display: none;
 	}
 
-	span.navbar-toggler-icon {
+	/*span.navbar-toggler-icon {
 		height: auto;
 		color: gray;
-	}
+	}*/
 
-	button.navbar-toggler:focus {
+	/*button.navbar-toggler:focus {
 		border: none;
-		outline: none;
-		box-shadow: none;
 	}
 
 	button.navbar-toggler span{
 		color: lightgreen;
-	}
+	}*/
 
 /*Card*/
 
-	.card input:focus, .card button:focus, .card select:focus, .card option:focus, .card textarea:focus {
-		outline: none;
-		box-shadow: none;
-	}
-
-	div.card, .card-header {
+	/*div.card, .card-header {
 		background-color: transparent;
 		color: gray;
 		border: 1px solid lightgreen;
@@ -87,10 +70,10 @@
 
 	.card-footer a:hover{
 		color: lightgreen;
-	}
+	}*/
 
 /*Comming Soon*/
-	.comming-soon, .comming-soon *, .comming-soon:hover, .comming-soon *:hover, .comming-soon:active, .comming-soon *:active, .comming-soon:focus, .comming-soon *:focus {
+	/*.comming-soon, .comming-soon *, .comming-soon:hover, .comming-soon *:hover, .comming-soon:active, .comming-soon *:active, .comming-soon:focus, .comming-soon *:focus {
 		color: orange !important;
 		border-color: orange !important;
-	}
+	}*/

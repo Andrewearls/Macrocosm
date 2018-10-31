@@ -1,0 +1,214 @@
+
+
+/*CMS*/
+	#cms input, #cms select, #cms option, #cms textarea {
+		background-color: transparent;
+		color: lightgreen;
+		border: 2px solid gray;
+		border-radius: 3px;
+	}
+
+	#cms .card-body textarea{
+		padding: .5em;
+		max-height: 40vh;
+		resize: none;
+	}
+
+	#cms input:hover,#cms input:focus, #cms select:hover, #cms select:focus, #cms option:hover, #cms option:focus, #cms textarea:hover, #cms textarea:focus {
+		border-color: lightgreen;
+	}
+
+	#cms .image-container{
+		padding-bottom: 0px;
+		border: 0px;
+	}
+
+	#cms .image-container img{
+		max-width: 60%;
+		border-radius: 100%;
+		/*padding: 1em;*/
+		/*border: 2px solid lightgreen;*/
+	}
+
+	#cms .image-container input{
+		
+		margin-top: 1em;
+		width: 100%;
+	}
+
+	#cms .long-description {
+		border-left: 1px solid lightgreen;
+	}
+
+	#cms .card-header input {
+		text-align: center;
+	}
+
+	#cms .card-footer {
+		font-size: 24px;
+	}
+
+	#cms .card-footer input{
+		border-color: lightgreen;
+	}
+
+	#cms .card-footer input:active {
+		color: gray;
+		border-color: gray;
+	}
+
+/*Shopping*/
+	#shopping .card-body .row {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	#shopping .item-container {
+		
+	}
+
+	#shopping .item-container:hover, #shopping .item-container:hover * {
+		
+	}
+
+	#shopping 
+
+	#shopping 
+
+/*Description*/
+	
+
+/*Item*/
+	
+
+	#item .title-container {
+		border-bottom: 1px solid lightgreen;
+	}
+
+	#item .title {
+		color: lightgreen;
+	}
+
+	#item .price {
+		margin: auto;
+		text-align: right;
+	}
+
+/*Cart*/
+	#cart .description {
+		padding-left: 1em;
+		height: 100%;
+	}
+
+	#cart .description:hover {
+		color: lightgreen;
+	}
+
+	#cart .amount input {
+		width: 100%;
+		text-align: center;
+		background-color: transparent;
+		border: 2px solid gray;
+		color: lightgray;
+		border-radius: 3px;
+		margin-bottom: 1em;
+	}
+
+	#cart .amount input:hover, #cart .amount input:active, #cart .amount input:focus {
+		border-color: lightgreen;
+	}
+
+	#cart .amount .btn {
+		width: 50%;
+		color: gray;
+		border-color: gray;
+	}
+
+	#cart .amount .btn:active {
+		border-color: lightgreen !important;
+		color: lightgreen;
+	}
+
+	#cart .amount .btn {
+		border-color: gray !important;
+	}
+
+	#cart .amount .minus:active {
+		border-color: red !important;
+		color: red;
+	}
+
+	#cart .price {
+		text-align: center;
+		font-size: 24px;
+		font-weight: 600;
+		color: lightgreen;
+	}
+
+	#cart .card-body .row {
+		margin-top: 1em;
+	}
+
+	#cart .card-footer .price, #cart .card-footer .total {
+		font-size: 24px;
+		color: lightgreen;
+		font-weight: 600;
+		text-align: right;
+		padding-right: 1em;
+		letter-spacing: 2px;
+	}
+
+	#cart .card-footer .btn {
+		border-color: gray;
+	}
+
+	#cart .card-footer .btn:hover {
+		border-color: lightgreen;
+	}
+
+	#cart #total {
+		line-height: 38px;
+	}
+
+/*Requirements*/
+	#activationForm .card-body {
+		padding: 0px;
+	}
+
+	#activationForm .btn {
+		color: gray;
+		border-color: gray;
+	}
+
+	#activationForm .card-body .btn {
+		margin-top: -1px;
+		line-height: .2;
+		width: 100%;
+	}
+
+	#activationForm .btn:hover {
+		color: lightgreen;
+		border-color: lightgreen;
+	}
+
+	#activationForm .results-container .row {
+		border-bottom: 1px solid gray;
+		padding: 2px;
+		padding-left: 1em;
+		padding-right: 1em;
+	}
+
+	#activationForm .not-active {
+		border-left: 1px solid lightgreen;
+	}
+
+	#activationForm .activate:before {
+		content: "Add";
+	}
+
+	#activationForm .deactivate:before {
+		content: "Remove";
+	}
+
+/*Positions*/
+
+	
