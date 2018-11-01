@@ -19,6 +19,17 @@
 		display: none;
 	}
 
+/*Login Form*/
+	.forgot-password {
+		font-weight: 600;
+		margin-left: 1em;
+	}
+
+	.forgot-password:hover {
+		color: red;
+	}
+
+
 	/*span.navbar-toggler-icon {
 		height: auto;
 		color: gray;

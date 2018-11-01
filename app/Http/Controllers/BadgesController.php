@@ -100,7 +100,7 @@ class BadgesController extends Controller
         $badge = Badges::findOrFail($id);
         $active = $badge->requirements;
         $notActive = Requirement::notActive($active);
-        return view('requirements.index')->with(['notActive' => $notActive->toArray(), 'active' => $active->toArray(), 'result' => $badge]);
+        return view('activations.requirements')->with(['notActive' => $notActive->toArray(), 'active' => $active->toArray(), 'result' => $badge]);
     }
 
     public function updateBadgeRequirements(Request $request, $id)

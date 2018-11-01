@@ -13,6 +13,10 @@
 
 #dashboard {}
 
+	#dashboard .card-body .row > * {
+		padding: 0px;
+	}
+
 	#dashboard a {
 		padding: 1em;
 		border-top: 1px solid transparent;
@@ -31,9 +35,9 @@
 		border-color: lightgreen;
 	}
 
-	#dashboard .left a:last-child, #dashboard .right a:last-child {
+	/*#dashboard .left a:last-child, #dashboard .right a:last-child {
 		border-bottom: 0px;
-	}
+	}*/
 
 	#dashboard .left a:first-child, #dashboard .right a:first-child {
 		border-top: 0px;
@@ -67,7 +71,7 @@
 
 	#description .image-container {
 		border-right: 1px solid lightgreen;
-		padding: 1em;
+		/*padding: 1em;*/
 		min-height: 55vh;
 		max-height: 55vh;
 	}
@@ -82,6 +86,53 @@
 		max-height: 55vh;
 	}
 
-		#description .long-description p {
+		/*#description .long-description p {
 			padding: 1em;
-		}
+		}*/
+
+/*Auth*/
+	#auth form {
+		/*height: 100%;*/
+		margin-top: 3em;
+	}
+
+/*CMS*/
+
+	#developer .image-container img{
+		height: 80%;
+		width: auto;
+		margin: auto;
+	}
+
+	#developer .image-container input {
+		margin-top: 1em;
+		width: 100%;
+		vertical-align: bottom;
+	}
+
+/*Index*/
+	#index .item-container {
+		align-content: center;
+		text-align: center;		
+		border: 1px solid transparent;
+	}
+
+	#index .item-container:hover, #index .item-container:hover * {
+		border-color: lightgreen;	
+	}
+
+/*Activation*/
+#activation {}
+
+	#activation .active, #activation .not-active {
+		height: 100%;
+	}
+	
+
+	
+
+	
+
+	
+
+	

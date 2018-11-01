@@ -33,6 +33,10 @@ a, a:hover, a:focus, a:active{
 	text-decoration: none;
 }
 
+p {
+	padding: 0px;
+}
+
 .btn {
 	background-color: transparent;
 	border: 2px solid gray;
@@ -57,7 +61,7 @@ a, a:hover, a:focus, a:active{
 		color: lightgreen;
 	}*/
 
-	.red-button {
+	.btn-hover-red{
 		background-color: transparent;
 		color: gray;
 		border: 0px;
@@ -65,7 +69,7 @@ a, a:hover, a:focus, a:active{
 		line-height: 1;
 	}
 
-	.red-button:hover {
+	.btn-hover-red:hover {
 		color: red;
 	}
 
@@ -79,14 +83,34 @@ a, a:hover, a:focus, a:active{
 	text-transform: uppercase;	
 }
 
-.form-control {
-	background-color: transparent;
-	/*transition: none;*/
-}
+/*Forms*/
+form {}
+	
+	input, option, select, textarea {
+		background-color: transparent;
+		color: lightgreen;
+		border: 2px solid gray;
+		border-radius: 3px;
+	}
 
-.form-control:active, .form-control:focus {
-	background-color: transparent;
-}
+	input:hover, input:focus, option:hover, option:focus, select:hover, select:focus, textarea:hover, textarea:focus {
+		border-color: lightgreen;
+	}
+
+	textarea {
+		padding: .5em;
+		max-height: 40vh;
+		resize: none;
+	}
+
+	.form-control {
+		background-color: transparent;
+		/*transition: none;*/
+	}
+
+	.form-control:active, .form-control:focus {
+		background-color: transparent;
+	}
 
 /*Card*/
 
@@ -120,12 +144,21 @@ a, a:hover, a:focus, a:active{
 				font-weight: 600;
 			}
 
+		.card-header input {
+			width: 80%;
+			padding-left: 10px;
+		}
+
 	.card-body {
 		padding: 0px;
 		background-color: rgba(10,10,10,0.5);
 		min-height: 55vh;
 		max-height: 55vh;
 	}
+
+		.card-body .row > * {
+			padding: 20px;
+		}
 
 	.card-footer {
 
@@ -218,33 +251,6 @@ img {
 }
 ::-webkit-scrollbar {
     width: 0px;
-    background: transparent; /* make scrollbar transparent */
-}
-
-
-.red-link {
-	border: 0px solid transparent;
-	color: gray;
-	background-color: transparent;
-}
-
-.red-link:hover{
-	color: red;
-}
-
-.red-link:focus, .red-link:active {
-	border: 0px;
-	color: gray;
-}
-
-.item-container {
-	align-content: center;
-	text-align: center;
-	padding: 1em;
-	border: 1px solid transparent;
-}
-
-.item-container:hover, .item-container:hover * {
-	border-color: lightgreen;	
-	color: lightgreen;
+    background: transparent;  make scrollbar transparent 
 }*/
+

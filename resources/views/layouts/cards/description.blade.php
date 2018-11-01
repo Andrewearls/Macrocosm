@@ -5,8 +5,8 @@
 @endsection
 
 @section('cardheader')
-    <div class="row">
-        <div class="col-sm-6">
+    <div class="row justify-content-between no-gutters">
+        <div class="col-sm-6 title">
             <div> {{ $result->name }} </div>
         </div>        
     </div>

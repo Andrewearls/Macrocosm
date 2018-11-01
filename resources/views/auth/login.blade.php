@@ -1,7 +1,19 @@
 @extends('layouts.card')
 
+@section('layoutid')
+    id='auth'
+@endsection
+
+@section('pagespecificid')
+    id='login'
+@endsection
+
 @section('cardheader')
-    {{ __('Login') }}
+    <div class="row justify-content-between no-gutters">
+        <div class="col-sm-3 title">
+            {{ __('Login') }}
+        </div>
+    </div>
 @endsection
 
 @section('cardbody')
@@ -54,7 +66,7 @@
                     {{ __('Login') }}
                 </button>
 
-                <a class="btn red-link" href="{{ route('password.request') }}">
+                <a class="forgot-password" href="{{ route('password.request') }}">
                     {{ __('Forgot Your Password?') }}
                 </a>
             </div>
