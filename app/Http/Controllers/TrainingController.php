@@ -95,7 +95,7 @@ class TrainingController extends Controller
         $class = Classes::findOrFail($id);
         $active = $class->requirements;
         $notActive = Requirement::notActive($active);
-        return view('requirements.index')->with(['notActive' => $notActive->toArray(), 'active' => $active->toArray(), 'result' => $class]);  
+        return view('activations.requirements')->with(['notActive' => $notActive->toArray(), 'active' => $active->toArray(), 'result' => $class]);  
     }
 
     public function updateClassRequirements(Request $request, $id)

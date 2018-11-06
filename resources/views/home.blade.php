@@ -13,7 +13,7 @@
 @endsection
 
 @section('cardbody')                
-    <div class="row no-gutters comming-soon">
+    <div class="row no-gutters">
         <div class="col-md-6 left">
             <a href="{{ route('shopping', ['page' => 1]) }}" class="row no-gutters">                       
                 <div class="col-md-8">
@@ -53,6 +53,11 @@
                     <p>Join a macrocosmic-adventure!</p>
                 </div>   
             </a>
+        </div>        
+    </div>
+    <div class="row justify-content-center no-gutters comming-soon">
+        <div class="col-sm-12 title more-comming">
+            More To Come!
         </div>
     </div>
 @endsection

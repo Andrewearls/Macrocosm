@@ -1,61 +1,6 @@
 
 
-/*CMS*/
-	#cms input, #cms select, #cms option, #cms textarea {
-		background-color: transparent;
-		color: lightgreen;
-		border: 2px solid gray;
-		border-radius: 3px;
-	}
 
-	#cms .card-body textarea{
-		padding: .5em;
-		max-height: 40vh;
-		resize: none;
-	}
-
-	#cms input:hover,#cms input:focus, #cms select:hover, #cms select:focus, #cms option:hover, #cms option:focus, #cms textarea:hover, #cms textarea:focus {
-		border-color: lightgreen;
-	}
-
-	#cms .image-container{
-		padding-bottom: 0px;
-		border: 0px;
-	}
-
-	#cms .image-container img{
-		max-width: 60%;
-		border-radius: 100%;
-		/*padding: 1em;*/
-		/*border: 2px solid lightgreen;*/
-	}
-
-	#cms .image-container input{
-		
-		margin-top: 1em;
-		width: 100%;
-	}
-
-	#cms .long-description {
-		border-left: 1px solid lightgreen;
-	}
-
-	#cms .card-header input {
-		text-align: center;
-	}
-
-	#cms .card-footer {
-		font-size: 24px;
-	}
-
-	#cms .card-footer input{
-		border-color: lightgreen;
-	}
-
-	#cms .card-footer input:active {
-		color: gray;
-		border-color: gray;
-	}
 
 /*Shopping*/
 	#shopping .card-body .row {
@@ -197,17 +142,7 @@
 		padding-right: 1em;
 	}
 
-	#activationForm .not-active {
-		border-left: 1px solid lightgreen;
-	}
-
-	#activationForm .activate:before {
-		content: "Add";
-	}
-
-	#activationForm .deactivate:before {
-		content: "Remove";
-	}
+	
 
 /*Positions*/
 

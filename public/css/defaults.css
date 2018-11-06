@@ -1,3 +1,8 @@
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;  make scrollbar transparent 
+}
+
 html, body {
 	min-height: 100vh;
 	max-height: 100vh;
@@ -112,6 +117,10 @@ form {}
 		background-color: transparent;
 	}
 
+	.form-group {
+		margin: 0px;
+	}
+
 /*Card*/
 
 .card-header, .card-footer {
@@ -154,18 +163,29 @@ form {}
 		background-color: rgba(10,10,10,0.5);
 		min-height: 55vh;
 		max-height: 55vh;
+		overflow: scroll;
+		overflow-x: hidden;
 	}
 
-		.card-body .row > * {
+		.card-body > .row > * {
 			padding: 20px;
 		}
 
 	.card-footer {
-
+		line-height: 42px;
 	}
 
 		.card-footer .btn {
 			background-color: rgba(10,10,10,0.5);
+			/*background-color: gray;
+			color: lightgreen;
+			border-color: gray;*/
+		}
+
+		.card-footer .btn:hover {
+			background-color: lightgreen;
+			color: gray;
+			border-color: lightgreen;
 		}
 
 
@@ -245,9 +265,7 @@ img {
 
 .card-body {
 	position:relative;
-	max-height: 55vh;
-	overflow: scroll;
-	overflow-x: hidden;
+	
 }
 ::-webkit-scrollbar {
     width: 0px;

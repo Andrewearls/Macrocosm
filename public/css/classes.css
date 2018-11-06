@@ -84,7 +84,12 @@
 	}*/
 
 /*Comming Soon*/
-	/*.comming-soon, .comming-soon *, .comming-soon:hover, .comming-soon *:hover, .comming-soon:active, .comming-soon *:active, .comming-soon:focus, .comming-soon *:focus {
+	.comming-soon, .comming-soon *, .comming-soon:hover, .comming-soon *:hover, .comming-soon:active, .comming-soon *:active, .comming-soon:focus, .comming-soon *:focus {
 		color: orange !important;
 		border-color: orange !important;
-	}*/
+	}
+
+	.more-comming {
+		text-align: center;
+		border-top: 1px solid;
+	}
