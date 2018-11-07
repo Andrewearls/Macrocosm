@@ -24,7 +24,7 @@
                         </div>
                         
                         <div class="col-sm-3">
-                            <a class="btn deactivate"></a>
+                            <button class="btn btn-red deactivate"></button>
                         </div>
                     </div>
                 @endforeach
@@ -39,7 +39,7 @@
                     </div>
                     
                     <div class="col-sm-3">
-                        <a class="btn activate"></a>
+                        <button class="btn activate"></button>
                     </div>
                 </div>
             @endforeach

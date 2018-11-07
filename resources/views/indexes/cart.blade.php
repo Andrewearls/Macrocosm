@@ -6,7 +6,7 @@
 
 @section('cardheader')
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 title">
             <div> Cart </div>
         </div>
     </div>
@@ -30,10 +30,10 @@
             </a>
             <div class="col-sm-2 amount">
                 <input type="text" name="amount" value="{{ $item->amount }}" autocomplete="off" readonly>
-                <button href="{{ route('removeFromCart', ['id' => $item->id ]) }}" class="btn minus remove-from-cart" value="{{ $item->id }}">-1</button><button href="{{ route('addToCart', ['id' => $item->id ]) }}" class="btn add-to-cart" value="{{ $item->id }}">+1</button>
+                <button href="{{ route('removeFromCart', ['id' => $item->id ]) }}" class="btn btn-red minus remove-from-cart" value="{{ $item->id }}">-1</button><button href="{{ route('addToCart', ['id' => $item->id ]) }}" class="btn add-to-cart" value="{{ $item->id }}">+1</button>
             </div>
             <div class="col-sm-2 price">$<span>{{ $item->price * $item->amount }}</span></div>
-            <div class="col-sm-2 remove-all"><button class="far fa-times-circle fa-3x btn red-button" value="{{ $item->id }}"></button></div>
+            <div class="col-sm-2 remove-all"><button class="far fa-times-circle fa-3x btn btn-link-red" value="{{ $item->id }}"></button></div>
         </div>
     @endforeach     
  

@@ -128,10 +128,6 @@
 		width: 100%;
 	}
 
-	#activation .card-body .btn:hover{
-		color: lightgreen;
-	}
-
 	#activation .active, #activation .not-active {
 		height: 55vh;
 	}
@@ -139,11 +135,6 @@
 		#activation .active .row, #activation .not-active .row {
 			padding-bottom: 5px;
 			line-height: 38px;
-		}
-
-		#activation .active .btn:hover {
-			color: red;
-			border-color: red;
 		}
 
 	#activation .not-active {
@@ -158,7 +149,30 @@
 		content: "Remove";
 	}
 	
+/*Cart*/
+#cart {}
 
+	#cart .amount input {
+		width: 100%;
+		text-align: center;
+		border-radius: 3px;
+		margin-bottom: 1em;
+	}
+
+		#cart .amount .btn {
+			width: 50%;
+		}
+
+	#cart .price {
+		text-align: center;
+		font-size: 24px;
+		font-weight: 600;
+		color: lightgreen;
+	}
+
+	#cart .remove-all {
+		text-align: center;
+	}
 	
 
 	

@@ -22,7 +22,7 @@
             </div>
         @endif
         @if (isset($deleteRoute))
-            <div class="col-sm-1 remove-all"><a href="{{ $deleteRoute }}"><div class="far fa-times-circle fa-3x btn btn-hover-red"></div></a></div>
+            <div class="col-sm-1 remove-all"><a href="{{ $deleteRoute }}"><div class="far fa-times-circle fa-3x btn btn-link-red"></div></a></div>
         @endif
         
     </div>

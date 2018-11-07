@@ -49,6 +49,11 @@ p {
 	letter-spacing: 1px;
 }
 
+	.btn-red:hover {
+		color: red;
+		border-color: red;
+	}
+
 	/*.btn-gray {
 		background-color: gray;
 		border-color: gray;
@@ -66,7 +71,7 @@ p {
 		color: lightgreen;
 	}*/
 
-	.btn-hover-red{
+	.btn-link-red{
 		background-color: transparent;
 		color: gray;
 		border: 0px;
@@ -74,7 +79,7 @@ p {
 		line-height: 1;
 	}
 
-	.btn-hover-red:hover {
+	.btn-link-red:hover {
 		color: red;
 	}
 
@@ -86,6 +91,17 @@ p {
 	font-size: 24px;
 	font-weight: 600;
 	text-transform: uppercase;	
+}
+
+.error {
+	font-size: 24px;
+	font-weight: 500; 
+	color: red;
+	text-align: center;
+}
+
+.hidden {
+	display: none;
 }
 
 /*Forms*/

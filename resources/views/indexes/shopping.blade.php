@@ -22,10 +22,10 @@
 
 @section('cardfooter')    
     <div class="row justify-content-between no-gutters">
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <a {{ ($page-1 > 0) ? "href=".route('shopping', ['page' => $page-1]) : '' }}><i class="fas fa-arrow-circle-left fa-2x"></i></a>
         </div>
-        <div class="col-sm-6 page-numbers">
+        <div class="col-sm-8 page-numbers">
             @if ($page-1 > 0)
                 <a href="{{ route('shopping', [$page-1]) }}">{{ $page-1 }}</a>
             @endif
@@ -34,7 +34,7 @@
                 <a href="{{ route('shopping', [$page+1]) }}">{{ $page+1 }}</a> 
             @endif
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <a {{ ($page+1 <= $pages) ? "href=".route('shopping', ['page' => $page+1]) : '' }}><i class="fas fa-arrow-circle-right fa-2x"></i></a>
         </div>
     </div>        
