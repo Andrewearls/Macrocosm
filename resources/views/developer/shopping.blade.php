@@ -1,8 +1,4 @@
-@extends('layouts.cards.description')
-
-@section('pagespecificid')
-    id="cms"
-@endsection
+@extends('layouts.cards.developer')
 
 @section('beforeCard')
     {{ Form::open(['url' => route(Route::currentRouteName(), (isset($result->id)) ? ['id' => $result->id] : "") ]) }}
@@ -10,7 +6,7 @@
 
 @section('cardheader')
     <div class="row no-gutters justify-content-between">
-        <div class="col-sm-6">
+        <div class="col-sm-6 title">
             {{ Form::label('cms:') }}
             {{ Form::text('name', (isset($result->name)) ? $result->name : 'name') }}
         </div>
@@ -22,7 +18,7 @@
         </div>
         
         
-        <div class="col-sm-1 remove-all"><a href="{{ (isset($result->id)) ? route('deleteShoppingItem', ['id' => $result-id]) : route('shopping', ['page' => 1]) }}"><div class="far fa-times-circle fa-3x btn red-button"></div></a></div>
+        <div class="col-sm-1 remove-all"><a href="{{ (isset($result->id)) ? route('deleteShoppingItem', ['id' => $result-id]) : route('shopping', ['page' => 1]) }}"><div class="far fa-times-circle fa-3x btn btn-link-red"></div></a></div>
         
         
     </div>
@@ -47,7 +43,7 @@
     <div class="row justify-content-between no-gutters">
         <div></div>
         <div>
-            {{ Form::submit('Submit') }}
+            {{ Form::submit('Submit', ['class' => 'btn']) }}
         </div>
     </div>
 @endsection

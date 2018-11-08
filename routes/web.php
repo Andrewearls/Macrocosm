@@ -67,11 +67,21 @@ Route::middleware('auth')->group(function() {
 		Route::post('/cms/update/{id}')->name('cmsUpdate');
 
 		//Shopping CMS
-		Route::get('/cms/new/shopping/item', 'ShoppingController@newItem')->name('newShoppingItem');
-		Route::post('/cms/new/shopping/item', 'ShoppingController@createItem');
-		Route::get('/cms/edit/shopping/item/{id}', 'ShoppingController@editItem')->name('editShoppingItem');
-		Route::post('/cms/edit/shopping/item/{id}', 'ShoppingController@updateItem');
-		Route::get('/cms/delete/shopping/item/{id}', 'ShoppingController@deleteItem')->name('deleteShoppingItem');
+		Route::get('/cms/new/internal/shopping/item', 'ShoppingController@newInternalItem')->name('newInternalShoppingItem');
+		Route::post('/cms/new/internal/shopping/item', 'ShoppingController@createInternalItem');
+		
+		Route::get('/cms/edit/internal/shopping/item/{id}', 'ShoppingController@editInternalItem')->name('editInternalShoppingItem');
+		Route::post('/cms/edit/internal/shopping/item/{id}', 'ShoppingController@updateInternalItem');
+		Route::get('/cms/delete/internal/shopping/item/{id}', 'ShoppingController@deleteInternalItem')->name('deleteInternalShoppingItem');
+
+		//external shopping items
+		Route::get('/cms/new/external/shopping/item', 'ShoppingController@newExternalItem')->name('newExternalShoppingItem');
+		Route::post('/cms/new/external/shopping/item', 'ShoppingController@createInternalItem');
+		
+		Route::get('/cms/edit/external/shopping/item/{id}', 'ShoppingController@editInternalItem')->name('editExternalShoppingItem');
+		Route::post('/cms/edit/external/shopping/item/{id}', 'ShoppingController@updateInternalItem');
+		Route::get('/cms/delete/external/shopping/item/{id}', 'ShoppingController@deleteInternalItem')->name('deleteExternalShoppingItem');
+
 
 		//Training CMS
 		Route::get('/cms/new/class/item', 'TrainingController@newItem')->name('newClassItem');

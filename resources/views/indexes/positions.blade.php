@@ -5,14 +5,16 @@
 @endsection
 
 @section('cardheader')
-<div class="row justify-content-between">
-	<div class="col-sm-3 title">
-		Positions
+	<div class="row justify-content-between">
+		<div class="col-sm-3 title">
+			Positions
+		</div>
+        @if(Auth::user()->positions->contains('name', 'developer'))
+			<div class="col-sm-3 btn-container">
+				<a class="btn" href="{{ route('newPosition') }}">Create Position</a>
+			</div>
+		@endif
 	</div>
-	<div class="col-sm-3">
-		<a class="btn" href="{{ route('newPosition') }}">Create Position</a>
-	</div>
-</div>
 @endsection
 
 @section('cardbody')

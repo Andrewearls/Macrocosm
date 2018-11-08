@@ -57,6 +57,69 @@
 
 /*Shopping*/
 #shopping {}
+
+	#shopping .card-body{
+		padding: 3px;
+		padding-top: 0px;
+	}
+
+		#shopping .results {}
+
+			#shopping .results-container {
+				margin-top: 3px;
+				border: 1px solid;
+				border-radius: 3px;
+				padding-left: 0px;
+				padding-right: 0px;
+				width: 100%;
+			}
+
+				#shopping .results-container > .title {
+					padding-left: 8px;
+					padding-right: 8px;
+					line-height: 37px;
+				}
+
+					#shopping .results-container > .title a {
+						margin-bottom: 1px;
+					}
+
+				#shopping .results-container .item-display {
+					/*padding: 3px;*/
+				}
+
+			#shopping .lightblue-results {
+				border-color: lightblue;
+				/*opacity: 0.5;*/
+			}
+
+				#shopping .lightblue-results > .title {
+					background-color: lightblue;
+				}
+
+					#shopping .lightblue-results > .title .btn:hover {
+						background-color: gray;
+						border-color: lightblue;
+						color: lightblue;
+					}
+
+				#shopping .lightblue-results .item-container:hover {
+					color: lightblue;
+					border-color: lightblue;
+				}
+
+			#shopping .lightgreen-results {
+				border-color: lightgreen;
+			}
+
+				#shopping .lightgreen-results > .title {
+					background-color: lightgreen;
+				}
+
+					#shopping .lightgreen-results > .title .btn:hover {
+						background-color: gray;
+					}
+
 	
 	#shopping .card-footer{
 		text-align: center;

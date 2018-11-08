@@ -30,58 +30,6 @@
 	}
 
 
-	/*span.navbar-toggler-icon {
-		height: auto;
-		color: gray;
-	}*/
-
-	/*button.navbar-toggler:focus {
-		border: none;
-	}
-
-	button.navbar-toggler span{
-		color: lightgreen;
-	}*/
-
-/*Card*/
-
-	/*div.card, .card-header {
-		background-color: transparent;
-		color: gray;
-		border: 1px solid lightgreen;
-	}
-
-	.card-header, .card-body label {
-		font-size: 15px;
-		font-weight: 600;
-		letter-spacing: 3px;
-		text-transform: uppercase;
-	}
-
-	div.card-header {
-		font-size: 20px;
-		color: lightgreen;
-		background-color: rgba(100,100,100,0.3);
-	}
-
-	.card-body {
-		background-color: rgba(10,10,10,0.5);
-		border: 1px solid lightgreen;
-	}
-
-	.card a, .card .btn-link {
-		color: gray;
-		text-decoration: none;
-	}
-
-	.card .forgot-password:hover, .card .btn-link:hover {
-		color: red;
-		text-decoration: none;
-	}
-
-	.card-footer a:hover{
-		color: lightgreen;
-	}*/
 
 /*Comming Soon*/
 	.comming-soon, .comming-soon *, .comming-soon:hover, .comming-soon *:hover, .comming-soon:active, .comming-soon *:active, .comming-soon:focus, .comming-soon *:focus {

@@ -9,9 +9,11 @@
         <div class="col-sm-5 title">
             Badges
         </div>
-        <div class="col-sm-2">
-            <a class="btn" href="{{ route('newBadge') }}">New Badge</a>
-        </div>
+        @if(Auth::user()->positions->contains('name', 'developer'))
+	        <div class="col-sm-2 btn-container">
+	            <a class="btn" href="{{ route('newBadge') }}">New Badge</a>
+	        </div>
+	    @endif
     </div>
 @endsection
       

@@ -130,11 +130,9 @@ class ShoppingController extends Controller
         
     }
 
-    public function newItem()
+    public function newInternalItem()
     {
         $result = new Inventory;
-        // $item->price = 1;
-        // return Route::currentRouteName();
         return view('developer.shopping')->with(['result' => $result]);
     }
 

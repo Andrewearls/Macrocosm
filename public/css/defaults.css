@@ -48,6 +48,9 @@ p {
 	font-weight: 600;
 	letter-spacing: 1px;
 }
+	.btn-container {
+		text-align: right;
+	}
 
 	.btn-red:hover {
 		color: red;
