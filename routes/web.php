@@ -75,12 +75,12 @@ Route::middleware('auth')->group(function() {
 		Route::get('/cms/delete/internal/shopping/item/{id}', 'ShoppingController@deleteInternalItem')->name('deleteInternalShoppingItem');
 
 		//external shopping items
-		Route::get('/cms/new/external/shopping/item', 'ShoppingController@newExternalItem')->name('newExternalShoppingItem');
-		Route::post('/cms/new/external/shopping/item', 'ShoppingController@createInternalItem');
+		Route::get('/cms/new/external/shopping/item', 'ExternalInventoryController@index')->name('newExternalInventoryItem');
+		Route::post('/cms/new/external/shopping/item', 'ExternalInventoryController@createInventoryItem');
 		
 		Route::get('/cms/edit/external/shopping/item/{id}', 'ShoppingController@editInternalItem')->name('editExternalShoppingItem');
 		Route::post('/cms/edit/external/shopping/item/{id}', 'ShoppingController@updateInternalItem');
-		Route::get('/cms/delete/external/shopping/item/{id}', 'ShoppingController@deleteInternalItem')->name('deleteExternalShoppingItem');
+		Route::get('/cms/delete/external/shopping/item/{id}', 'ExternalInventoryController@deleteInventoryItem')->name('deleteExternalInventoryItem');
 
 
 		//Training CMS

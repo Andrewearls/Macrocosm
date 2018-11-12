@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\ShoppingItemValidator;
-use App\inventory;
+use App\Inventory;
+use App\ExternalInventory;
 
 class ShoppingController extends Controller
 {
@@ -35,9 +36,11 @@ class ShoppingController extends Controller
         }
     	$results = Inventory::skip(($page-1)*12)->take(12)->get()->toArray();  
 
-        $descriptionRoute = 'itemDescription';      
+        $descriptionRoute = 'itemDescription';
+
+        $externalInventory = ExternalInventory::all()->toArray();      
         
-        return view('indexes.shopping')->with(['results' => $results, 'pages' => $pages, 'page' => $page, 'count' => $count, 'routeName' => $descriptionRoute]);
+        return view('indexes.shopping')->with(['results' => $results, 'pages' => $pages, 'page' => $page, 'count' => $count, 'routeName' => $descriptionRoute, 'externalResults' => $externalInventory]);
     }
 
     public function inventoryDescription($id)
