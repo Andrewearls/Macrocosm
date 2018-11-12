@@ -25,8 +25,9 @@ class Requirement extends Model
         
     ];
 
-    public static function notActive ($collection)
+    public function notActive ($collection)
     {
+        // dd($this->id);
         return Requirement::all()->whereNotIn(
             'id',
             $collection->map(
@@ -34,7 +35,7 @@ class Requirement extends Model
                     return $item->id;
                 }
             )
-        );
+        )->whereNotIn('id', $this->id);
 
     }
 
