@@ -164,6 +164,18 @@
 		/*margin-top: 3em;*/
 	}
 
+	#auth #verify .card-body {
+		color: lightblue;
+	}
+
+		#auth #verify .card-body a {
+			color: lightblue;
+		}
+
+		#auth #verify .card-body a:hover {
+			color: lightgreen;
+		}
+
 /*CMS*/
 
 	#developer .card-header label {
