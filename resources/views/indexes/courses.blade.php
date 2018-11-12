@@ -9,7 +9,7 @@
         <div class="col-sm-5 title">
             Training
         </div>
-        @if(Auth::user()->positions->contains('name', 'developer'))
+        @if(Auth::user()->positions->contains('name', 'instructor'))
 	        <div class="col-sm-3 btn-container">
 	            <a class="btn" href="{{ route('newClassItem') }}">New Training Class</a>
 	        </div>

@@ -20,7 +20,7 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 //Authenticated Users Only
-Route::middleware('verified')->group(function() {
+Route::middleware('auth')->group(function() {
 
 	// Route::get('/', 'HomeController@index')->name('welcome');
 	Route::get('/home', 'HomeController@index')->name('home');
@@ -61,6 +61,17 @@ Route::middleware('verified')->group(function() {
 
 
 	//CMS
+	Route::middleware(['position:instructor'])->group(function() {
+		//Training CMS
+		Route::get('/cms/new/class/item', 'TrainingController@newItem')->name('newClassItem');
+		Route::post('/cms/new/class/item', 'TrainingController@createItem');
+		Route::get('/cms/edit/class/item/{id}', 'TrainingController@editItem')->name('editClassItem');
+		Route::post('/cms/edit/class/item/{id}', 'TrainingController@updateItem');
+		Route::get('/cms/delete/class/item/{id}', 'TrainingController@deleteItem')->name('deleteClassItem');
+		Route::get('/cms/edit/class/{id}/requirements', 'TrainingController@editClassRequirements')->name('editClassRequirements');
+		Route::post('/cms/edit/class/{id}/requirements', 'TrainingController@updateClassRequirements');
+	});
+	
 	Route::middleware(['position:developer'])->group(function() {
 		Route::get('/cms', 'DeveloperController@index')->name('cms');
 		Route::post('/cms/new', 'DeveloperController@formSubmit')->name('cmsNew');
@@ -83,14 +94,7 @@ Route::middleware('verified')->group(function() {
 		Route::get('/cms/delete/external/shopping/item/{id}', 'ExternalInventoryController@deleteInventoryItem')->name('deleteExternalInventoryItem');
 
 
-		//Training CMS
-		Route::get('/cms/new/class/item', 'TrainingController@newItem')->name('newClassItem');
-		Route::post('/cms/new/class/item', 'TrainingController@createItem');
-		Route::get('/cms/edit/class/item/{id}', 'TrainingController@editItem')->name('editClassItem');
-		Route::post('/cms/edit/class/item/{id}', 'TrainingController@updateItem');
-		Route::get('/cms/delete/class/item/{id}', 'TrainingController@deleteItem')->name('deleteClassItem');
-		Route::get('/cms/edit/class/{id}/requirements', 'TrainingController@editClassRequirements')->name('editClassRequirements');
-		Route::post('/cms/edit/class/{id}/requirements', 'TrainingController@updateClassRequirements');
+		
 
 		//Badges CMS
 		Route::get('/cms/new/badge', 'BadgesController@newBadge')->name('newBadge');

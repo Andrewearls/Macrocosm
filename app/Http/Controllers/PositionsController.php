@@ -37,7 +37,7 @@ class PositionsController extends Controller
     public function newPosition()
     {
     	$position = new Positions;
-    	return view('developer.positioncms', ['result' => $position]);
+    	return view('developer.position', ['result' => $position]);
     }
 
     public function createPosition(PositionsValidator $request)
