@@ -106,6 +106,7 @@
 				#shopping .lightblue-results .item-container {
 					border-top: 0px;
 					border-bottom: 0px;
+					background-color: white;
 				}
 
 				#shopping .lightblue-results .item-container:hover, #shopping .lightblue-results .item-container:focus {

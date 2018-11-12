@@ -20,7 +20,7 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 //Authenticated Users Only
-Route::middleware('auth')->group(function() {
+Route::middleware('verified')->group(function() {
 
 	// Route::get('/', 'HomeController@index')->name('welcome');
 	Route::get('/home', 'HomeController@index')->name('home');

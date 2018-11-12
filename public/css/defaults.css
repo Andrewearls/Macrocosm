@@ -90,6 +90,20 @@ p {
 		color: gray;
 	}
 
+.dropdown-menu {
+	color: lightgreen;
+	background-color: rgba(0,0,0,0.7);
+}
+	
+	.dropdown-item {
+		color: lightgreen;
+	}
+
+	.dropdown-item:hover {
+		color: lightgreen;
+		background-color: transparent;
+	}
+
 .title {
 	font-size: 24px;
 	font-weight: 600;

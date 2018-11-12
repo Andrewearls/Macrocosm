@@ -35,7 +35,7 @@
         </div>     
         <div class="row no-gutters item-display">
             @foreach((array) $externalResults as $result)
-                <div class="col-sm-3 item-container">
+                <div class="col-sm-2 item-container">
                     <?php echo(html_entity_decode($result['image'])) ?>
                 </div>
             @endforeach
@@ -47,7 +47,7 @@
                 Internal Items 
                 <div class="far fa-question-circle infotip">
                     <span class="infotip-text">
-                        Items from this section are offered through the Macrocosm. <br>(Can be purchased through us.)
+                        Items from this section are offered through the Macrocosm. <br>(Can be purchased through us)
                     </span>
                 </div>
             </div>
