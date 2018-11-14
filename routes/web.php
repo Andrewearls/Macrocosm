@@ -43,6 +43,8 @@ Route::middleware('auth')->group(function() {
 	//training 
 	Route::get('/training/', 'TrainingController@index')->name('training');
 	Route::get('/training/class/{id}', 'TrainingController@classDescription')->name('classDescription');
+	Route::get('/training/class/{id}/enroll', 'TrainingController@enroll')->name('enroll');
+	Route::get('/training/class/{id}/unenroll', 'TrainingController@unenroll')->name('unenroll');
 
 	//Badges
 	Route::get('/badges/', 'BadgesController@index')->name('badges');
@@ -70,6 +72,7 @@ Route::middleware('auth')->group(function() {
 		Route::get('/cms/delete/class/item/{id}', 'TrainingController@deleteItem')->name('deleteClassItem');
 		Route::get('/cms/edit/class/{id}/requirements', 'TrainingController@editClassRequirements')->name('editClassRequirements');
 		Route::post('/cms/edit/class/{id}/requirements', 'TrainingController@updateClassRequirements');
+		Route::get('/cms/edit/class/{id}/enrolled', 'TrainingController@editClassEnrolled')->name('enrolled');
 	});
 
 	//BadgeMaster

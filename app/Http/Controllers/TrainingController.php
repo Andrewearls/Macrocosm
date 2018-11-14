@@ -106,4 +106,25 @@ class TrainingController extends Controller
         $class->requirements()->attach($request->ids);
         return redirect()->route('classDescription', ['id' => $class->id]);
     }
+
+    public function enroll($id)
+    {
+        $class = Classes::findOrFail($id);
+        $class->enroll()->attach(Auth::user()->id);
+        return redirect()->route('classDescription', ['id' => $id]);
+    }
+
+    public function unenroll($id)
+    {
+        $class = Classes::findOrFail($id);
+        $class->enroll()->detach(Auth::user()->id);
+        return redirect()->route('classDescription', ['id' => $id]);
+    }
+
+    public function editClassEnrolled($id)
+    {
+        $class = Classes::findOrFail($id);
+        $enrolled = $class->enroll;
+        return view('layouts.cards.activation')->with(['notActive' => $enrolled->toArray(), 'active' => [], 'result' => $class]);
+    }
 }

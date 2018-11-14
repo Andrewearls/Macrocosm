@@ -249,6 +249,12 @@ form {}
 			border-color: lightgreen;
 		}
 
+		.card-footer .btn-red:hover {
+			background-color: red;
+			color: gray;
+			border-color: red;
+		}
+
 
 
 /*.card-header a.btn{

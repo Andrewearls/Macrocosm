@@ -70,4 +70,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Expeditions', 'owner_id');
     }
+
+    public function enroll()
+    {
+        return $this->belongsToMany('App\Classes', 'class_enrollment', 'user_id', 'class_id')->withTimestamps();
+    }
 }

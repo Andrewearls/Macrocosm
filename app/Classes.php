@@ -44,4 +44,9 @@ class Classes extends Model
     {
         return $this->belongsToMany('App\Requirement', 'class_requirement', 'class_id', 'requirement_id')->withTimestamps();
     }
+
+    public function enroll()
+    {
+        return $this->belongsToMany('App\User', 'class_enrollment', 'class_id', 'user_id')->withTimestamps();
+    }
 }
