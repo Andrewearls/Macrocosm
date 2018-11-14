@@ -35,9 +35,9 @@ Route::middleware('auth')->group(function() {
 	Route::get('/shopping/cart', 'ShoppingController@cart')->name('cart');
 	Route::get('shopping/checkout', 'ShoppingController@checkout')->name('checkout');
 	//shopping page navigation
-	Route::get('/shopping/', 'ShoppingController@index');
+	Route::get('/shopping/', 'ShoppingController@index')->name('shopping');
 	Route::get('/shopping/{page}', 'ShoppingController@index');
-	Route::get('/shopping/page/{page}', 'ShoppingController@index')->name('shopping');
+	Route::get('/shopping/page/{page}', 'ShoppingController@index');
 
 
 	//training 
@@ -60,7 +60,7 @@ Route::middleware('auth')->group(function() {
 	Route::post('/requirements/deactivate', 'RequirementController@deactivateRequirement')->name('deactivateRequirement');
 
 
-	//CMS
+	//Instructors
 	Route::middleware(['position:instructor'])->group(function() {
 		//Training CMS
 		Route::get('/cms/new/class/item', 'TrainingController@newItem')->name('newClassItem');
@@ -71,7 +71,30 @@ Route::middleware('auth')->group(function() {
 		Route::get('/cms/edit/class/{id}/requirements', 'TrainingController@editClassRequirements')->name('editClassRequirements');
 		Route::post('/cms/edit/class/{id}/requirements', 'TrainingController@updateClassRequirements');
 	});
-	
+
+	//BadgeMaster
+	Route::middleware(['position:badgemaster'])->group(function(){
+		//Badges CMS
+		Route::get('/cms/new/badge', 'BadgesController@newBadge')->name('newBadge');
+		Route::post('/cms/new/badge', 'BadgesController@createBadge');
+		Route::get('/cms/edit/badge/{id}', 'BadgesController@editBadge')->name('editBadge');
+		Route::post('/cms/edit/badge/{id}', 'BadgesController@updateBadge');
+		Route::get('/cms/delete/badge/{id}', 'BadgesController@deleteBadge')->name('deleteBadge');
+		Route::get('/cms/edit/badge/{id}/requirements', 'BadgesController@editBadgeRequirements')->name('editBadgeRequirements');
+		Route::post('/cms/edit/badge/{id}/requirements', 'BadgesController@updateBadgeRequirements');
+	});
+
+	//Pathfinder
+	Route::middleware(['position:pathfinder'])->group(function(){
+		//Expeditions CMS
+		Route::get('/cms/new/expedition', 'ExpeditionsController@newExpedition')->name('newExpedition');
+		Route::post('/cms/new/expedition', 'ExpeditionsController@createExpedition');
+		Route::get('/cms/edit/expedition/{id}', 'ExpeditionsController@editExpedition')->name('editExpedition');
+		Route::post('/cms/edit/expedition/{id}', 'ExpeditionsController@updateExpedition');
+		Route::get('/cms/delete/expedition/{id}', 'ExpeditionsController@deleteExpedition')->name('deleteExpedition');
+	});
+
+	//CMS
 	Route::middleware(['position:developer'])->group(function() {
 		Route::get('/cms', 'DeveloperController@index')->name('cms');
 		Route::post('/cms/new', 'DeveloperController@formSubmit')->name('cmsNew');
@@ -96,21 +119,10 @@ Route::middleware('auth')->group(function() {
 
 		
 
-		//Badges CMS
-		Route::get('/cms/new/badge', 'BadgesController@newBadge')->name('newBadge');
-		Route::post('/cms/new/badge', 'BadgesController@createBadge');
-		Route::get('/cms/edit/badge/{id}', 'BadgesController@editBadge')->name('editBadge');
-		Route::post('/cms/edit/badge/{id}', 'BadgesController@updateBadge');
-		Route::get('/cms/delete/badge/{id}', 'BadgesController@deleteBadge')->name('deleteBadge');
-		Route::get('/cms/edit/badge/{id}/requirements', 'BadgesController@editBadgeRequirements')->name('editBadgeRequirements');
-		Route::post('/cms/edit/badge/{id}/requirements', 'BadgesController@updateBadgeRequirements');
+		
 
-		//Expeditions CMS
-		Route::get('/cms/new/expedition', 'ExpeditionsController@newExpedition')->name('newExpedition');
-		Route::post('/cms/new/expedition', 'ExpeditionsController@createExpedition');
-		Route::get('/cms/edit/expedition/{id}', 'ExpeditionsController@editExpedition')->name('editExpedition');
-		Route::post('/cms/edit/expedition/{id}', 'ExpeditionsController@updateExpedition');
-		Route::get('/cms/delete/expedition/{id}', 'ExpeditionsController@deleteExpedition')->name('deleteExpedition');
+		
+		
 
 		//Positions CMS
 		Route::get('/positions', 'PositionsController@listPositions')->name('positions');

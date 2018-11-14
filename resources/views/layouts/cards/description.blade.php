@@ -5,11 +5,9 @@
 @endsection
 
 @section('cardheader')
-    <div class="row justify-content-between no-gutters">
         <div class="col-sm-6 title">
             <div> {{ $result->name }} </div>
         </div>        
-    </div>
 @endsection
 
 @section('cardbody')
@@ -19,7 +17,7 @@
         </div>
         <div class="col-sm-8 long-description">
         	
-        	<p>{{ $result->description }}</p>
+        	<p>Description: {{ $result->description }}</p>
             
         </div>
     </div>
@@ -28,7 +26,6 @@
 @section('cardfooter')
     <div class="row justify-content-between no-gutters">
         <a href="{{ url()->previous() }}" class="col-sm-3 btn">@yield('backbutton','Back')</a>
-                     
     </div>
 @endsection
 

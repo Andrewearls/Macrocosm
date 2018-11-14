@@ -1,5 +1,9 @@
 @extends('layouts.card')
 
+@section('layoutid')
+	id='index'
+@endsection
+
 @section('pagespecificid')
 	id='positions'
 @endsection
@@ -20,7 +24,7 @@
 @section('cardbody')
 
 	@foreach($results as $result)
-		<div class="row no-gutters">
+		<div class="row no-gutters justify-content-center">
 			<div class="col-sm-3">
 				{{ $result->name }}
 			</div>
@@ -31,7 +35,7 @@
 				<a class="btn" href="{{ route('editPosition', ['id' => $result->id]) }}">Edit</a>
 			</div>
 			<div class="col-sm-3">
-				<a href="{{ route('deletePosition', ['id' => $result->id]) }}">Delete</a>
+				<a class="btn-link-red" href="{{ route('deletePosition', ['id' => $result->id]) }}">Delete</a>
 			</div>
 		</div>
 	@endforeach

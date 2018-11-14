@@ -1,15 +1,15 @@
 @extends('layouts.cards.description')
 
 @section('pagespecificid')
-    id="inventory"
+    id="shopping"
 @endsection
 
 @section('cardheader')
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6 title">
             <div> {{ $result->name }} </div>
         </div>
-        <div class="col-sm-6 price">
+        <div class="col-sm-6 title price">
             ${{ $result->price }}
         </div>
     </div>
@@ -19,7 +19,7 @@
     <div class="row justify-content-between no-gutters">
         <a href="{{ route('shopping', ['page' => 1]) }}" class="col-sm-3 btn">Back To Shopping</a>
         @if(Auth::user()->positions->contains('name', 'developer'))
-            <a href="{{ route('editShoppingItem', ['id' => $result->id]) }}" class="col-sm-3 btn">edit</a>
+            <a href="{{ route('editInternalShoppingItem', ['id' => $result->id]) }}" class="col-sm-3 btn">edit</a>
         @endif
         <button class="col-sm-2 add-to-cart btn" name="item" value="{{ $result->id }}">Add To Cart</button>      
     </div>

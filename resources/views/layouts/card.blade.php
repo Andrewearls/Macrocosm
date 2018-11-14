@@ -18,7 +18,7 @@
             @yield('cardbody')
 
         </div>
-        <div class="card-footer">                           
+        <div class="card-footer">   
             @yield('cardfooter')            
         </div>
     </div>

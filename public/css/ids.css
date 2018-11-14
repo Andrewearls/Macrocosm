@@ -58,6 +58,10 @@
 /*Shopping*/
 #shopping {}
 
+	#shopping .card-header .price {
+		text-align: right;
+	}
+
 	#shopping .card-body{
 		padding: 3px;
 		padding-top: 0px;
@@ -253,6 +257,11 @@
 	#activation .deactivate:before {
 		content: "Remove";
 	}
+
+	#activation .deactivate:hover {
+		color: red;
+		border-color: red;
+	}
 	
 /*Cart*/
 #cart {}
@@ -279,6 +288,23 @@
 		text-align: center;
 	}
 	
+/*Positions*/
+#positions {}
+
+	#index #positions .card-body > .row {
+		text-align: center;
+		padding-top: 10px;
+		line-height: 36px;
+	}
+
+	#index #positions .card-body > .row > * {
+		padding: 0px;
+	}
+
+	#index #positions .btn-link-red {
+		font-size: 16px;
+	}
+
 
 	
 

@@ -5,10 +5,10 @@
 @endsection
 
 @section('cardheader')
-    <div class="row justify-content-between">
-        <div class="col-sm-5">
+    <div class="row justify-content-between no-gutters">
+        <div class="col-sm-6 title">
             List:
-        </div>        
+        </div>
     </div>
 @endsection
       
@@ -49,6 +49,7 @@
 
 @section('cardfooter')
     <div class="row justify-content-between no-gutters">
+
         <div></div>
         <div><input type="Submit" form="activation-form" class="btn" ></input></div>
     </div>
