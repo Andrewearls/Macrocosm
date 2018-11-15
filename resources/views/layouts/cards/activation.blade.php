@@ -50,7 +50,7 @@
 @section('cardfooter')
     <div class="row justify-content-between no-gutters">
 
-        <div></div>
+        <div><a href="{{ route('classDescription', ['id' => $result->id]) }}" class="btn">Back to Class Description</a></div>
         <div><input type="Submit" form="activation-form" class="btn" ></input></div>
     </div>
 @endsection

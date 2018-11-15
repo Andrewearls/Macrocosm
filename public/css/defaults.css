@@ -40,6 +40,15 @@ a, a:hover, a:focus, a:active{
 
 p {
 	padding: 0px;
+	border: 2px solid gray;
+	border-radius: 3px;
+	min-height: 40vh;
+	max-height: 40vh;
+	padding: .5em;
+}
+
+p:hover, p:focus, p:active {
+	border-color: lightgreen;
 }
 
 .btn {
@@ -148,6 +157,10 @@ p {
 	display: none;
 }
 
+.visible {
+
+}
+
 /*Forms*/
 form {}
 	
@@ -163,10 +176,12 @@ form {}
 	}
 
 	textarea {
-		padding: .5em;
+		/*padding: .5em;*/
 		max-height: 40vh;
 		resize: none;
 		font-size: 20px;
+		width: 100%;
+		border: 0px;
 	}
 
 	.form-control {

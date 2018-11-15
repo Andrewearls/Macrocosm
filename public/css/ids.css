@@ -218,6 +218,18 @@
 		height: 100%;
 	}
 
+	#developer .long-description .active {
+		color: lightblue
+	}
+
+	#developer .long-description .not-active {
+		color: gray;
+	}
+
+	#developer .long-description .not-active:hover {
+		color: lightgreen;
+	}
+
 
 /*Index*/
 	#index .item-container {
@@ -239,11 +251,20 @@
 
 	#activation .active, #activation .not-active {
 		height: 55vh;
+		padding: 0px;
 	}
 
 		#activation .active .row, #activation .not-active .row {
+			padding-left: 20px;
+			padding-right: 20px;
 			padding-bottom: 5px;
+			padding-top: 5px;
 			line-height: 38px;
+		}
+
+		#activation .table-header {
+			background-color: lightgreen;
+
 		}
 
 	#activation .not-active {

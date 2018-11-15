@@ -62,7 +62,7 @@ class TrainingController extends Controller
     {
         $result = Classes::findOrFail($id);
         $deleteRoute = route('deleteClassItem', ['id' => $result->id]);
-        return view('developer.editClass')->with(['result' => $result, 'deleteRoute' => $deleteRoute]);
+        return view('developer.course')->with(['result' => $result, 'deleteRoute' => $deleteRoute]);
     }
 
     public function updateItem(TrainingClassesValidator $request)
@@ -125,6 +125,6 @@ class TrainingController extends Controller
     {
         $class = Classes::findOrFail($id);
         $enrolled = $class->enroll;
-        return view('layouts.cards.activation')->with(['notActive' => $enrolled->toArray(), 'active' => [], 'result' => $class]);
+        return view('activations.enrollment')->with(['notActive' => $enrolled->toArray(), 'active' => [], 'result' => $class]);
     }
 }
