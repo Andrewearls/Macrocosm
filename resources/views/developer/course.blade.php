@@ -20,12 +20,28 @@
             	<input type="time" name="time">
 
             	{{ Form::label('date:') }}
-            	{{ Form::date('when', (isset($result->date)) ? $result->date : '')}}            	
+            	{{ Form::date('date', (isset($result->date)) ? $result->date : '')}}            	
             </p>
             <p class="where hidden">
             	{{ Form::label('location:') }}
             	{{ Form::text('location', (isset($result->location)) ? $result->location : '')}}
             </p>
+        </div>
+    </div>
+@endsection
+
+@section('cardfooter')
+    <div class="row justify-content-between no-gutters">
+        <div class="col-sm-1">
+            <a class="btn" href="{{ url()->previous() }}">Back</a>
+        </div>
+	    @if(Auth::user()->positions->contains('name', 'instructor'))
+	        <div class="col-sm-3">
+	        	<a class="btn" href="{{ route('editClassRequirements', ['id' => $result->id]) }}">Add Requirements</a>
+	        </div>
+	    @endif
+        <div>
+            {{ Form::submit('Submit', ['class' => 'btn']) }}
         </div>
     </div>
 @endsection

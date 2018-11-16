@@ -40,11 +40,6 @@ a, a:hover, a:focus, a:active{
 
 p {
 	padding: 0px;
-	border: 2px solid gray;
-	border-radius: 3px;
-	min-height: 40vh;
-	max-height: 40vh;
-	padding: .5em;
 }
 
 p:hover, p:focus, p:active {

@@ -35,13 +35,14 @@ class TrainingController extends Controller
     public function classDescription($id)
     {
         $result = Classes::findOrFail($id);
+        // dd(empty($result->requirements->toarray()));
         return view('descriptions.course')->with(['result' => $result])        ;
     }
 
     public function newItem()
     {
         $result = new Classes;
-        return view('developer.class')->with(['result' => $result]);
+        return view('developer.course')->with(['result' => $result]);
     }
 
     public function createItem(TrainingClassesValidator $request)
@@ -71,6 +72,9 @@ class TrainingController extends Controller
         $class = Classes::findOrFail($request->id);
         $class->name = $validated['name'];
         $class->description = $validated['description'];
+        $class->time = $validated['time'];
+        $class->date = $validated['date'];
+        $class->location = $validated['location'];
         $class->save();
         $class->requirement()->update(
             [

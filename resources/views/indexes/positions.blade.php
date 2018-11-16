@@ -13,11 +13,9 @@
 		<div class="col-sm-3 title">
 			Positions
 		</div>
-        @if(Auth::user()->positions->contains('name', 'developer'))
-			<div class="col-sm-3 btn-container">
-				<a class="btn" href="{{ route('newPosition') }}">Create Position</a>
-			</div>
-		@endif
+		<div class="col-sm-3 btn-container">
+			<a class="btn" href="{{ route('newPosition') }}">Create Position</a>
+		</div>
 	</div>
 @endsection
 

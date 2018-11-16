@@ -49,9 +49,6 @@
             <a class="btn" href="{{ url()->previous() }}">Back</a>
         </div>
         <div>
-            @yield('requirementsbutton', '')
-        </div>
-        <div>
             {{ Form::submit('Submit', ['class' => 'btn']) }}
         </div>
     </div>

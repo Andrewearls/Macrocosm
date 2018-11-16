@@ -4,6 +4,30 @@
     id="class"
 @endsection
 
+@section('cardbody')
+    <div class="row no-gutters">
+        <div class="col-sm-4 image-container">
+            <img src="{{ $result->image }}" class="fas fa-shopping-bag fa-5x">
+        </div>
+        <div class="col-sm-8 long-description">
+            
+            <p><span>Description:</span> {{ $result->description }}</p>
+            <p><span>Location:</span> {{ $result->location }}</p>
+            <p><span>When:</span> {{ date('g:i a', strtotime($result->time)).' on '.date('l m/d/Y', strtotime($result->date)) }}</p>
+            <p><span>Requirements:</span> 
+            	@if(!empty($result->requirements->toarray()))
+            		@foreach($result->requirements as $requirement)
+            			<a href="{{ $requirement->specific->descriptionRoute() }}">{{ $requirement->name.', ' }}</a>
+            		@endforeach
+            	@else
+            		None
+            	@endif
+            </p>
+            
+        </div>
+    </div>
+@endsection 
+
 @section('cardfooter')
     <div class="row justify-content-between no-gutters">
 

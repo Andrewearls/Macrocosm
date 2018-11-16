@@ -26,6 +26,9 @@ class TrainingClassesValidator extends FormRequest
         return [
             'name' => 'required',
             'description' => 'required',
+            'date' => 'required',
+            'time' => 'required',
+            'location' => 'required',
         ];
     }
 }

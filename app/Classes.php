@@ -13,7 +13,7 @@ class Classes extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'short_description', 'image', 'owner_id',
+        'name', 'description', 'short_description', 'image', 'owner_id', 'time', 'date', 'location',
     ];
 
     /**
@@ -48,5 +48,10 @@ class Classes extends Model
     public function enroll()
     {
         return $this->belongsToMany('App\User', 'class_enrollment', 'class_id', 'user_id')->withTimestamps();
+    }
+
+    public function descriptionRoute()
+    {
+        return route('classDescription', ['id' => $this->id]);
     }
 }

@@ -159,6 +159,12 @@
 		max-height: 55vh;
 	}
 
+		#description .long-description span {
+			font-size: 28px;
+			font-weight: 500;
+			color: purple;
+		}
+
 		/*#description .long-description p {
 			padding: 1em;
 		}*/
@@ -218,6 +224,18 @@
 		height: 100%;
 	}
 
+	#developer .long-description p {
+		border: 2px solid gray;
+		border-radius: 3px;
+		min-height: 40vh;
+		max-height: 40vh;
+		padding: .5em;
+	}
+
+	#developer .long-description p:hover {
+		border-color: lightgreen;
+	}
+
 	#developer .long-description .active {
 		color: lightblue
 	}
@@ -228,6 +246,10 @@
 
 	#developer .long-description .not-active:hover {
 		color: lightgreen;
+	}
+
+	#developer .long-description .where input {
+		width: 100%;
 	}
 
 

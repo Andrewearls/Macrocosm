@@ -21,6 +21,9 @@ class CreateClassesTable extends Migration
             $table->text('description')->nullable();
             $table->longText('image')->nullable();
             $table->integer('owner_id');
+            $table->time('time');
+            $table->date('date');
+            $table->string('location');
         });
     }
 
