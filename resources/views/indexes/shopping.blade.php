@@ -35,7 +35,7 @@
         </div>     
         <div class="row no-gutters item-display">
             @foreach((array) $externalResults as $result)
-                <div class="col-sm-2 item-container">
+                <div class="col-sm-3 item-container">
                     <?php echo(html_entity_decode($result['image'])) ?>
                 </div>
             @endforeach
