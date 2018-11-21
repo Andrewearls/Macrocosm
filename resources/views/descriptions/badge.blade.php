@@ -7,7 +7,7 @@
 @section('cardbody')
     <div class="row no-gutters">
         <div class="col-sm-4 image-container">
-        	<img src="{{ $result->image }}" class="fas fa-shopping-bag fa-5x">
+        	<img src="{{ $result->image }}" class="fas fa-shield-alt fa-5x">
         </div>
         <div class="col-sm-8 long-description">
         	
