@@ -75,4 +75,16 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany('App\Classes', 'class_enrollment', 'user_id', 'class_id')->withTimestamps();
     }
+
+    public function requirements()
+    {
+        return $this->belongsToMany('App\Requirement', 'user_requirement', 'user_id', 'requirement_id')->withTimestamps();
+    }
+
+    //recieves a collection of manditory requirements
+    //returns boolian if user meets manditory requirements
+    public function meetsRequirements($requirements)
+    {
+        return $requirements->diff($this->requirements)->isEmpty();
+    }
 }

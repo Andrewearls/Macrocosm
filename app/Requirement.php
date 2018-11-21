@@ -53,4 +53,9 @@ class Requirement extends Model
     {
     	return $this->belongsToMany('App\Classes', 'class_requirement', 'requirement_id', 'class_id')->withTimestamps();
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'user_requirement', 'requirement_id', 'user_id')->withTimestamps();
+    }
 }

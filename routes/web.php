@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function() {
 	Route::get('/badges/', 'BadgesController@index')->name('badges');
 	Route::get('/badge/{id}', 'BadgesController@badgeDescription')->name('badgeDescription');
 	Route::get('/badges/test', 'BadgesController@test')->name('badgesTest');
+	Route::get('/badge/{id}/claim', 'BadgesController@claim')->name('claimBadge');
 
 	//Expeditions
 	Route::get('/expeditions/', 'ExpeditionsController@index')->name('expeditions');
@@ -74,6 +75,7 @@ Route::middleware('auth')->group(function() {
 		Route::get('/cms/edit/class/{id}/requirements', 'TrainingController@editClassRequirements')->name('editClassRequirements');
 		Route::post('/cms/edit/class/{id}/requirements', 'TrainingController@updateClassRequirements');
 		Route::get('/cms/edit/class/{id}/enrolled', 'TrainingController@editClassEnrolled')->name('enrolled');
+		Route::post('/cms/edit/class/{id}/enrolled', 'TrainingController@updateClassEnrolled');
 	});
 
 	//BadgeMaster

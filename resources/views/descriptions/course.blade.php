@@ -17,7 +17,7 @@
             <p><span>Requirements:</span> 
             	@if(!empty($result->requirements->toarray()))
             		@foreach($result->requirements as $requirement)
-            			<a href="{{ $requirement->specific->descriptionRoute() }}">{{ $requirement->name.', ' }}</a>
+            			<a href="{{ $requirement->specific->descriptionRoute() }}" class="{{ (Auth::user()->requirements->contains('id', $requirement->id)) ? '' : 'btn-link-red' }}">{{ $requirement->name.', ' }}</a>
             		@endforeach
             	@else
             		None
@@ -32,7 +32,7 @@
     <div class="row justify-content-between no-gutters">
 
 	    <a href="{{ route('training') }}" class="col-sm-3 btn">Back to Training</a>
-	    @if(Auth::user()->positions->contains('name', 'explorer'))
+	    @if(Auth::user()->positions->contains('name', 'explorer') && Auth::user()->meetsRequirements($result->requirements))
 	    	@if(Auth::user()->enroll->contains('id', $result->id))
 		    	<a href="{{ route('unenroll', ['id' => $result->id]) }}" class="col-sm-3 btn btn-red">Unenroll</a>
 	    	@else

@@ -78,12 +78,16 @@ p:hover, p:focus, p:active {
 		color: lightgreen;
 	}*/
 
+	.btn-large {
+		font-size: 32px;
+		line-height: 1;
+
+	}
+
 	.btn-link-red{
 		background-color: transparent;
 		color: gray;
 		border: 0px;
-		font-size: 32px;
-		line-height: 1;
 	}
 
 	.btn-link-red:hover {

@@ -46,4 +46,9 @@ class Badges extends Model
     {
         return $this->belongsToMany('App\Requirement', 'badge_requirement', 'badge_id', 'requirement_id')->withTimestamps();
     }
+
+    public function descriptionRoute()
+    {
+        return route('badgeDescription', ['id' => $this->id]);
+    }
 }

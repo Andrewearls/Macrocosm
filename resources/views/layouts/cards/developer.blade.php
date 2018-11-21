@@ -22,7 +22,7 @@
             </div>
         @endif
         @if (isset($deleteRoute))
-            <div class="col-sm-1 remove-all"><a href="{{ $deleteRoute }}"><div class="far fa-times-circle fa-3x btn btn-link-red"></div></a></div>
+            <div class="col-sm-1 remove-all"><a href="{{ $deleteRoute }}"><div class="far fa-times-circle fa-3x btn btn-large btn-link-red"></div></a></div>
         @endif
         
     </div>
@@ -35,8 +35,9 @@
             {{ Form::file('image', ['onchange' => 'readURL(this)']) }}
         </div>
         <div class="col-sm-8 long-description">
+            {{ Form::label('description:') }}
             <p>
-            	{{ Form::label('description:') }}
+            	
             	{{ Form::textArea('description', (isset($result->description)) ? $result->description : '') }}
             </p>
         </div>

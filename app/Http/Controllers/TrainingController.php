@@ -34,9 +34,13 @@ class TrainingController extends Controller
 
     public function classDescription($id)
     {
-        $result = Classes::findOrFail($id);
+        $class = Classes::findOrFail($id);
         // dd(empty($result->requirements->toarray()));
-        return view('descriptions.course')->with(['result' => $result])        ;
+        // dd(Auth::user()->requirements->contains($class->requirements));
+        //check if user meets class requirements
+        //$user->meetsRequirements($class->requirements) -- returns true or false
+        // dd( Auth::user()->meetsRequirements($class->requirements) );
+        return view('descriptions.course')->with(['result' => $class]);
     }
 
     public function newItem()
@@ -114,6 +118,9 @@ class TrainingController extends Controller
     public function enroll($id)
     {
         $class = Classes::findOrFail($id);
+        //if user meets class requirements
+        // if(Auth::user()-> $class->requirements;
+        // dd(Auth::user()->requirements);
         $class->enroll()->attach(Auth::user()->id);
         return redirect()->route('classDescription', ['id' => $id]);
     }
@@ -129,6 +136,16 @@ class TrainingController extends Controller
     {
         $class = Classes::findOrFail($id);
         $enrolled = $class->enroll;
+
         return view('activations.enrollment')->with(['notActive' => $enrolled->toArray(), 'active' => [], 'result' => $class]);
+    }
+
+    public function updateClassEnrolled(Request $request, $id)
+    {
+        $class = Classes::findOrFail($id);
+        $class->enroll()->detach($request->ids);
+        $class->requirement->users()->attach($request->ids);
+        // dd(Auth::user()->requirements);
+        return redirect()->route('classDescription', ['id' => $id]);
     }
 }
