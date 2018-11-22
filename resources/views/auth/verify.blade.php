@@ -10,7 +10,7 @@
 
 @section('cardheader')
 <div class="row no-gutters">
-	<div class="col-sm-12 title">
+	<div class="col-12 title">
 	    {{ __('Verify Your Email Address') }}
 	</div>
 </div>
@@ -18,7 +18,7 @@
 
 @section('cardbody')
 	<div class="row no-gutters justify-content-center">
-		<div class="col-sm-10">
+		<div class="col-10">
 		    @if (session('resent'))
 		        <div class="alert alert-success" role="alert">
 		            {{ __('A fresh verification link has been sent to your email address.') }}

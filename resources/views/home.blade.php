@@ -6,7 +6,7 @@
 
 @section('cardheader')
     <div class="row justify-content-between">
-        <div class="col-sm-5 title">
+        <div class="col-12 col-sm-5 title">
             Dashboard
         </div>
     </div>
@@ -56,7 +56,7 @@
         </div>        
     </div>
     <div class="row justify-content-center no-gutters comming-soon">
-        <div class="col-sm-12 title more-comming">
+        <div class="col-12 title more-comming">
             More To Come!
         </div>
     </div>

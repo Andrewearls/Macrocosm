@@ -6,10 +6,10 @@
 
 @section('cardbody')
     <div class="row no-gutters">
-        <div class="col-sm-4 image-container">
+        <div class="col-12 col-sm-4 image-container">
             <img src="{{ $result->image }}" class="fas fa-shopping-bag fa-5x">
         </div>
-        <div class="col-sm-8 long-description">
+        <div class="col-12 col-sm-8 long-description">
             
             <p><span>Description:</span> {{ $result->description }}</p>
             <p><span>Location:</span> {{ $result->location }}</p>
@@ -31,17 +31,17 @@
 @section('cardfooter')
     <div class="row justify-content-between no-gutters">
 
-	    <a href="{{ route('training') }}" class="col-sm-3 btn">Back to Training</a>
+	    <a href="{{ route('training') }}" class="col-5 col-sm-3 btn">Back to Training</a>
 	    @if(Auth::user()->positions->contains('name', 'explorer') && Auth::user()->meetsRequirements($result->requirements))
 	    	@if(Auth::user()->enroll->contains('id', $result->id))
-		    	<a href="{{ route('unenroll', ['id' => $result->id]) }}" class="col-sm-3 btn btn-red">Unenroll</a>
+		    	<a href="{{ route('unenroll', ['id' => $result->id]) }}" class="col-3 btn btn-red">Unenroll</a>
 	    	@else
-		    	<a href="{{ route('enroll', ['id' => $result->id]) }}" class="col-sm-3 btn">Enroll</a>
+		    	<a href="{{ route('enroll', ['id' => $result->id]) }}" class="col-3 btn">Enroll</a>
 	    	@endif
 	    @endif
 	    @if(Auth::user()->positions->contains('name', 'instructor'))
-	    	<a href="{{ route('enrolled', ['id' => $result->id]) }}" class="col-sm-3 btn">Enrolled</a> 
-	        <a href="{{ route('editClassItem', ['id' => $result->id]) }}" class="col-sm-3 btn">Edit</a>    
+	    	<a href="{{ route('enrolled', ['id' => $result->id]) }}" class="col-3 btn">Enrolled</a> 
+	        <a href="{{ route('editClassItem', ['id' => $result->id]) }}" class="col-3 btn">Edit</a>    
 	    @endif
 	</div>
 @endsection

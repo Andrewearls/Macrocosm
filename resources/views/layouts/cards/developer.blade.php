@@ -10,19 +10,19 @@
 
 @section('cardheader')
     <div class="row no-gutters justify-content-between">
-        <div class="col-sm-6 title">
+        <div class="col-6 title">
             {{ Form::label('cms:') }}
             {{ Form::text('name', (isset($result->name)) ? $result->name : 'name') }}
         </div>
         
         @if(isset($result->price))
-            <div class="col-sm-4">
+            <div class="col-4">
                 {{ Form::label('$') }}
                 {{ Form::text('price', $result->price) }}                
             </div>
         @endif
         @if (isset($deleteRoute))
-            <div class="col-sm-1 remove-all"><a href="{{ $deleteRoute }}"><div class="far fa-times-circle fa-3x btn btn-large btn-link-red"></div></a></div>
+            <div class="col-1 remove-all"><a href="{{ $deleteRoute }}"><div class="far fa-times-circle fa-3x btn btn-large btn-link-red"></div></a></div>
         @endif
         
     </div>
@@ -30,11 +30,11 @@
 
 @section('cardbody')
     <div class="row no-gutters align-results-center">
-        <div class="col-sm-4 image-container">
+        <div class="col-4 image-container">
         	<img src='{{ (isset($result->image)) ? $result->image : "" }}' class="fas fa-shopping-bag fa-5x">
             {{ Form::file('image', ['onchange' => 'readURL(this)']) }}
         </div>
-        <div class="col-sm-8 long-description">
+        <div class="col-8 long-description">
             {{ Form::label('description:') }}
             <p>
             	
@@ -46,7 +46,7 @@
 
 @section('cardfooter')
     <div class="row justify-content-between no-gutters">
-        <div class="col-sm-1">
+        <div class="col-1">
             <a class="btn" href="{{ url()->previous() }}">Back</a>
         </div>
         <div>

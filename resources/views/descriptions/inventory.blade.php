@@ -6,10 +6,10 @@
 
 @section('cardheader')
     <div class="row">
-        <div class="col-sm-6 title">
+        <div class="col-6 title">
             <div> {{ $result->name }} </div>
         </div>
-        <div class="col-sm-6 title price">
+        <div class="col-6 title price">
             ${{ $result->price }}
         </div>
     </div>
@@ -17,11 +17,11 @@
 
 @section('cardfooter')
     <div class="row justify-content-between no-gutters">
-        <a href="{{ route('shopping', ['page' => 1]) }}" class="col-sm-3 btn">Back To Shopping</a>
+        <a href="{{ route('shopping', ['page' => 1]) }}" class="col-3 btn">Back To Shopping</a>
         @if(Auth::user()->positions->contains('name', 'developer'))
-            <a href="{{ route('editInternalShoppingItem', ['id' => $result->id]) }}" class="col-sm-3 btn">edit</a>
+            <a href="{{ route('editInternalShoppingItem', ['id' => $result->id]) }}" class="col-3 btn">edit</a>
         @endif
-        <button class="col-sm-2 add-to-cart btn" name="item" value="{{ $result->id }}">Add To Cart</button>      
+        <button class="col-2 add-to-cart btn" name="item" value="{{ $result->id }}">Add To Cart</button>      
     </div>
 @endsection
 

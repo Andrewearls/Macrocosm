@@ -2,15 +2,15 @@
 
 @section('cardbody')
 	<div class="row no-gutters align-results-center">
-        <div class="col-sm-4 image-container">
+        <div class="col-4 image-container">
         	<img src='{{ (isset($result->image)) ? $result->image : "" }}' class="fas fa-shopping-bag fa-5x">
             {{ Form::file('image', ['onchange' => 'readURL(this)']) }}
         </div>
-        <div class="col-sm-8 long-description">
+        <div class="col-8 long-description">
         	<div class="row no-gutters tab-container">
-            	<div class="col-sm-4 tab active" onclick="makevisible('.description')">{{ Form::label('description') }}</div>
-            	<div class="col-sm-4 tab not-active" onclick="makevisible('.when')">{{ Form::label('when') }}</div>
-            	<div class="col-sm-4 tab not-active" onclick="makevisible('.where')">{{ Form::label('where') }}</div>
+            	<div class="col-4 tab active" onclick="makevisible('.description')">{{ Form::label('description') }}</div>
+            	<div class="col-4 tab not-active" onclick="makevisible('.when')">{{ Form::label('when') }}</div>
+            	<div class="col-4 tab not-active" onclick="makevisible('.where')">{{ Form::label('where') }}</div>
             </div>
             <p class="description visible">
             	{{ Form::textArea('description', (isset($result->description)) ? $result->description : '') }}
@@ -32,11 +32,11 @@
 
 @section('cardfooter')
     <div class="row justify-content-between no-gutters">
-        <div class="col-sm-1">
+        <div class="col-1">
             <a class="btn" href="{{ url()->previous() }}">Back</a>
         </div>
 	    @if(Auth::user()->positions->contains('name', 'instructor'))
-	        <div class="col-sm-3">
+	        <div class="col-3">
 	        	<a class="btn" href="{{ route('editClassRequirements', ['id' => $result->id]) }}">Add Requirements</a>
 	        </div>
 	    @endif

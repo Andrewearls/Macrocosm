@@ -6,11 +6,11 @@
 
 @section('cardheader')
     <div class="row justify-content-between no-gutters">
-        <div class="col-sm-5 title">
+        <div class="col-5 col-6 title">
             Badges
         </div>
         @if(Auth::user()->positions->contains('name', 'badgemaster'))
-	        <div class="col-sm-2 btn-container">
+	        <div class="col-4 btn-container">
 	            <a class="btn" href="{{ route('newBadge') }}">New Badge</a>
 	        </div>
 	    @endif

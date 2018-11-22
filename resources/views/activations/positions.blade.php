@@ -6,7 +6,7 @@
 
 @section('cardheader')
     <div class="row justify-content-between no-gutters">
-        <div class="col-sm-5 title">
+        <div class="col-5 title">
             List of Users:
         </div>        
     </div>

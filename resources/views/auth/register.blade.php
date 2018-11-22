@@ -7,7 +7,7 @@
 
 @section('cardheader')
     <div class="row justify-content-between no-gutters">
-        <div class="col-sm-3 title">
+        <div class="col-6 col-sm-6 title">
             {{ __('Register') }}
         </div>
     </div>

@@ -6,7 +6,7 @@
 
 @section('cardheader')
     <div class="row">
-        <div class="col-sm-6 title">
+        <div class="col-6 title">
             <div> Cart </div>
         </div>
     </div>
@@ -15,25 +15,25 @@
 @section('cardbody') 
     
     <div class="row justify-content-center align-items-center cart-empty hidden">
-        <div class="col-sm-12 error">There are no items in your cart.</div>
+        <div class="col-12 error">There are no items in your cart.</div>
     </div> 
     @foreach((array) $cart as $item)
         <div class="row no-gutters justify-content-center align-items-center cart-not-empty">
-            <div class="col-sm-2 image-container">
+            <div class="col-2 image-container">
                 <img src="{{ $item->image }}" class="fas fa-shopping-bag fa-5x">
             </div>
-            <a href="{{ route('itemDescription', ['id' => $item->id])}}" class="col-sm-4 description">
+            <a href="{{ route('itemDescription', ['id' => $item->id])}}" class="col-4 description">
                 
                 <div class="title">{{ $item->name }}</div>
                 <p>{{ $item->short_description }}</p>
                 
             </a>
-            <div class="col-sm-2 amount">
+            <div class="col-2 amount">
                 <input type="text" name="amount" value="{{ $item->amount }}" autocomplete="off" readonly>
                 <button href="{{ route('removeFromCart', ['id' => $item->id ]) }}" class="btn btn-red minus remove-from-cart" value="{{ $item->id }}">-1</button><button href="{{ route('addToCart', ['id' => $item->id ]) }}" class="btn add-to-cart" value="{{ $item->id }}">+1</button>
             </div>
-            <div class="col-sm-2 price">$<span>{{ $item->price * $item->amount }}</span></div>
-            <div class="col-sm-2 remove-all"><button class="far fa-times-circle fa-3x btn btn-link-red" value="{{ $item->id }}"></button></div>
+            <div class="col-2 price">$<span>{{ $item->price * $item->amount }}</span></div>
+            <div class="col-2 remove-all"><button class="far fa-times-circle fa-3x btn btn-link-red" value="{{ $item->id }}"></button></div>
         </div>
     @endforeach     
  
@@ -42,19 +42,19 @@
 @section('cardfooter')
     
     <div class="row no-gutters justify-content-start">
-        <div class="col-sm-5">
+        <div class="col-5">
             
             <a class="btn float-left" href="{{ route('shopping', ['page' => 1]) }}">Return to shopping</a>
             
         </div>
     
         
-            <div id="total" class="col-sm-7 cart-not-empty">
+            <div id="total" class="col-7 cart-not-empty">
                 {{ Form::open(array('url' => route('checkout'))) }}
                 <div class="row no-gutters">
-                    <div class="col-sm-3 title total">Total:</div>
-                    <div class="col-sm-4 title price">$<span>{{ $total }}</span></div>
-                    <button class="col-sm-5 btn" type="submit">Checkout</button>
+                    <div class="col-3 title total">Total:</div>
+                    <div class="col-4 title price">$<span>{{ $total }}</span></div>
+                    <button class="col-5 btn" type="submit">Checkout</button>
                 </div>
                 {{ Form::close() }}
             </div>

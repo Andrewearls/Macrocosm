@@ -6,19 +6,19 @@
 
 @section('cardheader')
     <div class="row no-gutters justify-content-between">
-        <div class="col-sm-6 title">
+        <div class="col-6 title">
             {{ Form::label('cms:') }}
             {{ Form::text('name', (isset($result->name)) ? $result->name : 'name') }}
         </div>
         
         
-        <div class="col-sm-4">
+        <div class="col-4">
             {{ Form::label('$') }}
             {{ Form::text('price', (isset($result->price)) ? $result->price : 1) }}                
         </div>
         
         
-        <div class="col-sm-1 remove-all"><a href="{{ (isset($result->id)) ? route('deleteShoppingItem', ['id' => $result-id]) : route('shopping', ['page' => 1]) }}"><div class="far fa-times-circle fa-3x btn btn-link-red"></div></a></div>
+        <div class="col-1 remove-all"><a href="{{ (isset($result->id)) ? route('deleteShoppingItem', ['id' => $result-id]) : route('shopping', ['page' => 1]) }}"><div class="far fa-times-circle fa-3x btn btn-link-red"></div></a></div>
         
         
     </div>
@@ -26,11 +26,11 @@
 
 @section('cardbody')
     <div class="row no-gutters align-results-center">
-        <div class="col-sm-4 image-container">
+        <div class="col-4 image-container">
         	<img src='{{ (isset($result->image)) ? $result->image : "" }}' class="fas fa-shopping-bag fa-5x">
             {{ Form::file('image', ['onchange' => 'readURL(this)']) }}
         </div>
-        <div class="col-sm-8 long-description">
+        <div class="col-8 long-description">
             <p>
             	{{ Form::label('description:') }}
             	{{ Form::textArea('description', (isset($result->description)) ? $result->description : '') }}
