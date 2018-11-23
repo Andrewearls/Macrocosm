@@ -15,7 +15,7 @@
 @section('cardbody')                
     <div class="row no-gutters">
         <div class="col-md-6 left">
-            <a href="{{ route('shopping', ['page' => 1]) }}" class="row no-gutters">                       
+            <a href="{{ route('shopping') }}" class="row no-gutters">                       
                 <div class="col-md-8">
                     <div class="title">Shopping</div>
                     <p>Shop the macrocosmic-store!</p>

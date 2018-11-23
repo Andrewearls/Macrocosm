@@ -25,22 +25,22 @@ class ShoppingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($page = 1)
+    public function index()
     {        
-        $count = Inventory::all()->count();
-        $pages = ceil( $count/12 );
-        if ($page < 1) {
-            return redirect()->route('shopping', ['page' => 1]);
-        } elseif ($page > $pages && $pages > 0) {
-            return redirect()->route('shopping', ['page' => $pages]);
-        }
-    	$results = Inventory::skip(($page-1)*12)->take(12)->get()->toArray();  
+        // $count = Inventory::all()->count();
+        // $pages = ceil( $count/12 );
+        // if ($page < 1) {
+        //     return redirect()->route('shopping', ['page' => 1]);
+        // } elseif ($page > $pages && $pages > 0) {
+        //     return redirect()->route('shopping', ['page' => $pages]);
+        // }
+    	$internalInventory = Inventory::all()->toArray();  
 
         $descriptionRoute = 'itemDescription';
 
         $externalInventory = ExternalInventory::all()->toArray();      
         
-        return view('indexes.shopping')->with(['results' => $results, 'pages' => $pages, 'page' => $page, 'count' => $count, 'routeName' => $descriptionRoute, 'externalResults' => $externalInventory]);
+        return view('indexes.shopping')->with(['results' => $internalInventory, 'routeName' => $descriptionRoute, 'externalResults' => $externalInventory]);
     }
 
     public function inventoryDescription($id)
@@ -141,7 +141,7 @@ class ShoppingController extends Controller
 
     //the following two should return the same view
 
-    public function createItem(ShoppingItemValidator $request)      
+    public function createInternalItem(ShoppingItemValidator $request)      
     {
         $user = Auth::user();
         $validated = $request->validated();
@@ -150,14 +150,14 @@ class ShoppingController extends Controller
         return redirect()->route('itemDescription', ['id' => $result->id]);
     }
 
-    public function editItem($id)
+    public function editInternalItem($id)
     {
         $result = Inventory::findOrFail($id);
-        $deleteRoute = route('deleteShoppingItem', ['id' => $result->id]);
+        $deleteRoute = route('deleteInternalShoppingItem', ['id' => $result->id]);
         return view('layouts.cards.developer')->with(['result' => $result, 'deleteRoute' => $deleteRoute]);
     }
 
-    public function updateItem(ShoppingItemValidator $request)
+    public function updateInternalItem(ShoppingItemValidator $request)
     {
         $validated = $request->validated();
         $result = Inventory::findOrFail($request->id);
@@ -168,7 +168,7 @@ class ShoppingController extends Controller
         return redirect()->route('itemDescription', ['id' => $result->id]);
     }
 
-    public function deleteItem($id)
+    public function deleteInternalItem($id)
     {
         $result = Inventory::findOrFail($id);
         $result->delete();

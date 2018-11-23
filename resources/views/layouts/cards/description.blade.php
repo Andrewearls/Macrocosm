@@ -17,7 +17,7 @@
         </div>
         <div class="col-8 long-description">
         	
-        	<p>Description: {{ $result->description }}</p>
+        	<p><span>Description:</span> {{ $result->description }}</p>
             
         </div>
     </div>

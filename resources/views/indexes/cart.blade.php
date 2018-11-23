@@ -33,7 +33,7 @@
                 <button href="{{ route('removeFromCart', ['id' => $item->id ]) }}" class="btn btn-red minus remove-from-cart" value="{{ $item->id }}">-1</button><button href="{{ route('addToCart', ['id' => $item->id ]) }}" class="btn add-to-cart" value="{{ $item->id }}">+1</button>
             </div>
             <div class="col-2 price">$<span>{{ $item->price * $item->amount }}</span></div>
-            <div class="col-2 remove-all"><button class="far fa-times-circle fa-3x btn btn-link-red" value="{{ $item->id }}"></button></div>
+            <div class="col-2 remove-all"><button class="far fa-times-circle fa-3x btn btn-large btn-link-red" value="{{ $item->id }}"></button></div>
         </div>
     @endforeach     
  

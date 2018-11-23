@@ -37,9 +37,6 @@ Route::middleware('auth')->group(function() {
 	Route::get('shopping/checkout', 'ShoppingController@checkout')->name('checkout');
 	//shopping page navigation
 	Route::get('/shopping/', 'ShoppingController@index')->name('shopping');
-	Route::get('/shopping/{page}', 'ShoppingController@index');
-	Route::get('/shopping/page/{page}', 'ShoppingController@index');
-
 
 	//training 
 	Route::get('/training/', 'TrainingController@index')->name('training');
@@ -121,14 +118,6 @@ Route::middleware('auth')->group(function() {
 		Route::get('/cms/edit/external/shopping/item/{id}', 'ShoppingController@editInternalItem')->name('editExternalShoppingItem');
 		Route::post('/cms/edit/external/shopping/item/{id}', 'ShoppingController@updateInternalItem');
 		Route::get('/cms/delete/external/shopping/item/{id}', 'ExternalInventoryController@deleteInventoryItem')->name('deleteExternalInventoryItem');
-
-
-		
-
-		
-
-		
-		
 
 		//Positions CMS
 		Route::get('/positions', 'PositionsController@listPositions')->name('positions');
