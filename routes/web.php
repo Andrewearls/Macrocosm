@@ -32,11 +32,15 @@ Route::middleware('auth')->group(function() {
 	Route::post('shopping/add-to-cart', 'ShoppingController@addToCart')->name('addToCart');
 	Route::post('shopping/remove-from-cart', 'ShoppingController@removeFromCart')->name('removeFromCart');
 	Route::post('shopping/clear-item', 'ShoppingController@clearItem')->name('clearItem');
-	Route::post('shopping/checkout', 'ShoppingController@checkout')->name('checkout');
+	Route::post('shopping/checkout', 'ShoppingController@checkout');
 	Route::get('/shopping/cart', 'ShoppingController@cart')->name('cart');
 	Route::get('shopping/checkout', 'ShoppingController@checkout')->name('checkout');
+	Route::post('/shopping/charge', 'ShoppingController@charge')->name('charge');
 	//shopping page navigation
 	Route::get('/shopping/', 'ShoppingController@index')->name('shopping');
+
+	Route::get('/payment/method', 'StripeController@index')->name('paymentMethod');
+
 
 	//training 
 	Route::get('/training/', 'TrainingController@index')->name('training');

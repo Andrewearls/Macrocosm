@@ -50,13 +50,11 @@
     
         
             <div id="total" class="col-7 cart-not-empty">
-                {{ Form::open(array('url' => route('checkout'))) }}
                 <div class="row no-gutters">
                     <div class="col-3 title total">Total:</div>
                     <div class="col-4 title price">$<span>{{ $total }}</span></div>
-                    <button class="col-5 btn" type="submit">Checkout</button>
+                    <a href="{{ route('paymentMethod') }}" class="col-5 btn">Payment Method</a>
                 </div>
-                {{ Form::close() }}
             </div>
         
 

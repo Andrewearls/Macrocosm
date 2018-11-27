@@ -56,7 +56,7 @@ class ShoppingController extends Controller
         $cartTotal = 0;
         $sessionCart = $request->session()->get('cart.item');
 
-        //below null $sessionCart is typecast to array
+        //below $sessionCart is typecast to (array)
         foreach ((array) $sessionCart as $item => $amount) { 
 
             $retrieved = Inventory::findOrFail($item);
@@ -64,6 +64,7 @@ class ShoppingController extends Controller
             $cart[] = $retrieved;
             $cartTotal = $cartTotal + ($retrieved->price * $amount);
         }
+        session(['cart.total' => $cartTotal]);
         // dd(empty($cart));
         return view('indexes.cart')->with(['cart' => $cart, 'total' => $cartTotal]);
     }
@@ -117,8 +118,39 @@ class ShoppingController extends Controller
 
     public function checkout(Request $request)
     {
-        $request->session()->pull('cart');
-        return redirect()->back();
+        // Auth::user()->newSubscription('main', 'test')->create($request->stripeToken, []);
+
+        $cart = [];
+        $cartTotal = 0;
+        $sessionCart = $request->session()->get('cart.item');
+
+        //below $sessionCart is typecast to (array)
+        foreach ((array) $sessionCart as $item => $amount) { 
+
+            $retrieved = Inventory::findOrFail($item);
+            $retrieved->amount = $amount;
+            $cart[] = $retrieved;
+            $cartTotal = $cartTotal + ($retrieved->price * $amount);
+        }
+
+        // dd($cartTotal);
+
+        return view('indexes.checkout', ['results' => [], 'cart' => $cart, 'cartTotal' => $cartTotal]);
+    }
+
+    public function charge(Request $request)
+    {
+        $token = $request->stripeToken;
+        // Auth::user()->newSubscription('main', 'test')->create($token, []);
+        // Auth::user()->charge([
+        //     'amount' => 9999,
+        //     'currency' => 'usd',
+        //     'description' => 'example charge',
+        //     'source' => $token,
+        //     'statement_descriptor' => 'Macrocosmic Receipt',
+        // ]);
+        // Auth::user()->subscription('main')->cancelNow();
+        return 'success';
     }
 
     public function clearItem(Request $request)

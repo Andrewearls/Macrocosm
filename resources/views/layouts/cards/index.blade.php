@@ -6,7 +6,7 @@
 
 @section('cardheader')
     <div class="row justify-content-between">
-        <div class="col-5">
+        <div class="col-5 title">
             Index
         </div>
     </div>

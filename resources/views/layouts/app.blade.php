@@ -40,9 +40,10 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
+                    @if(\Request::is('shopping') || \Request::is('shopping/*'))
                         <div class="added">Added</div>
                         <div class="navbar-nav"><a href="{{route('cart') }}"><i class="fas fa-shopping-bag fa-2x"></i></a></div>
-
+                    @endif
                     <ul class="navbar-nav">
                         <!-- Authentication Links -->
                         @guest
