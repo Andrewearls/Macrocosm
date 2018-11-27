@@ -26,20 +26,7 @@ Route::middleware('auth')->group(function() {
 	// Route::get('/', 'HomeController@index')->name('welcome');
 	Route::get('/home', 'HomeController@index')->name('home');
 
-	//shopping items
-	Route::get('/shopping/item/{id}', 'ShoppingController@inventoryDescription')->name('itemDescription');
-	//shopping add to cart
-	Route::post('shopping/add-to-cart', 'ShoppingController@addToCart')->name('addToCart');
-	Route::post('shopping/remove-from-cart', 'ShoppingController@removeFromCart')->name('removeFromCart');
-	Route::post('shopping/clear-item', 'ShoppingController@clearItem')->name('clearItem');
-	Route::post('shopping/checkout', 'ShoppingController@checkout');
-	Route::get('/shopping/cart', 'ShoppingController@cart')->name('cart');
-	Route::get('shopping/checkout', 'ShoppingController@checkout')->name('checkout');
-	Route::post('/shopping/charge', 'ShoppingController@charge')->name('charge');
-	//shopping page navigation
-	Route::get('/shopping/', 'ShoppingController@index')->name('shopping');
-
-	Route::get('/payment/method', 'StripeController@index')->name('paymentMethod');
+	
 
 
 	//training 
@@ -106,6 +93,22 @@ Route::middleware('auth')->group(function() {
 		Route::get('/cms', 'DeveloperController@index')->name('cms');
 		Route::post('/cms/new', 'DeveloperController@formSubmit')->name('cmsNew');
 		Route::post('/cms/update/{id}')->name('cmsUpdate');
+
+		//shopping for the user
+		//future rollout
+		Route::get('/shopping/item/{id}', 'ShoppingController@inventoryDescription')->name('itemDescription');
+		//shopping add to cart
+		Route::post('shopping/add-to-cart', 'ShoppingController@addToCart')->name('addToCart');
+		Route::post('shopping/remove-from-cart', 'ShoppingController@removeFromCart')->name('removeFromCart');
+		Route::post('shopping/clear-item', 'ShoppingController@clearItem')->name('clearItem');
+		Route::post('shopping/checkout', 'ShoppingController@checkout');
+		Route::get('/shopping/cart', 'ShoppingController@cart')->name('cart');
+		Route::get('shopping/checkout', 'ShoppingController@checkout')->name('checkout');
+		Route::post('/shopping/charge', 'ShoppingController@charge')->name('charge');
+		//shopping page navigation
+		Route::get('/shopping/', 'ShoppingController@index')->name('shopping');
+
+		Route::get('/payment/method', 'StripeController@index')->name('paymentMethod');
 
 		//Shopping CMS
 		Route::get('/cms/new/internal/shopping/item', 'ShoppingController@newInternalItem')->name('newInternalShoppingItem');

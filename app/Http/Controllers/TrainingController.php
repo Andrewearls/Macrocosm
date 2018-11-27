@@ -34,6 +34,7 @@ class TrainingController extends Controller
 
     public function classDescription($id)
     {
+        // dd(Auth::user()->classes);
         $class = Classes::findOrFail($id);
         // dd(empty($result->requirements->toarray()));
         // dd(Auth::user()->requirements->contains($class->requirements));

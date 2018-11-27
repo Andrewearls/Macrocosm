@@ -15,6 +15,7 @@
             <p><span>Location:</span> {{ $result->location }}</p>
             <p><span>When:</span> {{ date('g:i a', strtotime($result->time)).' on '.date('l m/d/Y', strtotime($result->date)) }}</p>
             <p><span>Requirements:</span> 
+                
             	@if(!empty($result->requirements->toarray()))
             		@foreach($result->requirements as $requirement)
             			<a href="{{ $requirement->specific->descriptionRoute() }}" class="{{ (Auth::user()->requirements->contains('id', $requirement->id)) ? '' : 'btn-link-red' }}">{{ $requirement->name.', ' }}</a>
@@ -32,7 +33,7 @@
     <div class="row justify-content-between no-gutters">
 
 	    <a href="{{ route('training') }}" class="col-5 col-sm-3 btn">Back to Training</a>
-	    @if(Auth::user()->positions->contains('name', 'explorer') && Auth::user()->meetsRequirements($result->requirements))
+	    @if(!Auth::user()->requirements->contains('id', $result->requirement->id) && Auth::user()->meetsRequirements($result->requirements))
 	    	@if(Auth::user()->enroll->contains('id', $result->id))
 		    	<a href="{{ route('unenroll', ['id' => $result->id]) }}" class="col-3 btn btn-red">Unenroll</a>
 	    	@else
