@@ -267,13 +267,19 @@
 /*Activation*/
 #activation {}
 
-	#activation .card-body .btn {
-		width: 100%;
+	#activation .card-body {
+		overflow: hidden;
 	}
 
+		#activation .card-body .btn {
+			width: 100%;
+		}
+
 	#activation .active, #activation .not-active {
-		height: 55vh;
+		min-height: 55vh;
+		height: 0px;
 		padding: 0px;
+		overflow-y: scroll;
 	}
 
 		#activation .active .row, #activation .not-active .row {

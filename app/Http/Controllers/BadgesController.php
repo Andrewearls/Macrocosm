@@ -114,7 +114,7 @@ class BadgesController extends Controller
     public function claim($id)
     {
         $badge = Badges::findOrFail($id);
-        Auth::user()->badges()->attach($badge->id);
+        Auth::user()->requirements()->attach($badge->requirement->id);
         return redirect()->route('badgeDescription', ['id' => $badge->id]);
     }
 

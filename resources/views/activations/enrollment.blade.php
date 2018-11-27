@@ -19,10 +19,10 @@
     <div class="row no-gutters results-container">
         <div class="col-6 active">
         	<div class="row no-gutters table-header">
-        		<div class="col-6">
+        		<div class="col-4">
         			Explorer
         		</div>
-        		<div class="col-3">
+        		<div class="col-5">
         			Date Passed
         		</div>
         	</div>
@@ -30,10 +30,10 @@
                 @foreach((array) $active as $item)
                     <div class="row no-gutters">
                         <input type="hidden" name="ids[]" value="{{ $item['id'] }}">
-                        <div class="col-6">
+                        <div class="col-4">
                             <a class="name" href="">{{ $item['name'] }}</a>
                         </div>
-                        <div>
+                        <div class="col-5">
                         	Date -- -- 
                         </div>
                         <div class="col-3">
@@ -45,21 +45,21 @@
         </div>
         <div class="col-6 not-active">
         	<div class="row no-gutters table-header">
-        		<div class="col-6">
+        		<div class="col-4">
         			Explorer
         		</div>
-        		<div class="col-3">
+        		<div class="col-5">
         			Date Enrolled
         		</div>
         	</div>
             @foreach((array) $notActive as $item)
                 <div class="row no-gutters">
                     <input type="hidden" name="ids[]" value="{{ $item['id'] }}">
-                    <div class="col-6">
-                        <a class="name" href="">{{ $item['name'] }}</a>
+                    <div class="col-4">
+                        <a class="name" >{{ $item['name'] }}</a>
                     </div>
-                    <div class="col-3">
-                    	Date -- --
+                    <div class="col-5">
+                    	{{ $item['enrolled'] }}
                     </div>
                     <div class="col-3">
                         <button class="btn activate"></button>

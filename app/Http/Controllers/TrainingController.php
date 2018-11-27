@@ -37,7 +37,7 @@ class TrainingController extends Controller
         // dd(Auth::user()->classes);
         $class = Classes::findOrFail($id);
         // dd(empty($result->requirements->toarray()));
-        // dd(Auth::user()->requirements->contains($class->requirements));
+        // dd(Auth::user()->requirements);
         //check if user meets class requirements
         //$user->meetsRequirements($class->requirements) -- returns true or false
         // dd( Auth::user()->meetsRequirements($class->requirements) );
@@ -136,7 +136,15 @@ class TrainingController extends Controller
     public function editClassEnrolled($id)
     {
         $class = Classes::findOrFail($id);
-        $enrolled = $class->enroll;
+        $enrolled = $class->enroll->map(function ($user, $key) {
+            return [
+                'id' => $user->id,
+                'name' => $user->name,
+                'enrolled' => date('g:i a m/d/Y', strtotime($user->pivot->created_at)),
+            ];
+        });
+        // dd($enrolled->first()->pivot->created_at);
+        // dd($enrolled);
 
         return view('activations.enrollment')->with(['notActive' => $enrolled->toArray(), 'active' => [], 'result' => $class]);
     }

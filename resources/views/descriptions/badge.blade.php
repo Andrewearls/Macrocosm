@@ -30,7 +30,7 @@
 @section('cardfooter')
     <div class="row justify-content-between no-gutters">
 	    <a href="{{ route('badges') }}" class="col-5 col-sm-3 btn">Back to Badges</a>
-	    @if(Auth::user()->meetsRequirements($result->requirements) && !Auth::user()->badges->contains('id', $result->id))
+	    @if(Auth::user()->meetsRequirements($result->requirements) && !Auth::user()->requirements->contains('id', $result->requirement->id))
 	    	<a href="{{ route('claimBadge', ['id' => $result->id]) }}" class="col-3 btn">Claim</a>
     	@endif
 	    @if(Auth::user()->positions->contains('name', 'badgemaster'))
