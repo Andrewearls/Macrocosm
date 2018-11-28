@@ -254,6 +254,11 @@
 
 
 /*Index*/
+	#index .card-body > .row > * {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	
 	#index .item-container {
 		align-content: center;
 		text-align: center;		
@@ -263,6 +268,27 @@
 	#index .item-container:hover, #index .item-container:hover * {
 		border-color: lightgreen;	
 	}
+
+	#index .acquired {
+		color: yellow;
+	} 
+		#index .acquired:hover {
+			border-color: yellow;
+		}
+	#index .enrolled {
+		color: lightgreen;
+	}
+
+	#index .availible {
+	}
+
+	#index .not-availible {
+		color: red;
+	}
+
+		#index .not-availible:hover {
+			border-color: red;
+		}
 
 /*Activation*/
 #activation {}

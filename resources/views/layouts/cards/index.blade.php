@@ -15,22 +15,16 @@
 @section('cardbody')        
     <div class="row no-gutters">
         @foreach((array) $results as $result)
-            <a href="{{ route( $routeName, ['id' => $result['id']]) }}" class="col-6 col-sm-3 item-container">
+            <a href="{{ route( $routeName, ['id' => $result['id']]) }}" class="col-6 col-sm-3 item-container {{ $result['class'] }}">
+                
+                <i class="fas fa-shield-alt fa-4x"></i>
                 <div class="title">
-                    @if(strlen($result['name']) > 8)
-                        {{ substr($result['name'], 0, 8) }}...
+                    @if(strlen($result['name']) > 12)
+                        {{ substr($result['name'], 0, 12) }}...
                     @else
                         {{ $result['name'] }}
                     @endif
                 </div>
-                <i class="fas fa-shield-alt fa-4x"></i>
-                <p>
-                    @if(strlen($result['description']) > 15)
-                        {{ substr($result['description'], 0, 15) }}...
-                    @else
-                        {{ $result['description'] }}
-                    @endif
-                </p>
             </a>
         @endforeach
     </div>        

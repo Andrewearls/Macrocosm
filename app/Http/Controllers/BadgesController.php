@@ -29,9 +29,23 @@ class BadgesController extends Controller
      */
     public function index()
     {
-        $results = Badges::all()->toArray();
+        $user = Auth::user();
+        $badges = Badges::all();
+        $results = $badges->map(function ($badge) use ($user) {
+            
+            if ($user->requirements->contains('id', $badge->requirement->id)) {
+                $badge->class = 'acquired';
+                return $badge;
+            } elseif ($user->requirements->contains($badge->requirments)) {
+                $badge->class = 'availible';
+                return $badge;
+            }else {
+                $badge->class = 'not-abailible';
+                return $badge;
+            }
+        });
         $descriptionRoute = 'badgeDescription';
-    	return view('indexes.badges')->with(['results' => $results, 'routeName' => $descriptionRoute]);
+    	return view('indexes.badges')->with(['results' => $results->toArray(), 'routeName' => $descriptionRoute]);
     }
 
     public function badgeDescription($id)

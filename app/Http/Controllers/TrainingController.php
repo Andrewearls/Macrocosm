@@ -27,9 +27,26 @@ class TrainingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $results = Classes::all()->toArray();
+        $user = Auth::user();
+        $classes = Classes::all();
+        $results = $classes->map(function ($course) use ($user) {
+            
+            if ($user->requirements->contains('id', $course->requirement->id)) {
+                $course->class = 'acquired';
+                return $course;
+            } elseif ($user->requirements->contains($course->requirments)) {
+                $course->class = 'availible';
+                return $course;
+            } elseif ($user->enroll->contains($course)) {
+                $course->class = 'enrolled';
+                return $course;
+            }else {
+                $course->class = 'not-abailible';
+                return $course;
+            }
+        });
         $descriptionRoute = 'classDescription';
-    	return view('indexes.courses')->with(['results' => $results, 'routeName' => $descriptionRoute]);
+    	return view('indexes.courses')->with(['results' => $results->toArray(), 'routeName' => $descriptionRoute]);
     }
 
     public function classDescription($id)
