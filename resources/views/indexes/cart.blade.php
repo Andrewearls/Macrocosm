@@ -61,7 +61,6 @@
 @endsection
 
 @section('pagespecificscripts')
-    <script src="{{ asset('js/ajax/modifyCart.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
 

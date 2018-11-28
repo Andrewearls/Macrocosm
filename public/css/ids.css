@@ -269,26 +269,7 @@
 		border-color: lightgreen;	
 	}
 
-	#index .acquired {
-		color: yellow;
-	} 
-		#index .acquired:hover {
-			border-color: yellow;
-		}
-	#index .enrolled {
-		color: lightgreen;
-	}
-
-	#index .availible {
-	}
-
-	#index .not-availible {
-		color: red;
-	}
-
-		#index .not-availible:hover {
-			border-color: red;
-		}
+	
 
 /*Activation*/
 #activation {}

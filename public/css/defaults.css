@@ -56,6 +56,29 @@ span {
 	
 }
 
+.acquired {
+		color: yellow !important;
+	} 
+
+	.acquired:hover {
+		border-color: yellow !important;
+	}
+
+.enrolled {
+	color: lightgreen !important;
+}
+
+.availible {
+}
+
+.not-availible {
+	color: red !important;
+}
+
+	.not-availible:hover {
+		border-color: red !important;
+	}
+
 .btn {
 	background-color: transparent;
 	border: 2px solid gray;
