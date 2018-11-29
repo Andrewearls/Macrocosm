@@ -24,6 +24,7 @@ class CreateClassesTable extends Migration
             $table->time('time');
             $table->date('date');
             $table->string('location');
+            $table->integer('frequency');
         });
     }
 

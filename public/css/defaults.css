@@ -44,6 +44,7 @@ a, a:hover, a:focus, a:active{
 
 p {
 	padding: 0px;
+	margin: 0;
 }
 
 p:hover, p:focus, p:active {

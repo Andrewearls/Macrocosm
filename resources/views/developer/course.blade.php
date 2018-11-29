@@ -35,11 +35,7 @@
         <div class="col-1">
             <a class="btn" href="{{ url()->previous() }}">Back</a>
         </div>
-	    @if(Auth::user()->positions->contains('name', 'instructor'))
-	        <div class="col-3">
-	        	<a class="btn" href="{{ route('editClassRequirements', ['id' => $result->id]) }}">Add Requirements</a>
-	        </div>
-	    @endif
+	    
         <div>
             {{ Form::submit('Submit', ['class' => 'btn']) }}
         </div>

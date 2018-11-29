@@ -105,7 +105,7 @@ class TrainingController extends Controller
             ]);
 
 
-        return redirect()->route('classDescription', ['id' => $class->id]);
+        return redirect()->route('editClassRequirements', ['id' => $class->id]);
     }
 
     public function deleteItem($id)
