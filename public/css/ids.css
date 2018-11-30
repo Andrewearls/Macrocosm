@@ -148,6 +148,16 @@
 		min-height: 55vh;
 		max-height: 55vh;
 	}
+		#description .image-container .helper{
+			display: inline-block;
+			height: 100%;
+			vertical-align: middle;
+		}
+
+		#description .image-container img{			
+			display: inline-block;
+			vertical-align: middle;
+		}
 
 	#description .long-description {		
 		font-size: 20px;
