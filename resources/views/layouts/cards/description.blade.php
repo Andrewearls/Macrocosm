@@ -6,7 +6,7 @@
 
 @section('cardheader')
         <div class="col-6 title">
-            <div> {{ $result->name }} </div>
+            <div> {{ $result->requirement->name }} </div>
         </div>        
 @endsection
 
