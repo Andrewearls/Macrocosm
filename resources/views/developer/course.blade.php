@@ -20,7 +20,9 @@
             	<input type="time" name="time">
 
             	{{ Form::label('date:') }}
-            	{{ Form::date('date', (isset($result->date)) ? $result->date : '')}}            	
+            	{{ Form::date('date', (isset($result->date)) ? $result->date : '')}} <br>
+                {{ Form::label('frequency') }}
+                {{ Form::select('frequency', ['1' => 'Daily', '7' => 'Weekly', '30' => 'Monthly'], '7') }}          	
             </p>
             <p class="where hidden">
             	{{ Form::label('location:') }}

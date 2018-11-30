@@ -1,11 +1,10 @@
 ::-webkit-scrollbar {
     width: 0px;
-    background: transparent;  make scrollbar transparent 
+    background: transparent;  /*make scrollbar transparent*/ 
 }
 
 html, body {
 	min-height: 100vh;
-	max-height: 100vh;
 	background-color: black;
 	color: gray;
 }
@@ -201,7 +200,13 @@ form {}
 		background-color: transparent;
 		color: lightgreen;
 		border: 2px solid gray;
+		border-color: gray;
 		border-radius: 3px;
+	}
+
+	option {
+		/*Options do not support rgba or transparent*/
+		background-color: black;
 	}
 
 	input:hover, input:focus, option:hover, option:focus, select:hover, select:focus, textarea:hover, textarea:focus {

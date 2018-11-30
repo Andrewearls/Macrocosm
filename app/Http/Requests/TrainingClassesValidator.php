@@ -29,6 +29,7 @@ class TrainingClassesValidator extends FormRequest
             'date' => 'required',
             'time' => 'required',
             'location' => 'required',
+            'frequency' => 'required',
         ];
     }
 }

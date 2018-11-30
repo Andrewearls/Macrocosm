@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\TrainingClassesValidator;
 use App\Classes;
 use App\Requirement;
+use DateTime;
+use Carbon\Carbon;
 
 
 class TrainingController extends Controller
@@ -53,6 +55,19 @@ class TrainingController extends Controller
     {
         // dd(Auth::user()->classes);
         $class = Classes::findOrFail($id);
+        $today = new Carbon();
+        if ($class->date < $today) {
+            // dd(true);
+            $date = new Carbon($class->date);
+            $difference = $date->diffInDays($today);
+            $cyclesBehind = ceil($difference / $class->frequency);
+            $newDate = $date->addDays($cyclesBehind * $class->frequency);
+            $class->date = $newDate;
+            $class->save();
+            // dd($class->date);
+            // dd($date);
+        }
+        // dd('false');
         // dd(empty($result->requirements->toarray()));
         // dd(Auth::user()->requirements);
         //check if user meets class requirements
@@ -97,6 +112,7 @@ class TrainingController extends Controller
         $class->time = $validated['time'];
         $class->date = $validated['date'];
         $class->location = $validated['location'];
+        $class->fruequency = $validated['frequency'];
         $class->save();
         $class->requirement()->update(
             [
