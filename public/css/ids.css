@@ -319,6 +319,15 @@
 		border-color: red;
 	}
 	
+	#enrollment .activate:before {
+		content: "Passed";
+	}
+
+	#enrollment .deactivate:before {
+		content: "Failed";
+	}
+
+
 /*Cart*/
 #cart {}
 
