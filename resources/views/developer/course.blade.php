@@ -15,15 +15,21 @@
             <p class="description visible">
             	{{ Form::textArea('description', (isset($result->description)) ? $result->description : '') }}
             </p>
-            <p class="when hidden">
+            <div class="when hidden">
             	{{ Form::label('time:') }}
-            	<input type="time" name="time">
+            	<input type="time" name="time" id="time"><br>
 
             	{{ Form::label('date:') }}
             	{{ Form::date('date', (isset($result->date)) ? $result->date : '')}} <br>
-                {{ Form::label('frequency') }}
-                {{ Form::select('frequency', ['1' => 'Daily', '7' => 'Weekly', '30' => 'Monthly'], '7') }}          	
-            </p>
+                {{ Form::label('frequency:') }}
+                {{ Form::hidden('frequency', 'secret', ['id'=>'frequency']) }}
+                <button type="button" id="frequencyDropdown" class="btn">Select</button>
+                <ul id="frequencyList" class="hidden">
+                    <li value="1" class="frequencyOption">Daily</li>
+                    <li value="7" class="frequencyOption">Weekly</li>
+                    <!-- <li class="frequencyOption">Monthly</li> -->
+                </ul>
+            </div>
             <p class="where hidden">
             	{{ Form::label('location:') }}
             	{{ Form::text('location', (isset($result->location)) ? $result->location : '')}}
@@ -53,10 +59,25 @@
 
 		$(document).ready(function(){
 		 	
+
+            $('#time').val('{!! $result->time !!}');
+
 		 	$(document).on('click', ".not-active", function(){
 		 		$('.active').toggleClass('active not-active');
 		 		$(this).toggleClass('active not-active');
-		 	});
+		 	});            
+
+            $(".frequencyOption").click(function(){
+                $('#frequencyDropdown').text($(this).text());
+                $('#frequency').val($(this).val());
+                $("#frequencyList").toggleClass('hidden not-hidden');
+            });
+
+            $("#frequencyDropdown").on('focus', function(){
+                $("#frequencyList").toggleClass('hidden not-hidden');
+            });
+
+            
 
 		});
 	</script>

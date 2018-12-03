@@ -50,6 +50,10 @@ p:hover, p:focus, p:active {
 	border-color: lightgreen;
 }
 
+ul {
+	list-style: none;
+}
+
 span {
 	font-size: 20px;
 	font-weight: 500;

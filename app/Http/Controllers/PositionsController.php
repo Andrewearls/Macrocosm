@@ -43,6 +43,7 @@ class PositionsController extends Controller
     public function createPosition(PositionsValidator $request)
     {
     	$validated = $request->validated();
+        $validated['name'] = ucwords(strtolower($validated['name']));
     	$position = Positions::create($validated);
     	$position->requirement()->create(
             [

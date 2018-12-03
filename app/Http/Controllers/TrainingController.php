@@ -85,6 +85,7 @@ class TrainingController extends Controller
     public function createItem(TrainingClassesValidator $request)
     {
         $validated = $request->validated();
+        $validated['name'] = ucwords(strtolower($validated['name']));
         $user = Auth::user();
         $class = $user->classes()->create($validated);
         $class->requirement()->create(
@@ -112,7 +113,7 @@ class TrainingController extends Controller
         $class->time = $validated['time'];
         $class->date = $validated['date'];
         $class->location = $validated['location'];
-        $class->fruequency = $validated['frequency'];
+        $class->frequency = $validated['frequency'];
         $class->save();
         $class->requirement()->update(
             [

@@ -34,6 +34,7 @@ class ExternalInventoryController extends Controller
     public function createInventoryItem(ExternalInventoryValidator $request)
     {
         $validated = $request->validated();
+        $validated['name'] = ucwords(strtolower($validated['name']));
         ExternalInventory::create([
             'name' => $validated['name'],
             'description' => $validated['description'],

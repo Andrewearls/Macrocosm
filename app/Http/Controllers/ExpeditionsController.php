@@ -45,6 +45,7 @@ class ExpeditionsController extends Controller
     public function createExpedition(ExpeditionValidator $request)
     {
     	$validated = $request->validated();
+        $validated['name'] = ucwords(strtolower($validated['name']));
     	$user = Auth::user();
         $result = $user->expeditions()->create($validated);
 

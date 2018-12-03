@@ -177,6 +177,7 @@ class ShoppingController extends Controller
     {
         $user = Auth::user();
         $validated = $request->validated();
+        $validated['name'] = ucwords(strtolower($validated['name']));
         $result = $user->inventory()->create($validated);
         
         return redirect()->route('itemDescription', ['id' => $result->id]);

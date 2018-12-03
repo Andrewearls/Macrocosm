@@ -234,7 +234,7 @@
 		height: 100%;
 	}
 
-	#developer .long-description p {
+	#developer .long-description p, .when {
 		border: 2px solid gray;
 		border-radius: 3px;
 		min-height: 40vh;
@@ -242,7 +242,7 @@
 		padding: .5em;
 	}
 
-	#developer .long-description p:hover {
+	#developer .long-description p:hover, .when:hover {
 		border-color: lightgreen;
 	}
 
@@ -261,6 +261,39 @@
 	#developer .long-description .where input {
 		width: 100%;
 	}
+
+	#developer .long-description .when ul.hidden{
+		visibility: hidden;
+	}
+
+	#developer #frequencyDropdown {
+		color: lightgreen;
+		font-weight: 400;
+	}
+
+	#developer #frequencyList{
+		display: inline;
+		position: fixed;
+		border: 2px solid gray;
+		border-radius: 3px;
+		margin: 0px;
+		margin-left: 5px;
+		padding: 0px;
+	}
+
+		#developer #frequencyList:hover{
+			border-color: lightgreen;
+		}
+
+		#developer #frequencyList li {
+			padding-left: 5px;
+			padding-right: 5px;
+			cursor: pointer;
+		}
+
+			#developer #frequencyList li:hover {
+				color: lightgreen;
+			}
 
 
 /*Index*/

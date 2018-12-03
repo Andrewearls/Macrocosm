@@ -64,13 +64,15 @@ class BadgesController extends Controller
     public function createBadge(BadgesValidator $request)
     {
         $validated = $request->validated();
+        $validated['name'] = ucwords(strtolower($validated['name']));
         $user = Auth::user();
         $badge = $user->badge()->create($validated);
         $badge->requirement()->create(
             [
                 'name' => $badge->name.' Badge',
                 'description' => 'Default description',
-            ]);
+            ]
+        );
         
 
         return redirect()->route('badgeDescription', ['id' => $badge->id]);
