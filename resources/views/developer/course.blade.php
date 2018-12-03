@@ -22,7 +22,7 @@
             	{{ Form::label('date:') }}
             	{{ Form::date('date', (isset($result->date)) ? $result->date : '')}} <br>
                 {{ Form::label('frequency:') }}
-                {{ Form::hidden('frequency', 'secret', ['id'=>'frequency']) }}
+                {{ Form::hidden('frequency', (isset($result->frequency)) ? $result->frequency : '1', ['id'=>'frequency']) }}
                 <button type="button" id="frequencyDropdown" class="btn">Select</button>
                 <ul id="frequencyList" class="hidden">
                     <li value="1" class="frequencyOption">Daily</li>
@@ -73,7 +73,7 @@
                 $("#frequencyList").toggleClass('hidden not-hidden');
             });
 
-            $("#frequencyDropdown").on('focus', function(){
+            $("#frequencyDropdown").on('click', function(){
                 $("#frequencyList").toggleClass('hidden not-hidden');
             });
 
