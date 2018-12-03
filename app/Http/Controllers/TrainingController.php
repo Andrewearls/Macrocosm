@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests\TrainingClassesValidator;
 use App\Classes;
 use App\Requirement;
+use App\Mail\Enroll;
 use DateTime;
 use Carbon\Carbon;
+
 
 
 class TrainingController extends Controller
@@ -156,8 +158,10 @@ class TrainingController extends Controller
         //if user meets class requirements
         // if(Auth::user()-> $class->requirements;
         // dd(Auth::user()->requirements);
-        $class->enroll()->attach(Auth::user()->id);
-        return redirect()->route('classDescription', ['id' => $id]);
+
+        // $class->enroll()->attach(Auth::user()->id);
+
+        return new Enroll($class);// redirect()->route('classDescription', ['id' => $id]);
     }
 
     public function unenroll($id)
