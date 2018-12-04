@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\TrainingClassesValidator;
 use App\Classes;
 use App\Requirement;
@@ -58,17 +59,19 @@ class TrainingController extends Controller
         // dd(Auth::user()->classes);
         $class = Classes::findOrFail($id);
         $today = new Carbon();
-        if ($class->date < $today) {
-            // dd(true);
-            $date = new Carbon($class->date);
-            $difference = $date->diffInDays($today);
-            $cyclesBehind = ceil($difference / $class->frequency);
-            $newDate = $date->addDays($cyclesBehind * $class->frequency);
-            $class->date = $newDate;
-            $class->save();
-            // dd($class->date);
-            // dd($date);
-        }
+        // This will update the date if it is behind
+        // if ($class->date < $today) {
+        //     // dd(true);
+        //     $date = new Carbon($class->date);
+        //     $difference = $date->diffInDays($today);
+        //     $cyclesBehind = ceil($difference / $class->frequency);
+        //     $newDate = $date->addDays($cyclesBehind * $class->frequency);
+        //     $class->date = $newDate;
+        //     $class->save();
+        //     // dd($class->date);
+        //     // dd($date);
+        // }
+
         // dd('false');
         // dd(empty($result->requirements->toarray()));
         // dd(Auth::user()->requirements);
@@ -160,6 +163,7 @@ class TrainingController extends Controller
         // dd(Auth::user()->requirements);
 
         // $class->enroll()->attach(Auth::user()->id);
+        Mail::to(Auth::user())->send(new Enroll($class));
 
         return new Enroll($class);// redirect()->route('classDescription', ['id' => $id]);
     }

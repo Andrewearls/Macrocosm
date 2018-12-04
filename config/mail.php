@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('mailgun', 'http'),
+    'driver' => env('mailgun'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'andrew@dubiousmacrocosm.com'),
+        'name' => env('MAIL_FROM_NAME', 'andrew'),
     ],
 
     /*
