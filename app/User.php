@@ -42,6 +42,18 @@ class User extends Authenticatable implements MustVerifyEmail
 
     }
 
+    /**
+     * Override the default verrification email
+     * Send the email verification notification.
+     *
+     * @return void
+     */
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new Notifications\VerifyEmail);
+    }
+
+
     public function inventory()
     {
         return $this->hasMany('App\Inventory', 'owner_id');
