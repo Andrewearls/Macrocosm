@@ -163,7 +163,13 @@ class TrainingController extends Controller
         // dd(Auth::user()->requirements);
 
         // $class->enroll()->attach(Auth::user()->id);
-        Mail::to(Auth::user())->send(new Enroll($class));
+        // Mail::to(Auth::user())->send(new Enroll($class));
+        // $userArr = Auth::user()->toArray();
+        // Mail::send('emails.class.enroll', ['class' => $class], function($message) use ($userArr) {
+        //         $message->bcc('andrewearls@rocketmail.com', 'Someone');
+        //         $message->to($userArr['email'] ,  $userArr['name'])->subject('Blah blah');
+        //         $message->from('noreply@something.com','Whatever');
+        //     });
 
         return new Enroll($class);// redirect()->route('classDescription', ['id' => $id]);
     }
