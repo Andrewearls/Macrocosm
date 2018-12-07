@@ -60,24 +60,18 @@ class TrainingController extends Controller
         $class = Classes::findOrFail($id);
         $today = new Carbon();
         // This will update the date if it is behind
-        // if ($class->date < $today) {
-        //     // dd(true);
-        //     $date = new Carbon($class->date);
-        //     $difference = $date->diffInDays($today);
-        //     $cyclesBehind = ceil($difference / $class->frequency);
-        //     $newDate = $date->addDays($cyclesBehind * $class->frequency);
-        //     $class->date = $newDate;
-        //     $class->save();
-        //     // dd($class->date);
-        //     // dd($date);
-        // }
+        if ($class->date < $today) {
+            // dd(true);
+            $date = new Carbon($class->date);
+            $difference = $date->diffInDays($today);
+            $cyclesBehind = ceil($difference / $class->frequency);
+            $newDate = $date->addDays($cyclesBehind * $class->frequency);
+            $class->date = $newDate;
+            $class->save();
+            // dd($class->date);
+            // dd($date);
+        }
 
-        // dd('false');
-        // dd(empty($result->requirements->toarray()));
-        // dd(Auth::user()->requirements);
-        //check if user meets class requirements
-        //$user->meetsRequirements($class->requirements) -- returns true or false
-        // dd( Auth::user()->meetsRequirements($class->requirements) );
         return view('descriptions.course')->with(['result' => $class]);
     }
 
@@ -91,6 +85,7 @@ class TrainingController extends Controller
     {
         $validated = $request->validated();
         $validated['name'] = ucwords(strtolower($validated['name']));
+        // dd($validated); 
         $user = Auth::user();
         $class = $user->classes()->create($validated);
         $class->requirement()->create(
@@ -99,7 +94,7 @@ class TrainingController extends Controller
                 'description' => 'Default description',
             ]);
 
-        return redirect()->route('classDescription', ['id' => $class->id]);
+        return redirect()->route('editClassRequirements', ['id' => $class->id]);
     }
 
     public function editItem($id)
@@ -159,10 +154,12 @@ class TrainingController extends Controller
     {
         $class = Classes::findOrFail($id);
         //if user meets class requirements
-        // if(Auth::user()-> $class->requirements;
-        // dd(Auth::user()->requirements);
+        if (Auth::user()->requirements->contains($class->requirments)) {
+            $class->enroll()->attach(Auth::user()->id);
+            $class->instructor->notify(new Notifications\Enrolled(Auth::user()));
+        }
 
-        // $class->enroll()->attach(Auth::user()->id);
+        // 
         // Mail::to(Auth::user())->send(new Enroll($class));
         // $userArr = Auth::user()->toArray();
         // Mail::send('emails.class.enroll', ['class' => $class], function($message) use ($userArr) {

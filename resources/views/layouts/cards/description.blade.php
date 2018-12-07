@@ -6,7 +6,7 @@
 
 @section('cardheader')
         <div class="col-6 title">
-            <div> {{ $result->requirement->name }} </div>
+            <div> {{ (isset($result->requirement->name)) ? $result->requirement->name : '' }} </div>
         </div>        
 @endsection
 
@@ -17,7 +17,7 @@
         </div>
         <div class="col-8 long-description">
         	
-        	<p><span>Description:</span> {{ $result->description }}</p>
+        	<p><span>Description:</span> {{ (isset($result->description)) ? $result->description : '' }}</p>
             
         </div>
     </div>

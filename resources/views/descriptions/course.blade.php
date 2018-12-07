@@ -40,7 +40,7 @@
 		    	<a href="{{ route('enroll', ['id' => $result->id]) }}" class="col-3 btn">Enroll</a>
 	    	@endif
 	    @endif
-	    @if(Auth::user()->positions->contains('name', 'instructor'))
+	    @if(Auth::user()->positions->contains('name', 'Instructor'))
 	    	<a href="{{ route('enrolled', ['id' => $result->id]) }}" class="col-3 btn">Enrolled</a> 
 	        <a href="{{ route('editClassItem', ['id' => $result->id]) }}" class="col-3 btn">Edit</a>    
 	    @endif

@@ -13,7 +13,7 @@ class Classes extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'short_description', 'image', 'owner_id', 'time', 'date', 'location',
+        'name', 'description', 'short_description', 'image', 'owner_id', 'time', 'date', 'location', 'frequency',
     ];
 
     /**
@@ -30,7 +30,7 @@ class Classes extends Model
         return get_class($this);
     }
 
-    public function owner()
+    public function instructor()
     {
     	return $this->belongsTo('App\User', 'owner_id');
     }
