@@ -11,6 +11,7 @@ use App\Requirement;
 use App\Mail\Enroll;
 use DateTime;
 use Carbon\Carbon;
+use App\Notifications;
 
 
 
@@ -153,10 +154,12 @@ class TrainingController extends Controller
     public function enroll($id)
     {
         $class = Classes::findOrFail($id);
+
         //if user meets class requirements
-        if (Auth::user()->requirements->contains($class->requirments)) {
+        if ($class->requirements->isempty() || Auth::user()->requirements->contains($class->requirments)) {
+
             $class->enroll()->attach(Auth::user()->id);
-            $class->instructor->notify(new Notifications\Enrolled(Auth::user()));
+            $class->instructor->notify(new Notifications\Enrolled(Auth::user(), $class));
         }
 
         // 
@@ -168,7 +171,7 @@ class TrainingController extends Controller
         //         $message->from('noreply@something.com','Whatever');
         //     });
 
-        return new Enroll($class);// redirect()->route('classDescription', ['id' => $id]);
+        return redirect()->route('classDescription', ['id' => $id]);
     }
 
     public function unenroll($id)
