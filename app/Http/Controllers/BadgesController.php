@@ -45,7 +45,6 @@ class BadgesController extends Controller
                 return $badge;
             }
         });
-        dd($badges);
         $descriptionRoute = 'badgeDescription';
     	return view('indexes.badges')->with(['results' => $results->toArray(), 'routeName' => $descriptionRoute]);
     }
@@ -107,7 +106,7 @@ class BadgesController extends Controller
     public function deleteBadge($id)
     {
         $badge = Badges::findOrFail($id);
-        $badge->requirement->delete();
+        // $badge->requirement->delete();
         $badge->delete();
         return redirect()->route('badges');
     }
