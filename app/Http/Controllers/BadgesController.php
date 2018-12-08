@@ -31,6 +31,7 @@ class BadgesController extends Controller
     {
         $user = Auth::user();
         $badges = Badges::all();
+        dd($badges);
         $results = $badges->map(function ($badge) use ($user) {
             
             if ($user->requirements->contains('id', $badge->requirement->id)) {
@@ -105,7 +106,6 @@ class BadgesController extends Controller
     public function deleteBadge($id)
     {
         $badge = Badges::findOrFail($id);
-        $badge->requirements()->delete();
         $badge->requirement->delete();
         $badge->delete();
         return redirect()->route('badges');
