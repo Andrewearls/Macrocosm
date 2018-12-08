@@ -31,7 +31,7 @@ class BadgesController extends Controller
     {
         $user = Auth::user();
         $badges = Badges::all();
-        dd($badges);
+
         $results = $badges->map(function ($badge) use ($user) {
             
             if ($user->requirements->contains('id', $badge->requirement->id)) {
@@ -45,6 +45,7 @@ class BadgesController extends Controller
                 return $badge;
             }
         });
+        dd($badges);
         $descriptionRoute = 'badgeDescription';
     	return view('indexes.badges')->with(['results' => $results->toArray(), 'routeName' => $descriptionRoute]);
     }
