@@ -33,7 +33,7 @@
 	    @if(Auth::user()->meetsRequirements($result->requirements) && !Auth::user()->requirements->contains('id', $result->requirement->id))
 	    	<a href="{{ route('claimBadge', ['id' => $result->id]) }}" id="claimButton" class="col-3 btn">Claim</a>
     	@endif
-	    @if(Auth::user()->positions->contains('name', 'badgemaster'))
+	    @if(Auth::user()->positions->contains('name', 'Badgemaster'))
 	        <a href="{{ route('editBadge', ['id' => $result->id]) }}" class="col-3 btn">Edit</a>
 	    @endif
 	</div>

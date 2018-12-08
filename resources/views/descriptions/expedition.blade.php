@@ -20,7 +20,7 @@
 @section('cardfooter')
     <div class="row justify-content-between no-gutters">
 	    <a href="{{ route('expeditions') }}" class="col-3 btn">Back to Expeditions</a>
-	    @if(Auth::user()->positions->contains('name', 'pathfinder'))
+	    @if(Auth::user()->positions->contains('name', 'Pathfinder'))
 	        <a href="{{ route('editExpedition', ['id' => $result->id]) }}" class="col-3 btn">Edit</a>
 	    @endif    
 	</div>
