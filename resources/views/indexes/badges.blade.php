@@ -9,7 +9,7 @@
         <div class="col-5 col-6 title">
             Badges
         </div>
-        @if(Auth::user()->positions->contains('name', 'badgemaster'))
+        @if(Auth::user()->positions->contains('name', 'Badgemaster'))
 	        <div class="col-4 btn-container">
 	            <a class="btn" href="{{ route('newBadge') }}">New Badge</a>
 	        </div>
