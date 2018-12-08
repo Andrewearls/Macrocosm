@@ -197,6 +197,11 @@
 			color: lightgreen;
 		}
 
+		#auth #verify p{
+			font-size: 28px;
+			line-height: 32px;
+		}
+
 /*CMS*/
 
 	#developer .card-header label {
